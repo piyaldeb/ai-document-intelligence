@@ -39,9 +39,13 @@ def map_columns(header: list[str]) -> dict[str, int]:
             for syn in synonyms:
                 if h == syn:
                     score = 100 + len(syn)
-                elif len(syn) > 3 and re.search(rf"\b{re.escape(syn)}\b", h):
-                    score = 50 + len(syn)
+                elif len(syn) >= 3 and re.search(rf"\b{re.escape(syn)}\b", h):
+                    score = 50 + len(syn)  # e.g. bilingual headers: "MwSt / VAT", "Gesamt / Total"
                 else:
+                    continue
+                if field_name == "invoice_date" and re.search(r"\b(due|delivery|order|payment|ship)", h):
+                    continue
+                if field_name in ("subtotal", "tax", "total") and re.search(r"\b(rate|%|percent|id|number|no)\b", h):
                     continue
                 # "Amount" is a line amount in line-level exports and the invoice total otherwise.
                 if syn == "amount" and field_name == "amount" and not has_description:

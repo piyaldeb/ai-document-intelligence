@@ -93,10 +93,11 @@ def _basic(gray: np.ndarray) -> np.ndarray:
     return stretched.astype(np.uint8)
 
 
-def _enhanced(gray: np.ndarray) -> np.ndarray:
-    angle = _estimate_skew(gray)
-    if abs(angle) >= 0.3:
-        gray = _rotate(gray, angle)
+def _enhanced(gray: np.ndarray, deskew: bool = False) -> np.ndarray:
+    if deskew:
+        angle = _estimate_skew(gray)
+        if abs(angle) >= 0.3:
+            gray = _rotate(gray, angle)
     gray = cv2.medianBlur(gray, 3)
     gray = cv2.createCLAHE(clipLimit=2.0, tileGridSize=(8, 8)).apply(gray)
     binary = cv2.adaptiveThreshold(
@@ -146,6 +147,12 @@ def ocr_image(img: Image.Image) -> OcrResult:
     warnings: list[str] = []
     if gray.size == 0:
         return OcrResult("", 0.0, "none", 0, ["empty image"])
+    # Deskew up front: even 2° of skew moves a right-aligned amount onto a different text line
+    # than its left-aligned label, which breaks layout reconstruction although OCR itself is fine.
+    angle = _estimate_skew(gray)
+    if abs(angle) >= 0.4:
+        gray = _rotate(gray, angle)
+        warnings.append(f"deskewed by {angle:.1f} degrees")
 
     best = _run_tesseract(_basic(gray), "basic")
     if best.confidence < GOOD_CONFIDENCE or best.word_count < 5:
@@ -156,7 +163,7 @@ def ocr_image(img: Image.Image) -> OcrResult:
         rotation = _osd_rotation(gray)
         if rotation:
             rotated = np.ascontiguousarray(np.rot90(gray, k=-rotation // 90))
-            candidate = _run_tesseract(_enhanced(rotated), f"enhanced+rot{rotation}")
+            candidate = _run_tesseract(_enhanced(rotated, deskew=True), f"enhanced+rot{rotation}")
             if _score(candidate) > _score(best):
                 best = candidate
                 warnings.append(f"page was rotated {rotation} degrees")

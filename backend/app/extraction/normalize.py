@@ -121,7 +121,12 @@ class AmountMatch:
     end: int
 
 
+_GLUED_PREFIX = re.compile(r"(\bRs\.|\bTk\.?|\b(?:" + "|".join(sorted(CURRENCY_CODES)) + r"))(?=\d)")
+
+
 def find_amounts(text: str, decimal_comma: bool | None = None) -> list[AmountMatch]:
+    # "Rs.9,754.28" / "USD1,200.00": separate the prefix so the number is a token of its own.
+    text = _GLUED_PREFIX.sub(r"\1 ", text)
     out = []
     for m in _AMOUNT_TOKEN.finditer(text):
         raw = m.group(1).strip()

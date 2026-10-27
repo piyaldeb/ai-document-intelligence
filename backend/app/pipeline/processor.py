@@ -24,6 +24,7 @@ from sqlalchemy import delete, update
 from app.config import get_settings
 from app.db import SessionLocal
 from app.extraction import service as extraction
+from app.extraction.rules import page_signals
 from app.extraction.schema import InvoiceData
 from app.extraction.spreadsheet_mapper import map_sheet
 from app.models import (
@@ -123,6 +124,29 @@ class _Unit:
         self.data = data
 
 
+def build_units(extraction_result: TextExtraction) -> list[_Unit]:
+    """Turn extracted pages/sheets into invoice candidates."""
+    units: list[_Unit] = []
+    if extraction_result.sheets:
+        for page, table in zip(extraction_result.pages, extraction_result.sheets):
+            mapped = map_sheet(table)
+            if mapped:
+                for m in mapped:
+                    units.append(_Unit("", {"sheet": table.name, "rows": [m.rows[0], m.rows[-1]],
+                                            "pages": [page.page_number]}, None, m.data))
+            elif page.text.strip():
+                # Form-style sheet: only treat it as an invoice if it looks like one (a notes or
+                # summary tab next to a register must not become a phantom invoice).
+                sig = page_signals(page.text)
+                if sig["invoice_number"] or sig["has_total"] or sig["has_title"]:
+                    units.append(_Unit(page.text, {"sheet": table.name, "pages": [page.page_number]}, None))
+    else:
+        for seg in segment_pages(extraction_result.pages):
+            confs = [p.ocr_confidence for p in seg.pages if p.ocr_confidence is not None]
+            units.append(_Unit(seg.text, {"pages": seg.page_numbers}, min(confs) if confs else None))
+    return units
+
+
 def run(document_id: uuid.UUID) -> str:
     """Process a document. Returns the final status. Raises ProcessingError if retryable."""
     s = get_settings()
@@ -168,20 +192,7 @@ def run(document_id: uuid.UUID) -> str:
                 db.commit()
 
         with job.stage("segment"):
-            units: list[_Unit] = []
-            if extraction_result.sheets:
-                for page, table in zip(extraction_result.pages, extraction_result.sheets):
-                    mapped = map_sheet(table)
-                    if mapped:
-                        for m in mapped:
-                            units.append(_Unit("", {"sheet": table.name, "rows": [m.rows[0], m.rows[-1]],
-                                                    "pages": [page.page_number]}, None, m.data))
-                    elif page.text.strip():
-                        units.append(_Unit(page.text, {"sheet": table.name, "pages": [page.page_number]}, None))
-            else:
-                for seg in segment_pages(extraction_result.pages):
-                    confs = [p.ocr_confidence for p in seg.pages if p.ocr_confidence is not None]
-                    units.append(_Unit(seg.text, {"pages": seg.page_numbers}, min(confs) if confs else None))
+            units = build_units(extraction_result)
             job.event("segment", "info", f"{len(units)} invoice candidate(s) found")
 
         with job.stage("ai_extraction", provider=provider, candidates=len(units)):

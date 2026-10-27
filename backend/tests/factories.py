@@ -135,6 +135,7 @@ class Samples:
         ws2.append(["Bill No", "Date", "Vendor Name", "Client", "Subtotal", "Tax Amount", "Grand Total", "CCY"])
         ws2.append(["B-77", datetime(2025, 5, 9), "Orion Software Systems", "Nova Pharma", 50.5, 0, 50.5, "EUR"])
         wb.create_sheet("Empty")
+        wb.create_sheet("Notes").append(["Reviewed by the finance team"])  # must not become an invoice
         out = self.root / name
         wb.save(out)
         return out

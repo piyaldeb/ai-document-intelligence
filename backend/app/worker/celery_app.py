@@ -4,6 +4,7 @@ import logging
 import uuid
 
 from celery import Celery
+from celery.signals import worker_process_init
 
 from app.config import get_settings
 
@@ -24,6 +25,18 @@ celery_app.conf.update(
 )
 
 log = logging.getLogger(__name__)
+
+
+@worker_process_init.connect
+def _warm_up(**_kwargs) -> None:
+    """Load the embedding model once per worker process instead of on the first document."""
+    if settings.embeddings_enabled:
+        try:
+            from app.search.embeddings import embed_passages
+
+            embed_passages(["warm-up"])
+        except Exception:  # never block worker start-up; indexing will retry lazily
+            log.exception("embedding model warm-up failed")
 
 
 @celery_app.task(bind=True, name="process_document", max_retries=3)

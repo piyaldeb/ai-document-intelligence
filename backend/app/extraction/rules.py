@@ -137,6 +137,7 @@ class Candidate:
     confidence: float
     line: int
     evidence: str
+    col: int = -1  # column where the label starts
 
 
 def _labeled_values(lines: list[str], labels: list[tuple[str, float]], allow_below: bool = True) -> list[Candidate]:
@@ -151,14 +152,17 @@ def _labeled_values(lines: list[str], labels: list[tuple[str, float]], allow_bel
                 if not m:
                     continue
                 rest = m.group("rest").strip()
+                below = _aligned_below(lines, i, seg) if allow_below and not rest else None
+                nxt = segs[k + 1] if k + 1 < len(segs) and not _LABEL_ONLY.match(segs[k + 1].text) else None
+                # A value far to the right usually belongs to another column (e.g. the letterhead
+                # block beside a "Customer:" label); prefer the value printed under the label then.
+                far = nxt is not None and nxt.start - seg.end > 18
                 if rest:
-                    out.append(Candidate(rest, conf, i, line))
-                elif k + 1 < len(segs) and not _LABEL_ONLY.match(segs[k + 1].text):
-                    out.append(Candidate(segs[k + 1].text, conf * 0.97, i, line))
-                elif allow_below:
-                    below = _aligned_below(lines, i, seg)
-                    if below:
-                        out.append(Candidate(below[0], conf * 0.93, below[1], f"{line.strip()} / {below[0]}"))
+                    out.append(Candidate(rest, conf, i, line, seg.start))
+                elif nxt is not None and not (far and below):
+                    out.append(Candidate(nxt.text, conf * (0.85 if far else 0.97), i, line, seg.start))
+                elif below:
+                    out.append(Candidate(below[0], conf * 0.93, below[1], f"{line.strip()} / {below[0]}", seg.start))
                 break
     return out
 
@@ -222,6 +226,8 @@ def _clean_party(raw: str) -> str | None:
         return None
     if re.match(r"^(?:invoice|date|no\.?|number|total|amount|address|tel|phone|email|vat|tax)\b", s, re.I):
         return None
+    if _LABEL_ONLY.match(s) or TITLE_WORDS.match(s):
+        return None
     return s[:200]
 
 
@@ -230,10 +236,17 @@ def extract_customer(lines: list[str]) -> Candidate | None:
     for cand in _labeled_values(lines, CUSTOMER_LABELS):
         name = _clean_party(cand.value)
         if name:
-            cands.append(Candidate(name, cand.confidence, cand.line, cand.evidence))
+            cands.append(Candidate(name, cand.confidence, cand.line, cand.evidence, cand.col))
     if not cands:
         return None
     return max(cands, key=lambda c: (c.confidence, -c.line))
+
+
+ADDRESS_HINT = re.compile(
+    r"\b(street|st\.|road|rd\.?|avenue|ave\.?|suite|unit|floor|park|lane|box|strasse|straße|building|block|"
+    r"department|dept|district|city|tel|phone|fax|e-?mail|branch)\b|\d{4,}",
+    re.I,
+)
 
 
 def extract_supplier(lines: list[str], customer: Candidate | None) -> Candidate | None:
@@ -241,31 +254,44 @@ def extract_supplier(lines: list[str], customer: Candidate | None) -> Candidate 
     for cand in _labeled_values(lines, labels):
         name = _clean_party(cand.value)
         if name and (customer is None or name != customer.value):
-            return Candidate(name, cand.confidence, cand.line, cand.evidence)
+            return Candidate(name, cand.confidence, cand.line, cand.evidence, cand.col)
 
-    # Heuristic: the first company-like line at the top of the document (letterhead).
-    customer_line = customer.line if customer else None
+    # Heuristic: the letterhead, i.e. the first company-like text block near the top that is not
+    # part of the customer block (which may sit beside it on the same lines).
+    def in_customer_block(i: int, seg: Segment) -> bool:
+        if customer is None:
+            return False
+        if seg.text.strip() == customer.value:
+            return True
+        return customer.col >= 0 and abs(seg.start - customer.col) <= 8 and customer.line - 2 <= i <= customer.line + 3
+
+    candidates: list[Candidate] = []
     seen = 0
-    for i, line in enumerate(lines[:20]):
+    for i, line in enumerate(lines[:25]):
         if not line.strip():
             continue
-        if customer_line is not None and i >= customer_line - 1:
-            break
         seen += 1
-        if seen > 8:
-            break
-        segs = split_segments(line)
-        for seg in segs[:2]:
+        if seen > 10 or (LINE_HEADER_DESC.search(line) and LINE_HEADER_NUM.search(line)):
+            break  # the letterhead is above the line-items table
+        for seg in split_segments(line)[:3]:
             t = seg.text.strip()
-            if TITLE_WORDS.match(t) or ":" in t or "@" in t or "www." in t.lower():
+            if in_customer_block(i, seg) or _LABEL_ONLY.match(t) or TITLE_WORDS.match(t):
+                continue
+            if ":" in t or "@" in t or "www." in t.lower() or ADDRESS_HINT.search(t):
                 continue
             if re.search(r"\d{3,}", t) or len(re.findall(r"[A-Za-z]", t)) < 3:
                 continue
-            if re.match(r"^(?:bill|ship|sold|invoice|date|to|from)\b", t, re.I):
+            if re.match(r"^(?:bill|ship|sold|invoice|date|to|from|customer|client|page)\b", t, re.I):
                 continue
             conf = 0.72 if COMPANY_SUFFIX.search(t) else 0.55
-            return Candidate(t[:200], conf, i, line)
-    return None
+            if seen == 1:
+                conf = max(conf, 0.68)  # first text on the page: almost always the letterhead
+            candidates.append(Candidate(t[:200], conf, i, line))
+    if not candidates:
+        return None
+    first = candidates[0]
+    with_suffix = next((c for c in candidates[:4] if c.confidence > 0.6 and c.line <= first.line + 2), None)
+    return with_suffix if with_suffix and first.confidence < 0.6 else first
 
 
 def _amount_after_label(lines: list[str], labels: list[tuple[str, float]], exclude: re.Pattern | None,
@@ -372,7 +398,11 @@ def _numeric_value(text: str, decimal_comma: bool):
     return parse_amount(raw, decimal_comma)
 
 
+PAGE_BREAK = "\x00<page-break>"
+
+
 def extract_line_items(lines: list[str], decimal_comma: bool) -> list[LineItemData]:
+    lines = [ln.rstrip() if ln != PAGE_BREAK else ln for ln in lines]
     header_idx = None
     for i, line in enumerate(lines):
         if LINE_HEADER_DESC.search(line) and len(LINE_HEADER_NUM.findall(line)) >= 1 and len(split_segments(line)) >= 2:
@@ -385,17 +415,27 @@ def extract_line_items(lines: list[str], decimal_comma: bool) -> list[LineItemDa
     first_kind = columns[0][1] if columns else None
 
     items: list[LineItemData] = []
+    seeking = False  # after a page break: skip the repeated letterhead until the table resumes
     for line in lines[header_idx + 1:]:
+        if line == PAGE_BREAK:
+            seeking = True
+            continue
         if not line.strip():
             continue
+        if LINE_HEADER_DESC.search(line) and LINE_HEADER_NUM.search(line):
+            seeking = False
+            continue  # header repeated on a continuation page
         if _is_stop_line(line):
             break
         if PAGE_MARKER.search(line) or re.search(r"continued", line, re.I):
             continue
-        if LINE_HEADER_DESC.search(line) and LINE_HEADER_NUM.search(line):
-            continue  # header repeated on a continuation page
         parsed = [(seg, _numeric_value(seg.text, decimal_comma)) for seg in split_segments(line)]
         parsed = [(seg, v) for seg, v in parsed if v is not _PERCENT]
+        if seeking:
+            n_num = sum(1 for _, v in parsed if v is not None)
+            if n_num < 2 or n_num == len(parsed):
+                continue
+            seeking = False
         if (
             len(parsed) > 2
             and parsed[0][1] is not None
@@ -467,7 +507,7 @@ def extract(text: str, *, currency_hint: str | None = None) -> InvoiceData:
     for field, cand in extract_amounts(lines, decimal_comma).items():
         data.set(field, money(cand.value), cand.confidence, cand.evidence)
 
-    data.line_items = extract_line_items(lines, decimal_comma)
+    data.line_items = extract_line_items(text.replace("\f", f"\n{PAGE_BREAK}\n").split("\n"), decimal_comma)
     if data.line_items:
         data.confidence["line_items"] = 0.75
     return data

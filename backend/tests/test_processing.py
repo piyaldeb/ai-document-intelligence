@@ -75,7 +75,7 @@ def test_corrupted_files_raise_typed_errors(samples, kind, exc):
 
 def test_xlsx_multisheet_register_with_title_rows(samples):
     res = extract_spreadsheet(samples.register_xlsx(), "xlsx")
-    assert [p.sheet_name for p in res.pages] == ["Q1", "Q2", "Empty"]
+    assert [p.sheet_name for p in res.pages] == ["Q1", "Q2", "Empty", "Notes"]
     q1 = res.sheets[0]
     assert q1.header[:3] == ["Invoice No", "Invoice Date", "Supplier"]
     assert q1.first_data_row == 4

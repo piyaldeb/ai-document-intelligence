@@ -107,7 +107,7 @@ def correct_invoice(invoice_id: uuid.UUID, body: InvoiceCorrection, db: Session 
     inv = _load(db, invoice_id)
     changes = body.model_dump(exclude_unset=True, exclude={"reason", "corrected_by", "line_items"})
     if not changes and body.line_items is None:
-        raise HTTPException(status.HTTP_422_UNPROCESSABLE_ENTITY, "No fields to change")
+        raise HTTPException(422, "No fields to change")
     raw = dict(inv.raw_extraction or {})
     rejected = dict(raw.get("rejected") or {})
     confidence = dict(inv.field_confidence or {})
