@@ -1,5 +1,7 @@
 # DocIntel: AI-powered document intelligence
 
+> **Disclaimer:** this is a technical-assessment project, provided as-is and not production-certified. It was built **with AI assistance** (Claude Code), as disclosed in [docs/AI_DISCLOSURE.md](docs/AI_DISCLOSURE.md). All sample documents are **synthetic and fictitious**. Evaluation numbers were measured on that synthetic data with the rules-based extractor. See [DISCLAIMER.md](DISCLAIMER.md).
+
 DocIntel turns invoices, receipts, scanned PDFs, photos and spreadsheets into validated, searchable structured data.
 
 It accepts **PDF, JPG, PNG, TIFF, XLSX, XLS and CSV** files (one at a time or hundreds at once, including 1000-page PDFs). For each file it:
@@ -14,6 +16,7 @@ People then review flagged records, correct values with a full audit trail, and 
 
 | | |
 |---|---|
+| **How to use (step by step)** | [docs/USER_GUIDE.md](docs/USER_GUIDE.md) |
 | Architecture & design decisions | [docs/architecture.md](docs/architecture.md) |
 | Database schema (ER diagram + DDL) | [docs/database-schema.md](docs/database-schema.md), [docs/schema.sql](docs/schema.sql) |
 | API reference | [docs/api.md](docs/api.md) · live OpenAPI at `http://localhost:8000/docs` |
@@ -41,6 +44,17 @@ docker compose up -d --build
 The first build takes a few minutes (Tesseract, Python wheels, and the embedding model is baked into the image). Database migrations run automatically when the API starts.
 
 **Try it:** drag a few files from `eval/dataset/` (digital PDFs, scans, photos, spreadsheets, even the corrupted ones) onto the dashboard and watch them process.
+
+### How to use, in short
+
+1. **Upload** files on the Dashboard; many at once and mixed formats are fine.
+2. **Watch** live progress: queued → processing → completed / needs review / failed (with a Reprocess button).
+3. **Inspect** a document: the invoices found, the extracted text per page, the processing history and the original file.
+4. **Review** flagged invoices in the *Review queue*: see each field's confidence and evidence plus the validation issues, correct values (every change is audited), then approve.
+5. **Search** with filters or plain-language queries (keyword / semantic / hybrid).
+6. **Cross-verify** two documents, e.g. a supplier PDF batch vs. an ERP Excel export, and see matched, mismatched and missing invoices.
+
+The full walkthrough with screenshots-level detail and API examples is in [docs/USER_GUIDE.md](docs/USER_GUIDE.md).
 
 ### Extraction provider
 

@@ -14,3 +14,5 @@ eval/dataset/stress/
 *.log
 .DS_Store
 Thumbs.db
+scripts/walkthrough/node_modules/
+docs/walkthrough/_raw/
