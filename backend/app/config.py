@@ -30,6 +30,7 @@ class Settings(BaseSettings):
     max_pdf_pages: int = 5000
     ocr_dpi: int = 300
     ocr_workers: int = Field(default_factory=lambda: max(1, (os.cpu_count() or 2) - 1))
+    max_ocr_pages: int = 0  # 0 = unlimited; small hosts cap OCR work per document
     ocr_page_timeout_s: int = 90
     ocr_languages: str = "eng"
     min_text_chars_per_page: int = 25  # below this a PDF page is treated as scanned

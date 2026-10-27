@@ -91,8 +91,8 @@ async function main() {
   await step(page, "Done: completed or flagged for review. Earlier, a corrupted PDF failed safely with CORRUPTED_FILE (see Failed)", 5000);
 
   // Document detail: batch PDF
-  await page.getByRole("link", { name: /batch_march_20_invoices/i }).first().click();
-  await page.waitForLoadState("networkidle");
+  const batchDoc = (await apiJson("/api/documents?q=batch_march&page_size=1")).items[0];
+  await goto(page, `/documents/${batchDoc.id}`);
   await step(page, "3 · A 20-invoice batch PDF was split into separate invoices automatically", 4000);
   for (const tab of [/extracted text/i, /history/i, /original/i]) {
     const t = page.getByRole("tab", { name: tab }).first();
@@ -123,9 +123,8 @@ async function main() {
       await step(page, `5 · Correct a value (total → ${expected})…`, 2500);
       const save = page.getByRole("button", { name: /save/i }).first();
       await save.click();
-      const confirm = page.getByRole("button", { name: /save|confirm/i }).last();
-      if (await confirm.isVisible().catch(() => false)) await confirm.click();
       await page.waitForLoadState("networkidle");
+      await pause(1500);
       await step(page, "…the change is audited (old → new, who, why) and the invoice is re-validated instantly", 4500);
       const approve = page.getByRole("button", { name: /approve invoice/i }).first();
       if (await approve.isEnabled().catch(() => false)) {
@@ -154,9 +153,8 @@ async function main() {
   await goto(page, "/reconcile");
   await step(page, "8 · Cross-verification: compare a supplier PDF batch against an ERP Excel export", 3500);
   if (left && erp) {
-    const selects = page.locator("select");
-    await selects.nth(0).selectOption(left.id);
-    await selects.nth(1).selectOption(erp.id);
+    await page.locator("#recon-left").selectOption(left.id);
+    await page.locator("#recon-right").selectOption(erp.id);
     await page.getByRole("button", { name: /run|compare|verify/i }).first().click();
     await page.waitForLoadState("networkidle");
     await pause(1500);

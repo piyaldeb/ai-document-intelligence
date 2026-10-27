@@ -45,6 +45,10 @@ def _load_frames(path: Path) -> tuple[list[Image.Image], list[str]]:
 
 def extract_image(path: Path, progress: ProgressFn | None = None) -> TextExtraction:
     frames, warnings = _load_frames(path)
+    cap = get_settings().max_ocr_pages
+    if cap and len(frames) > cap:
+        warnings.append(f"OCR limited to the first {cap} of {len(frames)} pages on this deployment")
+        frames = frames[:cap]
     total = len(frames)
     pages: list[PageResult] = []
     with ThreadPoolExecutor(max_workers=get_settings().ocr_workers) as pool:

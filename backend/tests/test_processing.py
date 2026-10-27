@@ -51,6 +51,14 @@ def test_multipage_tiff(samples):
     assert "INV-20418" in res.pages[1].text.replace(" ", "")
 
 
+def test_ocr_page_cap_for_small_deployments(samples, monkeypatch):
+    from app.config import get_settings
+
+    monkeypatch.setattr(get_settings(), "max_ocr_pages", 1)
+    res = extract_image(samples.multipage_tiff())
+    assert len(res.pages) == 1 and any("limited to the first 1 of 2" in w for w in res.pages[0].warnings)
+
+
 def test_truncated_jpeg_is_recovered_with_warning(samples):
     res = extract_image(samples.corrupted("jpg_truncated"))
     assert any("truncated" in w for w in res.pages[0].warnings)

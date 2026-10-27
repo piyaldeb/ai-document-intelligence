@@ -65,6 +65,7 @@ def extract_pdf(path: Path, progress: ProgressFn | None = None) -> TextExtractio
     results: dict[int, PageResult] = {}
     done = 0
     pending: dict[Future, int] = {}
+    ocr_started = 0
 
     def _collect(fut_set) -> None:
         nonlocal done
@@ -96,6 +97,13 @@ def extract_pdf(path: Path, progress: ProgressFn | None = None) -> TextExtractio
                 if progress and (done % 25 == 0 or done == total):
                     progress(done, total)
                 continue
+            if s.max_ocr_pages and ocr_started >= s.max_ocr_pages:
+                # Small deployments cap OCR work per document; the page is kept, flagged, not failed.
+                results[idx] = PageResult(idx + 1, text, "text_layer",
+                                          warnings=[f"OCR skipped: limit of {s.max_ocr_pages} scanned pages per document"])
+                done += 1
+                continue
+            ocr_started += 1
             try:
                 img = _render(page, s.ocr_dpi)
             except Exception as exc:
