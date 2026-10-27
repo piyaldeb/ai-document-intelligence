@@ -29,8 +29,9 @@ flowchart LR
         P3[segment<br/>multi-invoice PDFs]
         P4[AI extraction<br/>Claude structured output<br/>+ rules cross-check<br/>+ grounding]
         P5[validate<br/>business rules<br/>duplicates]
-        P6[index<br/>chunks + bge-small<br/>embeddings]
-        P1 --> P2 --> P3 --> P4 --> P5 --> P6
+        P7[finalize<br/>status + timing]
+        P6[index task<br/>separate queue<br/>chunks + bge-small embeddings]
+        P1 --> P2 --> P3 --> P4 --> P5 --> P7 -.async.-> P6
     end
 
     subgraph Data
@@ -63,8 +64,8 @@ flowchart LR
 | **segment** | Large PDFs are usually batches of many invoices. A new segment starts on "Page 1 of N", on a change of invoice number, or on a new invoice title after the previous segment printed its total. Spreadsheet registers and line-level exports map directly to invoice records; form-style sheets fall back to text extraction. | Linear in page count, using cheap regex signals only. |
 | **ai_extraction** | Each segment's text goes to Claude with a JSON-schema-constrained output (`messages.parse` + Pydantic). The model must copy an evidence snippet for every field and return `null` rather than guess. Every returned value is **grounded**: an identifier, amount, date, currency or name not found in the source text is discarded and recorded as rejected. Confidence is calibrated against an independent rules extractor. Without an API key the rules extractor is used alone. | Segments run concurrently (`LLM_MAX_CONCURRENCY`). The SDK retries 429/5xx; persistent LLM errors fall back to rules with a note. Server-side refusal fallbacks are enabled. |
 | **validate** | Rules: missing fields, numeric sanity, subtotal + tax = total, Σ line items = subtotal, qty × unit = amount, tax-rate sanity, dates, currency, duplicates (same supplier + number, or same supplier/date/total), low confidence, ungrounded values, OCR quality. | A Postgres advisory lock per normalized invoice number serializes concurrent workers, so duplicates are detected even when both copies process at once. Commits happen in batches of 200 invoices. |
-| **index** | Each invoice summary and the page text chunks (900 chars, 150 overlap) are embedded locally with `BAAI/bge-small-en-v1.5` (ONNX, CPU) into `chunks.embedding` (HNSW cosine index). | No document text leaves the deployment for indexing. Capped at 5000 chunks per document. |
-| **finalize** | Status becomes `completed`, or `needs_review` if any invoice or document-level issue needs a human. Total processing time is recorded. | Every stage writes `processing_events` (start, end, duration, message, attempt). |
+| **finalize** | Status becomes `completed`, or `needs_review` if any invoice or document-level issue needs a human. Total processing time is recorded. Results are now visible in the UI and API. | Every stage writes `processing_events` (start, end, duration, message, attempt). |
+| **index** (async) | A separate `index_document` task on the `indexing` queue embeds every invoice summary and page-text chunk (1500 chars, 200 overlap) locally with `BAAI/bge-small-en-v1.5` (ONNX, CPU) into `chunks.embedding` (HNSW cosine index). | Kept off the critical path: on a 1000-page PDF embedding takes minutes on CPU while extraction takes under a minute, so results are usable right away and semantic search catches up. Can be scaled with dedicated `-Q indexing` workers. Idempotent. Capped at 5000 chunks per document; no text leaves the deployment. |
 
 ## Reliability
 

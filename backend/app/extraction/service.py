@@ -56,4 +56,6 @@ def extract_text(text: str, provider: str | None = None, context: str = "") -> I
         rules_result.notes.append(f"LLM extraction unavailable ({exc}); used rules extractor")
         return rules_result
     result = ground(result, text)
+    if result.document_type == "other" and rules_result.document_type != "invoice":
+        result.document_type = rules_result.document_type  # more specific: quotation, purchase order, ...
     return _merge(result, rules_result)

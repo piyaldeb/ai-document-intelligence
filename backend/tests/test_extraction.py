@@ -105,6 +105,56 @@ def test_rules_missing_values_stay_null():
     assert d.tax is None and d.subtotal is None and d.customer_name is None  # never invented
 
 
+QUOTATION = """Northbank Digital                                                     www.northbank.example
+  Quotation                                              Quote ref: NB-WEB-2026-04
+                                                         Date: 18 August 2026
+  Prepared for         Harbourline Fencing Ltd / Harbourline US
+  Prepared by          Northbank Digital — www.northbank.example
+  Currency             South African Rand (ZAR). Amounts exclude VAT unless stated otherwise.
+  Our platform shows prices in USD; USD conversion is applied at checkout. USD only for display.
+
+ 1. Fee
+                                        R20,000 – R25,000
+                                             Total project fee (excl. VAT)
+
+ 8. Acceptance
+  Agreed fee                R ____________________ (within R20,000 – R25,000)
+  Client signature          ____________________________________
+"""
+
+CAPTION_UNDER_AMOUNT = """Kestrel Data Labs
+Invoice No: KD-7781        Date: 02/05/2025
+                         R 18,500.00
+                      Total amount due
+"""
+
+
+def test_rules_quotation_with_price_range_is_not_forced_into_an_invoice():
+    d = rules.extract(QUOTATION)
+    assert d.document_type == "quotation"
+    assert d.currency == "ZAR"  # the explicit "Currency:" line beats incidental USD mentions
+    assert d.total is None and d.rejected["total"] == "R20,000 – R25,000 (range)"  # never pick one end
+    assert d.customer_name == "Harbourline Fencing Ltd / Harbourline US"  # not "signature"
+    assert d.supplier_name == "Northbank Digital"
+    assert d.invoice_number is None
+
+
+def test_rules_amount_printed_above_its_label_and_rand_symbol():
+    d = rules.extract(CAPTION_UNDER_AMOUNT)
+    assert d.total == Decimal("18500.00") and d.currency == "ZAR"
+
+
+def test_validation_flags_quotation_and_range():
+    from app.validation.rules import InvoiceView, validate
+
+    d = rules.extract(QUOTATION)
+    view = InvoiceView(invoice_number=d.invoice_number, invoice_date=d.invoice_date, supplier_name=d.supplier_name,
+                       customer_name=d.customer_name, subtotal=d.subtotal, tax=d.tax, total=d.total,
+                       currency=d.currency, line_items=[], rejected=d.rejected, document_type=d.document_type)
+    codes = {i.code for i in validate(view, today=date(2026, 9, 1))}
+    assert {"NOT_AN_INVOICE", "AMOUNT_RANGE"} <= codes
+
+
 def _field(value, conf="high", evidence=None):
     return ExtractedField(value=value, confidence=conf, evidence=evidence or value)
 

@@ -1,6 +1,8 @@
 from __future__ import annotations
 
 import logging
+import threading
+from contextlib import asynccontextmanager
 
 from fastapi import Depends, FastAPI
 from fastapi.middleware.cors import CORSMiddleware
@@ -15,7 +17,28 @@ from app.security import SecurityHeadersMiddleware, rate_limit
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(name)s: %(message)s")
 
 settings = get_settings()
+log = logging.getLogger(__name__)
+
+
+def _warm_up_embeddings() -> None:
+    try:
+        from app.search.embeddings import embed_query
+
+        embed_query("warm up")
+    except Exception:  # search still works; the first query just pays the model load
+        log.exception("embedding warm-up failed")
+
+
+@asynccontextmanager
+async def lifespan(_app: FastAPI):
+    # Load the embedding model in the background so the first semantic search is fast.
+    if settings.embeddings_enabled:
+        threading.Thread(target=_warm_up_embeddings, daemon=True).start()
+    yield
+
+
 app = FastAPI(
+    lifespan=lifespan,
     title="Document Intelligence API",
     version="1.0.0",
     # Served under /api so the web app's same-origin proxy also exposes the interactive docs.

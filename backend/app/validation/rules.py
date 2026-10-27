@@ -59,6 +59,7 @@ class InvoiceView:
     notes: list[str] = dc_field(default_factory=list)
     ambiguous_date: bool = False
     min_ocr_confidence: float | None = None
+    document_type: str = "invoice"
 
 
 @dataclass
@@ -110,8 +111,18 @@ def validate(inv: InvoiceView, dup: DuplicateContext | None = None, today: date 
         issues.append(Issue("SUBTOTAL_EXCEEDS_TOTAL", "error", "Subtotal is larger than the total", "subtotal"))
     for f, raw in inv.rejected.items():
         if f in ("subtotal", "tax", "total") and getattr(inv, f) is None:
-            issues.append(Issue("INVALID_NUMBER", "error", f"{FIELD_LABELS[f]} value {raw!r} is not a valid amount", f,
-                                {"raw": raw}))
+            if str(raw).endswith("(range)"):
+                shown = str(raw)[: -len(" (range)")]
+                issues.append(Issue("AMOUNT_RANGE", "warning",
+                                    f"{FIELD_LABELS[f]} is printed as a range ({shown}); enter the agreed amount", f,
+                                    {"raw": shown}))
+            else:
+                issues.append(Issue("INVALID_NUMBER", "error", f"{FIELD_LABELS[f]} value {raw!r} is not a valid amount", f,
+                                    {"raw": raw}))
+    if inv.document_type not in ("invoice", "", None):
+        issues.append(Issue("NOT_AN_INVOICE", "warning",
+                            f"This document looks like a {inv.document_type}, not an invoice; invoice-specific fields "
+                            "(e.g. invoice number) may legitimately be missing", None, {"document_type": inv.document_type}))
 
     # 3. Arithmetic consistency ------------------------------------------------------
     if inv.subtotal is not None and inv.tax is not None and inv.total is not None:

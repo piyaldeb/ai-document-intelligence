@@ -49,6 +49,8 @@ class InvoiceData(BaseModel):
     method: str = "rules"
     model: str | None = None
     ambiguous_date: bool = False
+    # invoice | quotation | proposal | estimate | purchase order | credit note | delivery note | statement | other
+    document_type: str = "invoice"
 
     def set(self, field: str, value: Any, confidence: float, evidence: str | None = None) -> None:
         setattr(self, field, value)

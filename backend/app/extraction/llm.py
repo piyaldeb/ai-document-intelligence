@@ -129,6 +129,7 @@ def extract(text: str, *, context: str = "", dayfirst: bool = True) -> InvoiceDa
 def to_invoice_data(out: ExtractedInvoice, model: str | None, dayfirst: bool, notes: list[str]) -> InvoiceData:
     data = InvoiceData(method="anthropic", model=model, notes=list(notes))
     if not out.is_invoice:
+        data.document_type = "other"
         data.notes.append("model reports the document is not an invoice")
 
     def conf(f: ExtractedField) -> float:

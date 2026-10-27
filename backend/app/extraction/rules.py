@@ -18,6 +18,7 @@ from app.extraction.normalize import (
     CURRENCY_CODES,
     detect_currency,
     detect_decimal_comma,
+    find_amount_ranges,
     find_amounts,
     find_dates,
     money,
@@ -49,6 +50,7 @@ SUPPLIER_LABELS = [
     r"from",
     r"pay\s+to",
     r"remit\s+to",
+    r"prepared\s+by",
 ]
 CUSTOMER_LABELS = [
     (r"bill(?:ed)?\s+to", 0.92),
@@ -57,9 +59,22 @@ CUSTOMER_LABELS = [
     (r"customer(?:\s*name)?", 0.9),
     (r"client(?:\s*name)?", 0.9),
     (r"buyer", 0.88),
+    (r"prepared\s+for|quot(?:e|ation)\s+for", 0.85),
+    (r"attn\.?|attention", 0.7),
     (r"ship\s+to", 0.6),
     (r"to", 0.7),
 ]
+# Title words that identify documents other than invoices (checked near the top of page 1).
+DOCUMENT_TYPES = [
+    ("credit note", r"\bcredit\s+note\b"),
+    ("quotation", r"\bquotation\b|\bquote\s*(?:ref|no\.?|number|#)|\bprice\s+quote\b"),
+    ("proposal", r"\bproposal\b"),
+    ("estimate", r"^\s*estimate\b|\bcost\s+estimate\b"),
+    ("purchase order", r"\bpurchase\s+order\b"),
+    ("delivery note", r"\bdelivery\s+note\b|\bpacking\s+slip\b"),
+    ("statement", r"\bstatement\s+of\s+account\b"),
+]
+PLACEHOLDER = re.compile(r"_{3,}|^\s*(?:signature|sign(?:ed)?|name|date|stamp|n/?a|tbd|tba|-+)\s*$", re.I)
 SUBTOTAL_LABELS = [
     r"sub[\s\-]?total",
     r"net\s*(?:amount|total|value)",
@@ -138,6 +153,7 @@ class Candidate:
     line: int
     evidence: str
     col: int = -1  # column where the label starts
+    range_text: str | None = None  # set when the printed value is a range such as "R20,000 – R25,000"
 
 
 def _labeled_values(lines: list[str], labels: list[tuple[str, float]], allow_below: bool = True) -> list[Candidate]:
@@ -220,8 +236,13 @@ def extract_invoice_date(lines: list[str], dayfirst: bool) -> tuple[Candidate, b
 
 
 def _clean_party(raw: str) -> str | None:
+    if PLACEHOLDER.search(raw):
+        return None  # form fields such as "Client signature ______"
     s = raw.strip().strip(":,-").strip()
     s = re.split(r"\s{2,}", s)[0]
+    # "Acme Ltd — www.acme.com" / "Acme Ltd | accounts@acme.com": keep the name part.
+    s = re.split(r"\s+[—–|·•]\s+|\s+-\s+(?=\S*(?:www\.|https?://|@))", s)[0]
+    s = re.sub(r"(?:https?://\S+|www\.\S+|\S+@\S+)", "", s).strip(" ,;:-")
     if len(s) < 2 or not re.search(r"[A-Za-z]{2}", s):
         return None
     if re.match(r"^(?:invoice|date|no\.?|number|total|amount|address|tel|phone|email|vat|tax)\b", s, re.I):
@@ -308,15 +329,39 @@ def _amount_after_label(lines: list[str], labels: list[tuple[str, float]], exclu
                 continue
             if LINE_HEADER_DESC.search(line) and LINE_HEADER_NUM.search(line):
                 continue  # table header, not a totals line
-            tail = line[m.end():]
-            amounts = find_amounts(tail, decimal_comma)
-            if not amounts and i + 1 < len(lines) and len(lines[i + 1].strip()) < 40:
-                amounts = find_amounts(lines[i + 1], decimal_comma)
-            if amounts:
-                a = amounts[-1]
-                out.append(Candidate(str(a.value), conf, i, f"{label_text} {a.raw}"))
+            # Where the amount may be printed: after the label, on the next (short) line, or on the
+            # line above when that line holds nothing but the amount (big figure + caption under it).
+            sources = [line[m.end():]]
+            if i + 1 < len(lines) and len(lines[i + 1].strip()) < 40:
+                sources.append(lines[i + 1])
+            if i > 0 and _amount_only(lines[i - 1]):
+                sources.append(lines[i - 1])
+            for src in sources:
+                amounts = find_amounts(src, decimal_comma)
+                if not amounts:
+                    continue
+                ranges = find_amount_ranges(src, decimal_comma)
+                if ranges and ranges[-1][1].value == amounts[-1].value:
+                    # "R20,000 – R25,000": a range is not a single amount; never pick one end.
+                    lo, hi = ranges[-1]
+                    raw = re.search(r"\S*" + re.escape(lo.raw) + r".*?" + re.escape(hi.raw), src)
+                    shown = raw.group(0).strip() if raw else f"{lo.raw} – {hi.raw}"
+                    out.append(Candidate("", conf, i, f"{label_text}: {shown}", range_text=shown))
+                else:
+                    a = amounts[-1]
+                    out.append(Candidate(str(a.value), conf, i, f"{label_text} {a.raw}"))
+                break
             break
     return out
+
+
+def _amount_only(line: str) -> bool:
+    """True if a line contains amounts and nothing else (currency marks and dashes allowed)."""
+    if not find_amounts(line):
+        return False
+    rest = re.sub(r"\b[A-Z]{3}(?=\s?\d|\b)|\bRs\.?|\bTk\.?|\bR(?=\s?\d)|[$€£₹৳¥]", "", line)
+    rest = re.sub(r"[\d.,'()\s]|–|—|-|\bto\b", "", rest)
+    return rest == ""
 
 
 def extract_amounts(lines: list[str], decimal_comma: bool) -> dict[str, Candidate]:
@@ -339,7 +384,7 @@ def extract_amounts(lines: list[str], decimal_comma: bool) -> dict[str, Candidat
         explicit_total = [c for c in taxes if re.match(r"total", c.evidence, re.I)]
         if explicit_total:
             res["tax"] = explicit_total[-1]
-        elif len({c.line for c in taxes}) > 1 and len(taxes) <= 3:
+        elif len({c.line for c in taxes}) > 1 and len(taxes) <= 3 and not any(c.range_text for c in taxes):
             s = sum(Decimal(c.value) for c in taxes)
             res["tax"] = Candidate(str(s), 0.7, taxes[-1].line, " + ".join(c.evidence for c in taxes))
         else:
@@ -505,12 +550,32 @@ def extract(text: str, *, currency_hint: str | None = None) -> InvoiceData:
         data.set("supplier_name", supplier.value, supplier.confidence, supplier.evidence)
 
     for field, cand in extract_amounts(lines, decimal_comma).items():
-        data.set(field, money(cand.value), cand.confidence, cand.evidence)
+        if cand.range_text:
+            data.rejected[field] = f"{cand.range_text} (range)"
+            data.confidence[field] = 0.0
+            data.evidence[field] = cand.evidence
+            data.notes.append(f"{field} is printed as a range ({cand.range_text}); no single amount was extracted")
+        else:
+            data.set(field, money(cand.value), cand.confidence, cand.evidence)
+
+    data.document_type = detect_document_type(lines)
+    if data.document_type != "invoice":
+        data.notes.append(f"document appears to be a {data.document_type}, not an invoice")
 
     data.line_items = extract_line_items(text.replace("\f", f"\n{PAGE_BREAK}\n").split("\n"), decimal_comma)
     if data.line_items:
         data.confidence["line_items"] = 0.75
     return data
+
+
+def detect_document_type(lines: list[str]) -> str:
+    head = "\n".join(lines[:15])
+    if re.search(r"\b(?:tax\s+)?invoice\b|\breceipt\b|^\s*bill\b", head, re.I | re.M):
+        return "invoice"
+    for name, pattern in DOCUMENT_TYPES:
+        if re.search(pattern, head, re.I | re.M):
+            return name
+    return "invoice"
 
 
 def page_signals(text: str) -> dict:

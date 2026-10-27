@@ -22,7 +22,9 @@ CURRENCY_CODES = {
 SYMBOLS = {"€": "EUR", "£": "GBP", "₹": "INR", "৳": "BDT", "¥": "JPY", "₩": "KRW", "₺": "TRY", "₱": "PHP"}
 DOLLAR_PREFIXES = {"US$": "USD", "C$": "CAD", "CA$": "CAD", "A$": "AUD", "AU$": "AUD", "S$": "SGD",
                    "NZ$": "NZD", "HK$": "HKD"}
-LOCAL_WORDS = {r"\bRs\.?(?=\s?\d)": "INR", r"\bTk\.?(?=\s?\d)": "BDT"}
+LOCAL_WORDS = {r"\bRs\.?(?=\s?\d)": "INR", r"\bTk\.?(?=\s?\d)": "BDT", r"\bR(?=\s?\d{1,3}(?:[,.']\d{3})+\b)": "ZAR"}
+# "Currency: South African Rand (ZAR)" - an explicit statement beats incidental mentions.
+_CURRENCY_LABEL = re.compile(r"(?i:\bcurrenc(?:y|ies)\b)[^\n]{0,80}")
 
 # Number token: optional sign/paren, optional currency symbol, digits with , . ' separators.
 _AMOUNT_TOKEN = re.compile(
@@ -121,7 +123,27 @@ class AmountMatch:
     end: int
 
 
-_GLUED_PREFIX = re.compile(r"(\bRs\.|\bTk\.?|\b(?:" + "|".join(sorted(CURRENCY_CODES)) + r"))(?=\d)")
+_GLUED_PREFIX = re.compile(
+    r"(\bRs\.|\bTk\.?|\bR(?=\d{1,3}(?:[,.']\d{3})+|\d+[.,]\d{2}\b)|\b(?:" + "|".join(sorted(CURRENCY_CODES)) + r"))(?=\d)"
+)
+_RANGE_SEP = re.compile(r"^\s*(?:–|—|-|to|until)\s*$", re.I)
+_CURRENCY_NOISE = re.compile(r"\b[A-Z]{3}\b|\bRs\.?|\bTk\.?|\bR\b|[$€£₹৳¥]")
+
+
+def find_amount_ranges(text: str, decimal_comma: bool | None = None) -> list[tuple[AmountMatch, AmountMatch]]:
+    """Pairs like "R20,000 – R25,000" or "USD 100 to USD 150" (a range, not one amount)."""
+    norm = _GLUED_PREFIX.sub(r"\1 ", text)
+    matches = []
+    for m in _AMOUNT_TOKEN.finditer(norm):
+        val = parse_amount(m.group(1).strip(), decimal_comma)
+        if val is not None:
+            matches.append(AmountMatch(val, m.group(1).strip(), m.start(1), m.end(1)))
+    out = []
+    for a, b in zip(matches, matches[1:]):
+        between = _CURRENCY_NOISE.sub("", norm[a.end:b.start])
+        if _RANGE_SEP.match(between):
+            out.append((a, b))
+    return out
 
 
 def find_amounts(text: str, decimal_comma: bool | None = None) -> list[AmountMatch]:
@@ -242,6 +264,11 @@ def detect_currency(text: str) -> tuple[str | None, float]:
         n = len(re.findall(pat, text))
         if n:
             counts[code] = counts.get(code, 0) + n
+    for m in _CURRENCY_LABEL.finditer(text):
+        stated = next((c for c in re.findall(r"\b([A-Z]{3})\b", m.group(0)) if c in CURRENCY_CODES), None)
+        if stated:
+            counts[stated] = counts.get(stated, 0) + 10
+            break
     if counts:
         code = max(counts, key=counts.get)
         return code, 0.95 if counts[code] >= 2 else 0.8

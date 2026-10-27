@@ -79,6 +79,7 @@ def view_of(inv: Invoice) -> InvoiceView:
         rejected=dict(raw.get("rejected") or {}),
         ambiguous_date=bool(raw.get("ambiguous_date")) and not raw.get("date_corrected"),
         min_ocr_confidence=raw.get("min_ocr_confidence"),
+        document_type=raw.get("document_type") or "invoice",
     )
 
 
