@@ -1,0 +1,5964 @@
+{
+  "generated": "2026-10-27",
+  "seed": 20261027,
+  "documents": [
+    {
+      "file": "pdf/classic_01.pdf",
+      "kind": "pdf",
+      "expect": "ok",
+      "error_code": null,
+      "invoices": [
+        {
+          "invoice_number": "INV-11278",
+          "invoice_date": "2026-07-22",
+          "supplier_name": "Silverline Printing Press",
+          "customer_name": "Metro Health Clinic",
+          "subtotal": "11436.97",
+          "tax": "943.55",
+          "total": "12380.52",
+          "currency": "USD",
+          "line_items": [
+            {
+              "description": "Software license (annual)",
+              "quantity": "25",
+              "unit_price": "443.86",
+              "amount": "11096.50"
+            },
+            {
+              "description": "Network switch 24-port",
+              "quantity": "1",
+              "unit_price": "241.38",
+              "amount": "241.38"
+            },
+            {
+              "description": "Cotton fabric roll",
+              "quantity": "1",
+              "unit_price": "99.09",
+              "amount": "99.09"
+            }
+          ]
+        }
+      ],
+      "expected_issues": [],
+      "tags": [
+        "classic",
+        "USD"
+      ],
+      "phase": "main"
+    },
+    {
+      "file": "pdf/classic_02.pdf",
+      "kind": "pdf",
+      "expect": "ok",
+      "error_code": null,
+      "invoices": [
+        {
+          "invoice_number": "INV-16389",
+          "invoice_date": "2025-03-31",
+          "supplier_name": "Harbor Freight Services Co.",
+          "customer_name": "Oakwood Property Partners",
+          "subtotal": "194.91",
+          "tax": "38.98",
+          "total": "233.89",
+          "currency": "GBP",
+          "line_items": [
+            {
+              "description": "Safety gloves (pair)",
+              "quantity": "3",
+              "unit_price": "4.43",
+              "amount": "13.29"
+            },
+            {
+              "description": "Packaging cartons large",
+              "quantity": "5",
+              "unit_price": "2.22",
+              "amount": "11.10"
+            },
+            {
+              "description": "Delivery and handling",
+              "quantity": "4",
+              "unit_price": "42.63",
+              "amount": "170.52"
+            }
+          ]
+        }
+      ],
+      "expected_issues": [],
+      "tags": [
+        "classic",
+        "GBP"
+      ],
+      "phase": "main"
+    },
+    {
+      "file": "pdf/classic_03.pdf",
+      "kind": "pdf",
+      "expect": "ok",
+      "error_code": null,
+      "invoices": [
+        {
+          "invoice_number": "SI/2025/79139",
+          "invoice_date": "2026-01-29",
+          "supplier_name": "Crescent Foods Limited",
+          "customer_name": "Bayview Dental Practice",
+          "subtotal": "620.89",
+          "tax": "43.46",
+          "total": "664.35",
+          "currency": "USD",
+          "line_items": [
+            {
+              "description": "Safety gloves (pair)",
+              "quantity": "2",
+              "unit_price": "4.62",
+              "amount": "9.24"
+            },
+            {
+              "description": "Steel bolts M8 (box of 100)",
+              "quantity": "10",
+              "unit_price": "13.48",
+              "amount": "134.80"
+            },
+            {
+              "description": "Printer toner cartridge",
+              "quantity": "5",
+              "unit_price": "95.37",
+              "amount": "476.85"
+            }
+          ]
+        }
+      ],
+      "expected_issues": [],
+      "tags": [
+        "classic",
+        "USD"
+      ],
+      "phase": "main"
+    },
+    {
+      "file": "pdf/classic_04.pdf",
+      "kind": "pdf",
+      "expect": "ok",
+      "error_code": null,
+      "invoices": [
+        {
+          "invoice_number": "INV-63028",
+          "invoice_date": "2025-08-15",
+          "supplier_name": "Delta Textiles Pvt Ltd",
+          "customer_name": "Nova Pharmaceuticals",
+          "subtotal": "9754.28",
+          "tax": "1755.77",
+          "total": "11510.05",
+          "currency": "INR",
+          "line_items": [
+            {
+              "description": "Data backup service",
+              "quantity": "10",
+              "unit_price": "196.34",
+              "amount": "1963.40"
+            },
+            {
+              "description": "Printer toner cartridge",
+              "quantity": "20",
+              "unit_price": "103.38",
+              "amount": "2067.60"
+            },
+            {
+              "description": "Network switch 24-port",
+              "quantity": "4",
+              "unit_price": "394.97",
+              "amount": "1579.88"
+            },
+            {
+              "description": "Consulting services",
+              "quantity": "25",
+              "unit_price": "160.00",
+              "amount": "4000.00"
+            },
+            {
+              "description": "A4 copier paper (ream)",
+              "quantity": "20",
+              "unit_price": "7.17",
+              "amount": "143.40"
+            }
+          ]
+        }
+      ],
+      "expected_issues": [],
+      "tags": [
+        "classic",
+        "INR"
+      ],
+      "phase": "main"
+    },
+    {
+      "file": "pdf/classic_05.pdf",
+      "kind": "pdf",
+      "expect": "ok",
+      "error_code": null,
+      "invoices": [
+        {
+          "invoice_number": "INV-14185",
+          "invoice_date": "2025-10-07",
+          "supplier_name": "Meridian Medical Supplies",
+          "customer_name": "Hillcrest School Trust",
+          "subtotal": "41129.61",
+          "tax": "2879.07",
+          "total": "44008.68",
+          "currency": "USD",
+          "line_items": [
+            {
+              "description": "Printer toner cartridge",
+              "quantity": "1",
+              "unit_price": "69.04",
+              "amount": "69.04"
+            },
+            {
+              "description": "Cotton fabric roll",
+              "quantity": "4",
+              "unit_price": "98.97",
+              "amount": "395.88"
+            },
+            {
+              "description": "Safety gloves (pair)",
+              "quantity": "20",
+              "unit_price": "4.65",
+              "amount": "93.00"
+            },
+            {
+              "description": "Maintenance contract",
+              "quantity": "20",
+              "unit_price": "154.45",
+              "amount": "3089.00"
+            },
+            {
+              "description": "On-site support visit",
+              "quantity": "1",
+              "unit_price": "114.44",
+              "amount": "114.44"
+            },
+            {
+              "description": "A4 copier paper (ream)",
+              "quantity": "3",
+              "unit_price": "6.58",
+              "amount": "19.74"
+            },
+            {
+              "description": "Cloud hosting (monthly)",
+              "quantity": "5",
+              "unit_price": "310.62",
+              "amount": "1553.10"
+            },
+            {
+              "description": "Data backup service",
+              "quantity": "25",
+              "unit_price": "61.56",
+              "amount": "1539.00"
+            },
+            {
+              "description": "Software license (annual)",
+              "quantity": "1",
+              "unit_price": "1085.29",
+              "amount": "1085.29"
+            },
+            {
+              "description": "Training workshop",
+              "quantity": "5",
+              "unit_price": "379.52",
+              "amount": "1897.60"
+            },
+            {
+              "description": "Delivery and handling",
+              "quantity": "1",
+              "unit_price": "52.85",
+              "amount": "52.85"
+            },
+            {
+              "description": "LED panel light 60x60",
+              "quantity": "3",
+              "unit_price": "25.67",
+              "amount": "77.01"
+            },
+            {
+              "description": "Network switch 24-port",
+              "quantity": "20",
+              "unit_price": "391.70",
+              "amount": "7834.00"
+            },
+            {
+              "description": "Steel bolts M8 (box of 100)",
+              "quantity": "4",
+              "unit_price": "10.32",
+              "amount": "41.28"
+            },
+            {
+              "description": "Packaging cartons large",
+              "quantity": "20",
+              "unit_price": "2.98",
+              "amount": "59.60"
+            },
+            {
+              "description": "Medical gauze pack",
+              "quantity": "10",
+              "unit_price": "6.23",
+              "amount": "62.30"
+            },
+            {
+              "description": "Office chair ergonomic",
+              "quantity": "3",
+              "unit_price": "272.30",
+              "amount": "816.90"
+            },
+            {
+              "description": "Consulting services",
+              "quantity": "20",
+              "unit_price": "169.48",
+              "amount": "3389.60"
+            },
+            {
+              "description": "Network switch 24-port - batch 19",
+              "quantity": "6",
+              "unit_price": "322.25",
+              "amount": "1933.50"
+            },
+            {
+              "description": "Data backup service - batch 20",
+              "quantity": "3",
+              "unit_price": "73.19",
+              "amount": "219.57"
+            },
+            {
+              "description": "Consulting services - batch 21",
+              "quantity": "4",
+              "unit_price": "158.98",
+              "amount": "635.92"
+            },
+            {
+              "description": "Office chair ergonomic - batch 22",
+              "quantity": "2",
+              "unit_price": "165.73",
+              "amount": "331.46"
+            },
+            {
+              "description": "Training workshop - batch 23",
+              "quantity": "9",
+              "unit_price": "1120.38",
+              "amount": "10083.42"
+            },
+            {
+              "description": "Consulting services - batch 24",
+              "quantity": "3",
+              "unit_price": "136.70",
+              "amount": "410.10"
+            },
+            {
+              "description": "Office chair ergonomic - batch 25",
+              "quantity": "7",
+              "unit_price": "146.88",
+              "amount": "1028.16"
+            },
+            {
+              "description": "On-site support visit - batch 26",
+              "quantity": "3",
+              "unit_price": "262.90",
+              "amount": "788.70"
+            },
+            {
+              "description": "Safety gloves (pair) - batch 27",
+              "quantity": "3",
+              "unit_price": "3.24",
+              "amount": "9.72"
+            },
+            {
+              "description": "Medical gauze pack - batch 28",
+              "quantity": "3",
+              "unit_price": "6.27",
+              "amount": "18.81"
+            },
+            {
+              "description": "Software license (annual) - batch 29",
+              "quantity": "5",
+              "unit_price": "568.68",
+              "amount": "2843.40"
+            },
+            {
+              "description": "Delivery and handling - batch 30",
+              "quantity": "8",
+              "unit_price": "28.25",
+              "amount": "226.00"
+            },
+            {
+              "description": "Packaging cartons large - batch 31",
+              "quantity": "3",
+              "unit_price": "1.48",
+              "amount": "4.44"
+            },
+            {
+              "description": "Packaging cartons large - batch 32",
+              "quantity": "3",
+              "unit_price": "1.56",
+              "amount": "4.68"
+            },
+            {
+              "description": "Steel bolts M8 (box of 100) - batch 33",
+              "quantity": "7",
+              "unit_price": "20.30",
+              "amount": "142.10"
+            },
+            {
+              "description": "Printer toner cartridge - batch 34",
+              "quantity": "2",
+              "unit_price": "115.33",
+              "amount": "230.66"
+            },
+            {
+              "description": "A4 copier paper (ream) - batch 35",
+              "quantity": "6",
+              "unit_price": "4.89",
+              "amount": "29.34"
+            }
+          ]
+        }
+      ],
+      "expected_issues": [],
+      "tags": [
+        "classic",
+        "USD",
+        "multipage"
+      ],
+      "phase": "main"
+    },
+    {
+      "file": "pdf/classic_06.pdf",
+      "kind": "pdf",
+      "expect": "ok",
+      "error_code": null,
+      "invoices": [
+        {
+          "invoice_number": "SI/2025/97793",
+          "invoice_date": "2025-04-03",
+          "supplier_name": "Greenfield Office Solutions",
+          "customer_name": null,
+          "subtotal": "900.08",
+          "tax": "180.02",
+          "total": "1080.10",
+          "currency": "GBP",
+          "line_items": [
+            {
+              "description": "LED panel light 60x60",
+              "quantity": "5",
+              "unit_price": "28.88",
+              "amount": "144.40"
+            },
+            {
+              "description": "Delivery and handling",
+              "quantity": "1",
+              "unit_price": "48.76",
+              "amount": "48.76"
+            },
+            {
+              "description": "Cotton fabric roll",
+              "quantity": "12",
+              "unit_price": "58.91",
+              "amount": "706.92"
+            }
+          ]
+        }
+      ],
+      "expected_issues": [],
+      "tags": [
+        "classic",
+        "GBP",
+        "no_customer"
+      ],
+      "phase": "main"
+    },
+    {
+      "file": "pdf/modern_01.pdf",
+      "kind": "pdf",
+      "expect": "ok",
+      "error_code": null,
+      "invoices": [
+        {
+          "invoice_number": "INV23651",
+          "invoice_date": "2025-02-03",
+          "supplier_name": "Silverline Printing Press",
+          "customer_name": "Sunrise Retail Group",
+          "subtotal": "259.08",
+          "tax": "51.82",
+          "total": "310.90",
+          "currency": "GBP",
+          "line_items": [
+            {
+              "description": "Steel bolts M8 (box of 100)",
+              "quantity": "12",
+              "unit_price": "21.59",
+              "amount": "259.08"
+            }
+          ]
+        }
+      ],
+      "expected_issues": [],
+      "tags": [
+        "modern",
+        "GBP"
+      ],
+      "phase": "main"
+    },
+    {
+      "file": "pdf/modern_02.pdf",
+      "kind": "pdf",
+      "expect": "ok",
+      "error_code": null,
+      "invoices": [
+        {
+          "invoice_number": "SI/2025/41955",
+          "invoice_date": "2025-12-20",
+          "supplier_name": "Silverline Printing Press",
+          "customer_name": "Unity Microfinance",
+          "subtotal": "3448.73",
+          "tax": "284.52",
+          "total": "3733.25",
+          "currency": "USD",
+          "line_items": [
+            {
+              "description": "Maintenance contract",
+              "quantity": "3",
+              "unit_price": "542.79",
+              "amount": "1628.37"
+            },
+            {
+              "description": "On-site support visit",
+              "quantity": "2",
+              "unit_price": "283.16",
+              "amount": "566.32"
+            },
+            {
+              "description": "Cloud hosting (monthly)",
+              "quantity": "1",
+              "unit_price": "203.29",
+              "amount": "203.29"
+            },
+            {
+              "description": "Consulting services",
+              "quantity": "1",
+              "unit_price": "107.55",
+              "amount": "107.55"
+            },
+            {
+              "description": "Printer toner cartridge",
+              "quantity": "12",
+              "unit_price": "78.60",
+              "amount": "943.20"
+            }
+          ]
+        }
+      ],
+      "expected_issues": [],
+      "tags": [
+        "modern",
+        "USD"
+      ],
+      "phase": "main"
+    },
+    {
+      "file": "pdf/modern_03.pdf",
+      "kind": "pdf",
+      "expect": "ok",
+      "error_code": null,
+      "invoices": [
+        {
+          "invoice_number": "INV-40442",
+          "invoice_date": "2025-03-25",
+          "supplier_name": "Acme Industrial Supplies Ltd",
+          "customer_name": "Unity Microfinance",
+          "subtotal": "6266.06",
+          "tax": "1190.55",
+          "total": "7456.61",
+          "currency": "EUR",
+          "line_items": [
+            {
+              "description": "Delivery and handling",
+              "quantity": "1",
+              "unit_price": "49.22",
+              "amount": "49.22"
+            },
+            {
+              "description": "Training workshop",
+              "quantity": "1",
+              "unit_price": "407.74",
+              "amount": "407.74"
+            },
+            {
+              "description": "Medical gauze pack",
+              "quantity": "3",
+              "unit_price": "7.03",
+              "amount": "21.09"
+            },
+            {
+              "description": "Office chair ergonomic",
+              "quantity": "10",
+              "unit_price": "160.19",
+              "amount": "1601.90"
+            },
+            {
+              "description": "Printer toner cartridge",
+              "quantity": "1",
+              "unit_price": "47.59",
+              "amount": "47.59"
+            },
+            {
+              "description": "LED panel light 60x60",
+              "quantity": "5",
+              "unit_price": "31.20",
+              "amount": "156.00"
+            },
+            {
+              "description": "Software license (annual)",
+              "quantity": "5",
+              "unit_price": "794.91",
+              "amount": "3974.55"
+            },
+            {
+              "description": "A4 copier paper (ream)",
+              "quantity": "1",
+              "unit_price": "7.97",
+              "amount": "7.97"
+            }
+          ]
+        }
+      ],
+      "expected_issues": [],
+      "tags": [
+        "modern",
+        "EUR"
+      ],
+      "phase": "main"
+    },
+    {
+      "file": "pdf/modern_04.pdf",
+      "kind": "pdf",
+      "expect": "ok",
+      "error_code": null,
+      "invoices": [
+        {
+          "invoice_number": "BL-38433",
+          "invoice_date": "2026-05-28",
+          "supplier_name": "Summit Consulting Group",
+          "customer_name": "Sunrise Retail Group",
+          "subtotal": "36689.70",
+          "tax": "2751.73",
+          "total": "39441.43",
+          "currency": "BDT",
+          "line_items": [
+            {
+              "description": "On-site support visit",
+              "quantity": "2",
+              "unit_price": "166.02",
+              "amount": "332.04"
+            },
+            {
+              "description": "Software license (annual)",
+              "quantity": "10",
+              "unit_price": "1442.37",
+              "amount": "14423.70"
+            },
+            {
+              "description": "Safety gloves (pair)",
+              "quantity": "3",
+              "unit_price": "6.36",
+              "amount": "19.08"
+            },
+            {
+              "description": "Consulting services",
+              "quantity": "10",
+              "unit_price": "124.84",
+              "amount": "1248.40"
+            },
+            {
+              "description": "Office chair ergonomic",
+              "quantity": "10",
+              "unit_price": "194.50",
+              "amount": "1945.00"
+            },
+            {
+              "description": "Network switch 24-port",
+              "quantity": "3",
+              "unit_price": "335.84",
+              "amount": "1007.52"
+            },
+            {
+              "description": "Training workshop",
+              "quantity": "20",
+              "unit_price": "877.98",
+              "amount": "17559.60"
+            },
+            {
+              "description": "Cotton fabric roll",
+              "quantity": "1",
+              "unit_price": "154.36",
+              "amount": "154.36"
+            }
+          ]
+        }
+      ],
+      "expected_issues": [],
+      "tags": [
+        "modern",
+        "BDT"
+      ],
+      "phase": "main"
+    },
+    {
+      "file": "pdf/modern_05.pdf",
+      "kind": "pdf",
+      "expect": "ok",
+      "error_code": null,
+      "invoices": [
+        {
+          "invoice_number": "91053",
+          "invoice_date": "2025-05-04",
+          "supplier_name": "Northwind Traders Inc",
+          "customer_name": "Vertex Hospitality Ltd",
+          "subtotal": "52447.12",
+          "tax": "10489.42",
+          "total": "62936.54",
+          "currency": "GBP",
+          "line_items": [
+            {
+              "description": "Office chair ergonomic",
+              "quantity": "10",
+              "unit_price": "302.73",
+              "amount": "3027.30"
+            },
+            {
+              "description": "Packaging cartons large",
+              "quantity": "25",
+              "unit_price": "2.20",
+              "amount": "55.00"
+            },
+            {
+              "description": "Cloud hosting (monthly)",
+              "quantity": "3",
+              "unit_price": "568.24",
+              "amount": "1704.72"
+            },
+            {
+              "description": "A4 copier paper (ream)",
+              "quantity": "1",
+              "unit_price": "7.74",
+              "amount": "7.74"
+            },
+            {
+              "description": "LED panel light 60x60",
+              "quantity": "5",
+              "unit_price": "21.31",
+              "amount": "106.55"
+            },
+            {
+              "description": "Medical gauze pack",
+              "quantity": "3",
+              "unit_price": "10.10",
+              "amount": "30.30"
+            },
+            {
+              "description": "Maintenance contract",
+              "quantity": "1",
+              "unit_price": "660.98",
+              "amount": "660.98"
+            },
+            {
+              "description": "Software license (annual)",
+              "quantity": "3",
+              "unit_price": "617.06",
+              "amount": "1851.18"
+            },
+            {
+              "description": "Safety gloves (pair)",
+              "quantity": "20",
+              "unit_price": "6.05",
+              "amount": "121.00"
+            },
+            {
+              "description": "Cotton fabric roll",
+              "quantity": "10",
+              "unit_price": "154.53",
+              "amount": "1545.30"
+            },
+            {
+              "description": "Delivery and handling",
+              "quantity": "1",
+              "unit_price": "89.97",
+              "amount": "89.97"
+            },
+            {
+              "description": "On-site support visit",
+              "quantity": "10",
+              "unit_price": "109.32",
+              "amount": "1093.20"
+            },
+            {
+              "description": "Consulting services",
+              "quantity": "1",
+              "unit_price": "113.80",
+              "amount": "113.80"
+            },
+            {
+              "description": "Printer toner cartridge",
+              "quantity": "12",
+              "unit_price": "78.95",
+              "amount": "947.40"
+            },
+            {
+              "description": "Data backup service",
+              "quantity": "25",
+              "unit_price": "215.27",
+              "amount": "5381.75"
+            },
+            {
+              "description": "Training workshop",
+              "quantity": "10",
+              "unit_price": "681.21",
+              "amount": "6812.10"
+            },
+            {
+              "description": "Steel bolts M8 (box of 100)",
+              "quantity": "3",
+              "unit_price": "21.15",
+              "amount": "63.45"
+            },
+            {
+              "description": "Network switch 24-port",
+              "quantity": "2",
+              "unit_price": "425.76",
+              "amount": "851.52"
+            },
+            {
+              "description": "Printer toner cartridge - batch 19",
+              "quantity": "3",
+              "unit_price": "63.97",
+              "amount": "191.91"
+            },
+            {
+              "description": "Cotton fabric roll - batch 20",
+              "quantity": "7",
+              "unit_price": "95.34",
+              "amount": "667.38"
+            },
+            {
+              "description": "Software license (annual) - batch 21",
+              "quantity": "8",
+              "unit_price": "553.80",
+              "amount": "4430.40"
+            },
+            {
+              "description": "Training workshop - batch 22",
+              "quantity": "4",
+              "unit_price": "773.54",
+              "amount": "3094.16"
+            },
+            {
+              "description": "Cotton fabric roll - batch 23",
+              "quantity": "3",
+              "unit_price": "151.33",
+              "amount": "453.99"
+            },
+            {
+              "description": "Steel bolts M8 (box of 100) - batch 24",
+              "quantity": "5",
+              "unit_price": "17.03",
+              "amount": "85.15"
+            },
+            {
+              "description": "Software license (annual) - batch 25",
+              "quantity": "6",
+              "unit_price": "720.50",
+              "amount": "4323.00"
+            },
+            {
+              "description": "Cloud hosting (monthly) - batch 26",
+              "quantity": "9",
+              "unit_price": "423.71",
+              "amount": "3813.39"
+            },
+            {
+              "description": "Maintenance contract - batch 27",
+              "quantity": "1",
+              "unit_price": "852.86",
+              "amount": "852.86"
+            },
+            {
+              "description": "A4 copier paper (ream) - batch 28",
+              "quantity": "5",
+              "unit_price": "5.27",
+              "amount": "26.35"
+            },
+            {
+              "description": "Consulting services - batch 29",
+              "quantity": "2",
+              "unit_price": "164.82",
+              "amount": "329.64"
+            },
+            {
+              "description": "Office chair ergonomic - batch 30",
+              "quantity": "9",
+              "unit_price": "172.89",
+              "amount": "1556.01"
+            },
+            {
+              "description": "LED panel light 60x60 - batch 31",
+              "quantity": "9",
+              "unit_price": "54.74",
+              "amount": "492.66"
+            },
+            {
+              "description": "Packaging cartons large - batch 32",
+              "quantity": "2",
+              "unit_price": "2.82",
+              "amount": "5.64"
+            },
+            {
+              "description": "Maintenance contract - batch 33",
+              "quantity": "8",
+              "unit_price": "626.95",
+              "amount": "5015.60"
+            },
+            {
+              "description": "Data backup service - batch 34",
+              "quantity": "6",
+              "unit_price": "164.65",
+              "amount": "987.90"
+            },
+            {
+              "description": "Training workshop - batch 35",
+              "quantity": "4",
+              "unit_price": "407.75",
+              "amount": "1631.00"
+            },
+            {
+              "description": "A4 copier paper (ream) - batch 36",
+              "quantity": "6",
+              "unit_price": "4.47",
+              "amount": "26.82"
+            }
+          ]
+        }
+      ],
+      "expected_issues": [],
+      "tags": [
+        "modern",
+        "GBP",
+        "multipage"
+      ],
+      "phase": "main"
+    },
+    {
+      "file": "pdf/modern_06.pdf",
+      "kind": "pdf",
+      "expect": "ok",
+      "error_code": null,
+      "invoices": [
+        {
+          "invoice_number": "INV48635",
+          "invoice_date": "2026-01-24",
+          "supplier_name": "Summit Consulting Group",
+          "customer_name": null,
+          "subtotal": "3539.51",
+          "tax": "247.77",
+          "total": "3787.28",
+          "currency": "USD",
+          "line_items": [
+            {
+              "description": "Consulting services",
+              "quantity": "5",
+              "unit_price": "83.49",
+              "amount": "417.45"
+            },
+            {
+              "description": "LED panel light 60x60",
+              "quantity": "12",
+              "unit_price": "47.43",
+              "amount": "569.16"
+            },
+            {
+              "description": "Printer toner cartridge",
+              "quantity": "4",
+              "unit_price": "53.88",
+              "amount": "215.52"
+            },
+            {
+              "description": "Training workshop",
+              "quantity": "2",
+              "unit_price": "1160.99",
+              "amount": "2321.98"
+            },
+            {
+              "description": "A4 copier paper (ream)",
+              "quantity": "2",
+              "unit_price": "7.70",
+              "amount": "15.40"
+            }
+          ]
+        }
+      ],
+      "expected_issues": [],
+      "tags": [
+        "modern",
+        "USD",
+        "no_customer"
+      ],
+      "phase": "main"
+    },
+    {
+      "file": "pdf/european_01.pdf",
+      "kind": "pdf",
+      "expect": "ok",
+      "error_code": null,
+      "invoices": [
+        {
+          "invoice_number": "INV49124",
+          "invoice_date": "2026-03-26",
+          "supplier_name": "Atlas Engineering Works",
+          "customer_name": "Sunrise Retail Group",
+          "subtotal": "3260.80",
+          "tax": "619.55",
+          "total": "3880.35",
+          "currency": "EUR",
+          "line_items": [
+            {
+              "description": "A4 copier paper (ream)",
+              "quantity": "12",
+              "unit_price": "4.74",
+              "amount": "56.88"
+            },
+            {
+              "description": "Data backup service",
+              "quantity": "10",
+              "unit_price": "174.79",
+              "amount": "1747.90"
+            },
+            {
+              "description": "Software license (annual)",
+              "quantity": "2",
+              "unit_price": "728.01",
+              "amount": "1456.02"
+            }
+          ]
+        }
+      ],
+      "expected_issues": [],
+      "tags": [
+        "european",
+        "EUR"
+      ],
+      "phase": "main"
+    },
+    {
+      "file": "pdf/european_02.pdf",
+      "kind": "pdf",
+      "expect": "ok",
+      "error_code": null,
+      "invoices": [
+        {
+          "invoice_number": "INV68997",
+          "invoice_date": "2026-01-24",
+          "supplier_name": "Atlas Engineering Works",
+          "customer_name": "Sunrise Retail Group",
+          "subtotal": "6180.62",
+          "tax": "1297.93",
+          "total": "7478.55",
+          "currency": "EUR",
+          "line_items": [
+            {
+              "description": "Steel bolts M8 (box of 100)",
+              "quantity": "20",
+              "unit_price": "13.03",
+              "amount": "260.60"
+            },
+            {
+              "description": "On-site support visit",
+              "quantity": "12",
+              "unit_price": "93.10",
+              "amount": "1117.20"
+            },
+            {
+              "description": "A4 copier paper (ream)",
+              "quantity": "1",
+              "unit_price": "7.02",
+              "amount": "7.02"
+            },
+            {
+              "description": "Cotton fabric roll",
+              "quantity": "1",
+              "unit_price": "111.83",
+              "amount": "111.83"
+            },
+            {
+              "description": "Office chair ergonomic",
+              "quantity": "10",
+              "unit_price": "243.83",
+              "amount": "2438.30"
+            },
+            {
+              "description": "Printer toner cartridge",
+              "quantity": "12",
+              "unit_price": "112.31",
+              "amount": "1347.72"
+            },
+            {
+              "description": "Maintenance contract",
+              "quantity": "3",
+              "unit_price": "289.47",
+              "amount": "868.41"
+            },
+            {
+              "description": "Delivery and handling",
+              "quantity": "1",
+              "unit_price": "29.54",
+              "amount": "29.54"
+            }
+          ]
+        }
+      ],
+      "expected_issues": [],
+      "tags": [
+        "european",
+        "EUR"
+      ],
+      "phase": "main"
+    },
+    {
+      "file": "pdf/european_03.pdf",
+      "kind": "pdf",
+      "expect": "ok",
+      "error_code": null,
+      "invoices": [
+        {
+          "invoice_number": "INV38603",
+          "invoice_date": "2025-01-09",
+          "supplier_name": "Orion Software Systems",
+          "customer_name": "Riverside Home Care",
+          "subtotal": "32105.29",
+          "tax": "6742.11",
+          "total": "38847.40",
+          "currency": "EUR",
+          "line_items": [
+            {
+              "description": "Cloud hosting (monthly)",
+              "quantity": "25",
+              "unit_price": "218.20",
+              "amount": "5455.00"
+            },
+            {
+              "description": "A4 copier paper (ream)",
+              "quantity": "10",
+              "unit_price": "6.53",
+              "amount": "65.30"
+            },
+            {
+              "description": "Delivery and handling",
+              "quantity": "3",
+              "unit_price": "68.23",
+              "amount": "204.69"
+            },
+            {
+              "description": "Printer toner cartridge",
+              "quantity": "10",
+              "unit_price": "76.67",
+              "amount": "766.70"
+            },
+            {
+              "description": "Software license (annual)",
+              "quantity": "20",
+              "unit_price": "1280.68",
+              "amount": "25613.60"
+            }
+          ]
+        }
+      ],
+      "expected_issues": [],
+      "tags": [
+        "european",
+        "EUR"
+      ],
+      "phase": "main"
+    },
+    {
+      "file": "pdf/european_04.pdf",
+      "kind": "pdf",
+      "expect": "ok",
+      "error_code": null,
+      "invoices": [
+        {
+          "invoice_number": "BL-63029",
+          "invoice_date": "2026-03-10",
+          "supplier_name": "Crescent Foods Limited",
+          "customer_name": "Bayview Dental Practice",
+          "subtotal": "1462.91",
+          "tax": "292.58",
+          "total": "1755.49",
+          "currency": "EUR",
+          "line_items": [
+            {
+              "description": "Data backup service",
+              "quantity": "20",
+              "unit_price": "54.26",
+              "amount": "1085.20"
+            },
+            {
+              "description": "Consulting services",
+              "quantity": "2",
+              "unit_price": "62.84",
+              "amount": "125.68"
+            },
+            {
+              "description": "On-site support visit",
+              "quantity": "1",
+              "unit_price": "252.03",
+              "amount": "252.03"
+            }
+          ]
+        }
+      ],
+      "expected_issues": [],
+      "tags": [
+        "european",
+        "EUR"
+      ],
+      "phase": "main"
+    },
+    {
+      "file": "pdf/european_05.pdf",
+      "kind": "pdf",
+      "expect": "ok",
+      "error_code": null,
+      "invoices": [
+        {
+          "invoice_number": "INV-41762",
+          "invoice_date": "2026-04-14",
+          "supplier_name": "Harbor Freight Services Co.",
+          "customer_name": "Oakwood Property Partners",
+          "subtotal": "54968.83",
+          "tax": "10444.08",
+          "total": "65412.91",
+          "currency": "EUR",
+          "line_items": [
+            {
+              "description": "Network switch 24-port",
+              "quantity": "12",
+              "unit_price": "283.35",
+              "amount": "3400.20"
+            },
+            {
+              "description": "A4 copier paper (ream)",
+              "quantity": "1",
+              "unit_price": "8.86",
+              "amount": "8.86"
+            },
+            {
+              "description": "Printer toner cartridge",
+              "quantity": "20",
+              "unit_price": "70.73",
+              "amount": "1414.60"
+            },
+            {
+              "description": "Software license (annual)",
+              "quantity": "10",
+              "unit_price": "972.76",
+              "amount": "9727.60"
+            },
+            {
+              "description": "Office chair ergonomic",
+              "quantity": "5",
+              "unit_price": "250.61",
+              "amount": "1253.05"
+            },
+            {
+              "description": "Training workshop",
+              "quantity": "1",
+              "unit_price": "648.35",
+              "amount": "648.35"
+            },
+            {
+              "description": "LED panel light 60x60",
+              "quantity": "10",
+              "unit_price": "34.47",
+              "amount": "344.70"
+            },
+            {
+              "description": "Safety gloves (pair)",
+              "quantity": "10",
+              "unit_price": "6.58",
+              "amount": "65.80"
+            },
+            {
+              "description": "Packaging cartons large",
+              "quantity": "2",
+              "unit_price": "1.21",
+              "amount": "2.42"
+            },
+            {
+              "description": "Cotton fabric roll",
+              "quantity": "5",
+              "unit_price": "122.63",
+              "amount": "613.15"
+            },
+            {
+              "description": "Steel bolts M8 (box of 100)",
+              "quantity": "20",
+              "unit_price": "18.93",
+              "amount": "378.60"
+            },
+            {
+              "description": "Delivery and handling",
+              "quantity": "3",
+              "unit_price": "84.74",
+              "amount": "254.22"
+            },
+            {
+              "description": "On-site support visit",
+              "quantity": "25",
+              "unit_price": "202.49",
+              "amount": "5062.25"
+            },
+            {
+              "description": "Maintenance contract",
+              "quantity": "2",
+              "unit_price": "433.61",
+              "amount": "867.22"
+            },
+            {
+              "description": "Medical gauze pack",
+              "quantity": "25",
+              "unit_price": "7.63",
+              "amount": "190.75"
+            },
+            {
+              "description": "Consulting services",
+              "quantity": "12",
+              "unit_price": "139.03",
+              "amount": "1668.36"
+            },
+            {
+              "description": "Data backup service",
+              "quantity": "10",
+              "unit_price": "109.38",
+              "amount": "1093.80"
+            },
+            {
+              "description": "Cloud hosting (monthly)",
+              "quantity": "4",
+              "unit_price": "338.53",
+              "amount": "1354.12"
+            },
+            {
+              "description": "LED panel light 60x60 - batch 19",
+              "quantity": "4",
+              "unit_price": "23.34",
+              "amount": "93.36"
+            },
+            {
+              "description": "Delivery and handling - batch 20",
+              "quantity": "6",
+              "unit_price": "53.85",
+              "amount": "323.10"
+            },
+            {
+              "description": "Printer toner cartridge - batch 21",
+              "quantity": "1",
+              "unit_price": "88.09",
+              "amount": "88.09"
+            },
+            {
+              "description": "Training workshop - batch 22",
+              "quantity": "8",
+              "unit_price": "895.73",
+              "amount": "7165.84"
+            },
+            {
+              "description": "Software license (annual) - batch 23",
+              "quantity": "5",
+              "unit_price": "428.88",
+              "amount": "2144.40"
+            },
+            {
+              "description": "Steel bolts M8 (box of 100) - batch 24",
+              "quantity": "7",
+              "unit_price": "12.07",
+              "amount": "84.49"
+            },
+            {
+              "description": "Cotton fabric roll - batch 25",
+              "quantity": "1",
+              "unit_price": "151.07",
+              "amount": "151.07"
+            },
+            {
+              "description": "Cotton fabric roll - batch 26",
+              "quantity": "3",
+              "unit_price": "159.36",
+              "amount": "478.08"
+            },
+            {
+              "description": "Maintenance contract - batch 27",
+              "quantity": "9",
+              "unit_price": "784.85",
+              "amount": "7063.65"
+            },
+            {
+              "description": "Cloud hosting (monthly) - batch 28",
+              "quantity": "4",
+              "unit_price": "534.23",
+              "amount": "2136.92"
+            },
+            {
+              "description": "Office chair ergonomic - batch 29",
+              "quantity": "6",
+              "unit_price": "223.69",
+              "amount": "1342.14"
+            },
+            {
+              "description": "LED panel light 60x60 - batch 30",
+              "quantity": "5",
+              "unit_price": "33.14",
+              "amount": "165.70"
+            },
+            {
+              "description": "Cotton fabric roll - batch 31",
+              "quantity": "1",
+              "unit_price": "142.27",
+              "amount": "142.27"
+            },
+            {
+              "description": "Printer toner cartridge - batch 32",
+              "quantity": "2",
+              "unit_price": "81.86",
+              "amount": "163.72"
+            },
+            {
+              "description": "Steel bolts M8 (box of 100) - batch 33",
+              "quantity": "3",
+              "unit_price": "20.01",
+              "amount": "60.03"
+            },
+            {
+              "description": "Steel bolts M8 (box of 100) - batch 34",
+              "quantity": "3",
+              "unit_price": "18.66",
+              "amount": "55.98"
+            },
+            {
+              "description": "Maintenance contract - batch 35",
+              "quantity": "6",
+              "unit_price": "826.99",
+              "amount": "4961.94"
+            }
+          ]
+        }
+      ],
+      "expected_issues": [],
+      "tags": [
+        "european",
+        "EUR",
+        "multipage"
+      ],
+      "phase": "main"
+    },
+    {
+      "file": "pdf/european_06.pdf",
+      "kind": "pdf",
+      "expect": "ok",
+      "error_code": null,
+      "invoices": [
+        {
+          "invoice_number": "TX-42399",
+          "invoice_date": "2025-02-09",
+          "supplier_name": "Silverline Printing Press",
+          "customer_name": null,
+          "subtotal": "4902.50",
+          "tax": "980.50",
+          "total": "5883.00",
+          "currency": "EUR",
+          "line_items": [
+            {
+              "description": "Maintenance contract",
+              "quantity": "10",
+              "unit_price": "490.25",
+              "amount": "4902.50"
+            }
+          ]
+        }
+      ],
+      "expected_issues": [],
+      "tags": [
+        "european",
+        "EUR",
+        "no_customer"
+      ],
+      "phase": "main"
+    },
+    {
+      "file": "pdf/receipt_01.pdf",
+      "kind": "pdf",
+      "expect": "ok",
+      "error_code": null,
+      "invoices": [
+        {
+          "invoice_number": "SI/2025/18171",
+          "invoice_date": "2026-06-22",
+          "supplier_name": "Summit Consulting Group",
+          "customer_name": null,
+          "subtotal": null,
+          "tax": null,
+          "total": "23243.33",
+          "currency": "BDT",
+          "line_items": [
+            {
+              "description": "A4 copier paper (ream)",
+              "quantity": "25",
+              "unit_price": "6.40",
+              "amount": "160.00"
+            },
+            {
+              "description": "Safety gloves (pair)",
+              "quantity": "1",
+              "unit_price": "6.00",
+              "amount": "6.00"
+            },
+            {
+              "description": "Software license (annual)",
+              "quantity": "5",
+              "unit_price": "1255.34",
+              "amount": "6276.70"
+            },
+            {
+              "description": "Training workshop",
+              "quantity": "12",
+              "unit_price": "842.58",
+              "amount": "10110.96"
+            },
+            {
+              "description": "Data backup service",
+              "quantity": "12",
+              "unit_price": "102.41",
+              "amount": "1228.92"
+            },
+            {
+              "description": "Cloud hosting (monthly)",
+              "quantity": "25",
+              "unit_price": "218.43",
+              "amount": "5460.75"
+            }
+          ]
+        }
+      ],
+      "expected_issues": [],
+      "tags": [
+        "receipt",
+        "BDT",
+        "no_tax",
+        "no_customer"
+      ],
+      "phase": "main"
+    },
+    {
+      "file": "pdf/receipt_02.pdf",
+      "kind": "pdf",
+      "expect": "ok",
+      "error_code": null,
+      "invoices": [
+        {
+          "invoice_number": "INV68672",
+          "invoice_date": "2025-12-28",
+          "supplier_name": "Meridian Medical Supplies",
+          "customer_name": "Nova Pharmaceuticals",
+          "subtotal": "6587.19",
+          "tax": "790.46",
+          "total": "7377.65",
+          "currency": "INR",
+          "line_items": [
+            {
+              "description": "Packaging cartons large",
+              "quantity": "3",
+              "unit_price": "2.72",
+              "amount": "8.16"
+            },
+            {
+              "description": "Cotton fabric roll",
+              "quantity": "20",
+              "unit_price": "74.70",
+              "amount": "1494.00"
+            },
+            {
+              "description": "LED panel light 60x60",
+              "quantity": "20",
+              "unit_price": "32.17",
+              "amount": "643.40"
+            },
+            {
+              "description": "Consulting services",
+              "quantity": "12",
+              "unit_price": "171.26",
+              "amount": "2055.12"
+            },
+            {
+              "description": "Training workshop",
+              "quantity": "2",
+              "unit_price": "1190.69",
+              "amount": "2381.38"
+            },
+            {
+              "description": "A4 copier paper (ream)",
+              "quantity": "1",
+              "unit_price": "5.13",
+              "amount": "5.13"
+            }
+          ]
+        }
+      ],
+      "expected_issues": [],
+      "tags": [
+        "receipt",
+        "INR"
+      ],
+      "phase": "main"
+    },
+    {
+      "file": "pdf/receipt_03.pdf",
+      "kind": "pdf",
+      "expect": "ok",
+      "error_code": null,
+      "invoices": [
+        {
+          "invoice_number": "INV-20836",
+          "invoice_date": "2025-11-01",
+          "supplier_name": "Northwind Traders Inc",
+          "customer_name": null,
+          "subtotal": null,
+          "tax": null,
+          "total": "1379.75",
+          "currency": "USD",
+          "line_items": [
+            {
+              "description": "Printer toner cartridge",
+              "quantity": "25",
+              "unit_price": "55.19",
+              "amount": "1379.75"
+            }
+          ]
+        }
+      ],
+      "expected_issues": [],
+      "tags": [
+        "receipt",
+        "USD",
+        "no_tax",
+        "no_customer"
+      ],
+      "phase": "main"
+    },
+    {
+      "file": "pdf/receipt_04.pdf",
+      "kind": "pdf",
+      "expect": "ok",
+      "error_code": null,
+      "invoices": [
+        {
+          "invoice_number": "SI/2025/77186",
+          "invoice_date": "2025-05-13",
+          "supplier_name": "Pioneer Packaging Ltd",
+          "customer_name": null,
+          "subtotal": "27855.85",
+          "tax": "4178.38",
+          "total": "32034.23",
+          "currency": "BDT",
+          "line_items": [
+            {
+              "description": "Printer toner cartridge",
+              "quantity": "10",
+              "unit_price": "47.35",
+              "amount": "473.50"
+            },
+            {
+              "description": "Delivery and handling",
+              "quantity": "10",
+              "unit_price": "51.38",
+              "amount": "513.80"
+            },
+            {
+              "description": "Maintenance contract",
+              "quantity": "5",
+              "unit_price": "794.75",
+              "amount": "3973.75"
+            },
+            {
+              "description": "LED panel light 60x60",
+              "quantity": "12",
+              "unit_price": "43.90",
+              "amount": "526.80"
+            },
+            {
+              "description": "Training workshop",
+              "quantity": "20",
+              "unit_price": "1118.40",
+              "amount": "22368.00"
+            }
+          ]
+        }
+      ],
+      "expected_issues": [],
+      "tags": [
+        "receipt",
+        "BDT",
+        "no_customer"
+      ],
+      "phase": "main"
+    },
+    {
+      "file": "pdf/receipt_05.pdf",
+      "kind": "pdf",
+      "expect": "ok",
+      "error_code": null,
+      "invoices": [
+        {
+          "invoice_number": "INV-54013",
+          "invoice_date": "2025-10-23",
+          "supplier_name": "Northwind Traders Inc",
+          "customer_name": "Oakwood Property Partners",
+          "subtotal": null,
+          "tax": null,
+          "total": "7050.49",
+          "currency": "INR",
+          "line_items": [
+            {
+              "description": "On-site support visit",
+              "quantity": "1",
+              "unit_price": "205.36",
+              "amount": "205.36"
+            },
+            {
+              "description": "Cotton fabric roll",
+              "quantity": "5",
+              "unit_price": "90.21",
+              "amount": "451.05"
+            },
+            {
+              "description": "Network switch 24-port",
+              "quantity": "12",
+              "unit_price": "251.76",
+              "amount": "3021.12"
+            },
+            {
+              "description": "Cloud hosting (monthly)",
+              "quantity": "2",
+              "unit_price": "399.61",
+              "amount": "799.22"
+            },
+            {
+              "description": "Consulting services",
+              "quantity": "2",
+              "unit_price": "110.45",
+              "amount": "220.90"
+            },
+            {
+              "description": "Office chair ergonomic",
+              "quantity": "12",
+              "unit_price": "196.07",
+              "amount": "2352.84"
+            }
+          ]
+        }
+      ],
+      "expected_issues": [],
+      "tags": [
+        "receipt",
+        "INR",
+        "no_tax"
+      ],
+      "phase": "main"
+    },
+    {
+      "file": "pdf/receipt_06.pdf",
+      "kind": "pdf",
+      "expect": "ok",
+      "error_code": null,
+      "invoices": [
+        {
+          "invoice_number": "INV16065",
+          "invoice_date": "2025-06-24",
+          "supplier_name": "Delta Textiles Pvt Ltd",
+          "customer_name": null,
+          "subtotal": "5596.59",
+          "tax": "461.72",
+          "total": "6058.31",
+          "currency": "USD",
+          "line_items": [
+            {
+              "description": "Data backup service",
+              "quantity": "5",
+              "unit_price": "172.97",
+              "amount": "864.85"
+            },
+            {
+              "description": "A4 copier paper (ream)",
+              "quantity": "3",
+              "unit_price": "8.92",
+              "amount": "26.76"
+            },
+            {
+              "description": "Cloud hosting (monthly)",
+              "quantity": "4",
+              "unit_price": "223.62",
+              "amount": "894.48"
+            },
+            {
+              "description": "On-site support visit",
+              "quantity": "20",
+              "unit_price": "190.26",
+              "amount": "3805.20"
+            },
+            {
+              "description": "Safety gloves (pair)",
+              "quantity": "2",
+              "unit_price": "2.65",
+              "amount": "5.30"
+            }
+          ]
+        }
+      ],
+      "expected_issues": [],
+      "tags": [
+        "receipt",
+        "USD",
+        "no_customer"
+      ],
+      "phase": "main"
+    },
+    {
+      "file": "pdf/statement_01.pdf",
+      "kind": "pdf",
+      "expect": "ok",
+      "error_code": null,
+      "invoices": [
+        {
+          "invoice_number": "INV-82701",
+          "invoice_date": "2025-01-25",
+          "supplier_name": "Crescent Foods Limited",
+          "customer_name": "Bayview Dental Practice",
+          "subtotal": "71.52",
+          "tax": "12.87",
+          "total": "84.39",
+          "currency": "INR",
+          "line_items": [
+            {
+              "description": "Medical gauze pack",
+              "quantity": "12",
+              "unit_price": "5.96",
+              "amount": "71.52"
+            }
+          ]
+        }
+      ],
+      "expected_issues": [],
+      "tags": [
+        "statement",
+        "INR"
+      ],
+      "phase": "main"
+    },
+    {
+      "file": "pdf/statement_02.pdf",
+      "kind": "pdf",
+      "expect": "ok",
+      "error_code": null,
+      "invoices": [
+        {
+          "invoice_number": "TX-69584",
+          "invoice_date": "2026-04-11",
+          "supplier_name": "Evergreen Facilities Management",
+          "customer_name": "Granite Construction Co",
+          "subtotal": "1164.97",
+          "tax": "174.75",
+          "total": "1339.72",
+          "currency": "BDT",
+          "line_items": [
+            {
+              "description": "Software license (annual)",
+              "quantity": "1",
+              "unit_price": "579.23",
+              "amount": "579.23"
+            },
+            {
+              "description": "Consulting services",
+              "quantity": "4",
+              "unit_price": "144.67",
+              "amount": "578.68"
+            },
+            {
+              "description": "A4 copier paper (ream)",
+              "quantity": "1",
+              "unit_price": "7.06",
+              "amount": "7.06"
+            }
+          ]
+        }
+      ],
+      "expected_issues": [],
+      "tags": [
+        "statement",
+        "BDT"
+      ],
+      "phase": "main"
+    },
+    {
+      "file": "pdf/statement_03.pdf",
+      "kind": "pdf",
+      "expect": "ok",
+      "error_code": null,
+      "invoices": [
+        {
+          "invoice_number": "INV-66507",
+          "invoice_date": "2025-11-22",
+          "supplier_name": "Crescent Foods Limited",
+          "customer_name": "Unity Microfinance",
+          "subtotal": "7256.99",
+          "tax": "1451.40",
+          "total": "8708.39",
+          "currency": "GBP",
+          "line_items": [
+            {
+              "description": "Software license (annual)",
+              "quantity": "1",
+              "unit_price": "761.19",
+              "amount": "761.19"
+            },
+            {
+              "description": "A4 copier paper (ream)",
+              "quantity": "12",
+              "unit_price": "8.28",
+              "amount": "99.36"
+            },
+            {
+              "description": "Delivery and handling",
+              "quantity": "3",
+              "unit_price": "55.17",
+              "amount": "165.51"
+            },
+            {
+              "description": "On-site support visit",
+              "quantity": "10",
+              "unit_price": "179.99",
+              "amount": "1799.90"
+            },
+            {
+              "description": "Consulting services",
+              "quantity": "3",
+              "unit_price": "174.90",
+              "amount": "524.70"
+            },
+            {
+              "description": "Data backup service",
+              "quantity": "20",
+              "unit_price": "191.44",
+              "amount": "3828.80"
+            },
+            {
+              "description": "Medical gauze pack",
+              "quantity": "5",
+              "unit_price": "3.77",
+              "amount": "18.85"
+            },
+            {
+              "description": "Cotton fabric roll",
+              "quantity": "1",
+              "unit_price": "58.68",
+              "amount": "58.68"
+            }
+          ]
+        }
+      ],
+      "expected_issues": [],
+      "tags": [
+        "statement",
+        "GBP"
+      ],
+      "phase": "main"
+    },
+    {
+      "file": "pdf/statement_04.pdf",
+      "kind": "pdf",
+      "expect": "ok",
+      "error_code": null,
+      "invoices": [
+        {
+          "invoice_number": "BL-36982",
+          "invoice_date": "2026-02-12",
+          "supplier_name": "Evergreen Facilities Management",
+          "customer_name": "Hillcrest School Trust",
+          "subtotal": "1727.03",
+          "tax": "310.87",
+          "total": "2037.90",
+          "currency": "INR",
+          "line_items": [
+            {
+              "description": "Printer toner cartridge",
+              "quantity": "25",
+              "unit_price": "55.02",
+              "amount": "1375.50"
+            },
+            {
+              "description": "Packaging cartons large",
+              "quantity": "1",
+              "unit_price": "2.30",
+              "amount": "2.30"
+            },
+            {
+              "description": "Cloud hosting (monthly)",
+              "quantity": "1",
+              "unit_price": "349.23",
+              "amount": "349.23"
+            }
+          ]
+        }
+      ],
+      "expected_issues": [],
+      "tags": [
+        "statement",
+        "INR"
+      ],
+      "phase": "main"
+    },
+    {
+      "file": "pdf/statement_05.pdf",
+      "kind": "pdf",
+      "expect": "ok",
+      "error_code": null,
+      "invoices": [
+        {
+          "invoice_number": "BL-54715",
+          "invoice_date": "2026-04-13",
+          "supplier_name": "Meridian Medical Supplies",
+          "customer_name": "Unity Microfinance",
+          "subtotal": "49291.79",
+          "tax": "3696.88",
+          "total": "52988.67",
+          "currency": "BDT",
+          "line_items": [
+            {
+              "description": "Cloud hosting (monthly)",
+              "quantity": "1",
+              "unit_price": "524.00",
+              "amount": "524.00"
+            },
+            {
+              "description": "Consulting services",
+              "quantity": "2",
+              "unit_price": "164.31",
+              "amount": "328.62"
+            },
+            {
+              "description": "Network switch 24-port",
+              "quantity": "5",
+              "unit_price": "403.83",
+              "amount": "2019.15"
+            },
+            {
+              "description": "Training workshop",
+              "quantity": "1",
+              "unit_price": "937.71",
+              "amount": "937.71"
+            },
+            {
+              "description": "LED panel light 60x60",
+              "quantity": "2",
+              "unit_price": "36.64",
+              "amount": "73.28"
+            },
+            {
+              "description": "A4 copier paper (ream)",
+              "quantity": "10",
+              "unit_price": "5.36",
+              "amount": "53.60"
+            },
+            {
+              "description": "Cotton fabric roll",
+              "quantity": "4",
+              "unit_price": "80.97",
+              "amount": "323.88"
+            },
+            {
+              "description": "Packaging cartons large",
+              "quantity": "12",
+              "unit_price": "1.03",
+              "amount": "12.36"
+            },
+            {
+              "description": "Medical gauze pack",
+              "quantity": "3",
+              "unit_price": "11.55",
+              "amount": "34.65"
+            },
+            {
+              "description": "On-site support visit",
+              "quantity": "2",
+              "unit_price": "285.77",
+              "amount": "571.54"
+            },
+            {
+              "description": "Safety gloves (pair)",
+              "quantity": "1",
+              "unit_price": "3.90",
+              "amount": "3.90"
+            },
+            {
+              "description": "Maintenance contract",
+              "quantity": "25",
+              "unit_price": "558.40",
+              "amount": "13960.00"
+            },
+            {
+              "description": "Steel bolts M8 (box of 100)",
+              "quantity": "20",
+              "unit_price": "12.54",
+              "amount": "250.80"
+            },
+            {
+              "description": "Delivery and handling",
+              "quantity": "1",
+              "unit_price": "48.24",
+              "amount": "48.24"
+            },
+            {
+              "description": "Data backup service",
+              "quantity": "5",
+              "unit_price": "169.26",
+              "amount": "846.30"
+            },
+            {
+              "description": "Software license (annual)",
+              "quantity": "5",
+              "unit_price": "515.94",
+              "amount": "2579.70"
+            },
+            {
+              "description": "Printer toner cartridge",
+              "quantity": "10",
+              "unit_price": "102.51",
+              "amount": "1025.10"
+            },
+            {
+              "description": "Office chair ergonomic",
+              "quantity": "12",
+              "unit_price": "375.30",
+              "amount": "4503.60"
+            },
+            {
+              "description": "Network switch 24-port - batch 19",
+              "quantity": "2",
+              "unit_price": "437.32",
+              "amount": "874.64"
+            },
+            {
+              "description": "Maintenance contract - batch 20",
+              "quantity": "5",
+              "unit_price": "289.71",
+              "amount": "1448.55"
+            },
+            {
+              "description": "Cotton fabric roll - batch 21",
+              "quantity": "2",
+              "unit_price": "51.41",
+              "amount": "102.82"
+            },
+            {
+              "description": "Network switch 24-port - batch 22",
+              "quantity": "3",
+              "unit_price": "388.68",
+              "amount": "1166.04"
+            },
+            {
+              "description": "Maintenance contract - batch 23",
+              "quantity": "9",
+              "unit_price": "214.24",
+              "amount": "1928.16"
+            },
+            {
+              "description": "Printer toner cartridge - batch 24",
+              "quantity": "8",
+              "unit_price": "105.15",
+              "amount": "841.20"
+            },
+            {
+              "description": "On-site support visit - batch 25",
+              "quantity": "1",
+              "unit_price": "218.67",
+              "amount": "218.67"
+            },
+            {
+              "description": "Medical gauze pack - batch 26",
+              "quantity": "1",
+              "unit_price": "7.72",
+              "amount": "7.72"
+            },
+            {
+              "description": "A4 copier paper (ream) - batch 27",
+              "quantity": "9",
+              "unit_price": "7.85",
+              "amount": "70.65"
+            },
+            {
+              "description": "On-site support visit - batch 28",
+              "quantity": "9",
+              "unit_price": "205.73",
+              "amount": "1851.57"
+            },
+            {
+              "description": "Cotton fabric roll - batch 29",
+              "quantity": "3",
+              "unit_price": "141.62",
+              "amount": "424.86"
+            },
+            {
+              "description": "Medical gauze pack - batch 30",
+              "quantity": "3",
+              "unit_price": "9.42",
+              "amount": "28.26"
+            },
+            {
+              "description": "Safety gloves (pair) - batch 31",
+              "quantity": "7",
+              "unit_price": "4.34",
+              "amount": "30.38"
+            },
+            {
+              "description": "Packaging cartons large - batch 32",
+              "quantity": "1",
+              "unit_price": "1.30",
+              "amount": "1.30"
+            },
+            {
+              "description": "Cotton fabric roll - batch 33",
+              "quantity": "3",
+              "unit_price": "145.77",
+              "amount": "437.31"
+            },
+            {
+              "description": "Data backup service - batch 34",
+              "quantity": "6",
+              "unit_price": "169.01",
+              "amount": "1014.06"
+            },
+            {
+              "description": "Steel bolts M8 (box of 100) - batch 35",
+              "quantity": "1",
+              "unit_price": "17.98",
+              "amount": "17.98"
+            },
+            {
+              "description": "Delivery and handling - batch 36",
+              "quantity": "8",
+              "unit_price": "30.98",
+              "amount": "247.84"
+            },
+            {
+              "description": "Maintenance contract - batch 37",
+              "quantity": "9",
+              "unit_price": "817.74",
+              "amount": "7359.66"
+            },
+            {
+              "description": "Cotton fabric roll - batch 38",
+              "quantity": "9",
+              "unit_price": "130.04",
+              "amount": "1170.36"
+            },
+            {
+              "description": "Consulting services - batch 39",
+              "quantity": "9",
+              "unit_price": "84.20",
+              "amount": "757.80"
+            },
+            {
+              "description": "Maintenance contract - batch 40",
+              "quantity": "3",
+              "unit_price": "398.51",
+              "amount": "1195.53"
+            }
+          ]
+        }
+      ],
+      "expected_issues": [],
+      "tags": [
+        "statement",
+        "BDT",
+        "multipage"
+      ],
+      "phase": "main"
+    },
+    {
+      "file": "pdf/statement_06.pdf",
+      "kind": "pdf",
+      "expect": "ok",
+      "error_code": null,
+      "invoices": [
+        {
+          "invoice_number": "SI/2025/52766",
+          "invoice_date": "2025-04-26",
+          "supplier_name": "Brightstar Electronics GmbH",
+          "customer_name": null,
+          "subtotal": "1417.70",
+          "tax": "283.54",
+          "total": "1701.24",
+          "currency": "GBP",
+          "line_items": [
+            {
+              "description": "Steel bolts M8 (box of 100)",
+              "quantity": "25",
+              "unit_price": "20.96",
+              "amount": "524.00"
+            },
+            {
+              "description": "A4 copier paper (ream)",
+              "quantity": "3",
+              "unit_price": "8.81",
+              "amount": "26.43"
+            },
+            {
+              "description": "On-site support visit",
+              "quantity": "3",
+              "unit_price": "289.09",
+              "amount": "867.27"
+            }
+          ]
+        }
+      ],
+      "expected_issues": [],
+      "tags": [
+        "statement",
+        "GBP",
+        "no_customer"
+      ],
+      "phase": "main"
+    },
+    {
+      "file": "pdf/batch_march_20_invoices.pdf",
+      "kind": "pdf",
+      "expect": "ok",
+      "error_code": null,
+      "invoices": [
+        {
+          "invoice_number": "MAR-2600",
+          "invoice_date": "2026-05-18",
+          "supplier_name": "Crescent Foods Limited",
+          "customer_name": "Hillcrest School Trust",
+          "subtotal": "1462.26",
+          "tax": "102.36",
+          "total": "1564.62",
+          "currency": "USD",
+          "line_items": [
+            {
+              "description": "On-site support visit",
+              "quantity": "4",
+              "unit_price": "269.89",
+              "amount": "1079.56"
+            },
+            {
+              "description": "Delivery and handling",
+              "quantity": "10",
+              "unit_price": "38.27",
+              "amount": "382.70"
+            }
+          ]
+        },
+        {
+          "invoice_number": "MAR-2601",
+          "invoice_date": "2026-01-19",
+          "supplier_name": "Silverline Printing Press",
+          "customer_name": "Lakeside Manufacturing PLC",
+          "subtotal": "18387.32",
+          "tax": "1287.11",
+          "total": "19674.43",
+          "currency": "USD",
+          "line_items": [
+            {
+              "description": "Maintenance contract",
+              "quantity": "25",
+              "unit_price": "545.39",
+              "amount": "13634.75"
+            },
+            {
+              "description": "Office chair ergonomic",
+              "quantity": "1",
+              "unit_price": "207.46",
+              "amount": "207.46"
+            },
+            {
+              "description": "Training workshop",
+              "quantity": "12",
+              "unit_price": "253.46",
+              "amount": "3041.52"
+            },
+            {
+              "description": "A4 copier paper (ream)",
+              "quantity": "1",
+              "unit_price": "4.71",
+              "amount": "4.71"
+            },
+            {
+              "description": "Cotton fabric roll",
+              "quantity": "12",
+              "unit_price": "93.29",
+              "amount": "1119.48"
+            },
+            {
+              "description": "On-site support visit",
+              "quantity": "2",
+              "unit_price": "189.70",
+              "amount": "379.40"
+            }
+          ]
+        },
+        {
+          "invoice_number": "MAR-2602",
+          "invoice_date": "2025-05-23",
+          "supplier_name": "Silverline Printing Press",
+          "customer_name": "Hillcrest School Trust",
+          "subtotal": "31192.54",
+          "tax": "6238.51",
+          "total": "37431.05",
+          "currency": "GBP",
+          "line_items": [
+            {
+              "description": "LED panel light 60x60",
+              "quantity": "25",
+              "unit_price": "40.98",
+              "amount": "1024.50"
+            },
+            {
+              "description": "Cloud hosting (monthly)",
+              "quantity": "12",
+              "unit_price": "150.69",
+              "amount": "1808.28"
+            },
+            {
+              "description": "Delivery and handling",
+              "quantity": "1",
+              "unit_price": "37.53",
+              "amount": "37.53"
+            },
+            {
+              "description": "Consulting services",
+              "quantity": "1",
+              "unit_price": "90.93",
+              "amount": "90.93"
+            },
+            {
+              "description": "Training workshop",
+              "quantity": "25",
+              "unit_price": "1127.21",
+              "amount": "28180.25"
+            },
+            {
+              "description": "Steel bolts M8 (box of 100)",
+              "quantity": "5",
+              "unit_price": "10.21",
+              "amount": "51.05"
+            }
+          ]
+        },
+        {
+          "invoice_number": "MAR-2603",
+          "invoice_date": "2025-02-04",
+          "supplier_name": "Greenfield Office Solutions",
+          "customer_name": "Hillcrest School Trust",
+          "subtotal": "7613.21",
+          "tax": "1598.77",
+          "total": "9211.98",
+          "currency": "EUR",
+          "line_items": [
+            {
+              "description": "Consulting services",
+              "quantity": "1",
+              "unit_price": "136.92",
+              "amount": "136.92"
+            },
+            {
+              "description": "Training workshop",
+              "quantity": "5",
+              "unit_price": "988.11",
+              "amount": "4940.55"
+            },
+            {
+              "description": "Network switch 24-port",
+              "quantity": "2",
+              "unit_price": "187.12",
+              "amount": "374.24"
+            },
+            {
+              "description": "Delivery and handling",
+              "quantity": "25",
+              "unit_price": "86.46",
+              "amount": "2161.50"
+            }
+          ]
+        },
+        {
+          "invoice_number": "MAR-2604",
+          "invoice_date": "2025-04-24",
+          "supplier_name": "Bluewave Logistics LLC",
+          "customer_name": "Nova Pharmaceuticals",
+          "subtotal": "107.36",
+          "tax": "7.52",
+          "total": "114.88",
+          "currency": "USD",
+          "line_items": [
+            {
+              "description": "A4 copier paper (ream)",
+              "quantity": "4",
+              "unit_price": "7.91",
+              "amount": "31.64"
+            },
+            {
+              "description": "Delivery and handling",
+              "quantity": "1",
+              "unit_price": "75.72",
+              "amount": "75.72"
+            }
+          ]
+        },
+        {
+          "invoice_number": "MAR-2605",
+          "invoice_date": "2026-08-09",
+          "supplier_name": "Pioneer Packaging Ltd",
+          "customer_name": "Oakwood Property Partners",
+          "subtotal": "2583.20",
+          "tax": "180.82",
+          "total": "2764.02",
+          "currency": "USD",
+          "line_items": [
+            {
+              "description": "Delivery and handling",
+              "quantity": "12",
+              "unit_price": "73.90",
+              "amount": "886.80"
+            },
+            {
+              "description": "On-site support visit",
+              "quantity": "10",
+              "unit_price": "169.64",
+              "amount": "1696.40"
+            }
+          ]
+        },
+        {
+          "invoice_number": "MAR-2606",
+          "invoice_date": "2025-06-17",
+          "supplier_name": "Orion Software Systems",
+          "customer_name": "Cedar Logistics Hub",
+          "subtotal": "27506.00",
+          "tax": "4951.08",
+          "total": "32457.08",
+          "currency": "INR",
+          "line_items": [
+            {
+              "description": "Data backup service",
+              "quantity": "20",
+              "unit_price": "139.67",
+              "amount": "2793.40"
+            },
+            {
+              "description": "Software license (annual)",
+              "quantity": "20",
+              "unit_price": "1235.63",
+              "amount": "24712.60"
+            }
+          ]
+        },
+        {
+          "invoice_number": "MAR-2607",
+          "invoice_date": "2025-07-26",
+          "supplier_name": "Evergreen Facilities Management",
+          "customer_name": "Nova Pharmaceuticals",
+          "subtotal": "312.76",
+          "tax": "62.55",
+          "total": "375.31",
+          "currency": "EUR",
+          "line_items": [
+            {
+              "description": "Delivery and handling",
+              "quantity": "3",
+              "unit_price": "86.67",
+              "amount": "260.01"
+            },
+            {
+              "description": "Safety gloves (pair)",
+              "quantity": "25",
+              "unit_price": "2.11",
+              "amount": "52.75"
+            }
+          ]
+        },
+        {
+          "invoice_number": "MAR-2608",
+          "invoice_date": "2025-01-22",
+          "supplier_name": "Greenfield Office Solutions",
+          "customer_name": "Cedar Logistics Hub",
+          "subtotal": "7548.02",
+          "tax": "622.71",
+          "total": "8170.73",
+          "currency": "USD",
+          "line_items": [
+            {
+              "description": "A4 copier paper (ream)",
+              "quantity": "5",
+              "unit_price": "6.30",
+              "amount": "31.50"
+            },
+            {
+              "description": "Office chair ergonomic",
+              "quantity": "12",
+              "unit_price": "168.28",
+              "amount": "2019.36"
+            },
+            {
+              "description": "Training workshop",
+              "quantity": "3",
+              "unit_price": "949.78",
+              "amount": "2849.34"
+            },
+            {
+              "description": "Cotton fabric roll",
+              "quantity": "5",
+              "unit_price": "145.54",
+              "amount": "727.70"
+            },
+            {
+              "description": "Safety gloves (pair)",
+              "quantity": "20",
+              "unit_price": "5.10",
+              "amount": "102.00"
+            },
+            {
+              "description": "Maintenance contract",
+              "quantity": "12",
+              "unit_price": "151.51",
+              "amount": "1818.12"
+            }
+          ]
+        },
+        {
+          "invoice_number": "MAR-2609",
+          "invoice_date": "2025-02-16",
+          "supplier_name": "Atlas Engineering Works",
+          "customer_name": "Bayview Dental Practice",
+          "subtotal": "29776.41",
+          "tax": "2456.55",
+          "total": "32232.96",
+          "currency": "USD",
+          "line_items": [
+            {
+              "description": "Printer toner cartridge",
+              "quantity": "20",
+              "unit_price": "81.01",
+              "amount": "1620.20"
+            },
+            {
+              "description": "Safety gloves (pair)",
+              "quantity": "3",
+              "unit_price": "6.99",
+              "amount": "20.97"
+            },
+            {
+              "description": "On-site support visit",
+              "quantity": "3",
+              "unit_price": "283.11",
+              "amount": "849.33"
+            },
+            {
+              "description": "Steel bolts M8 (box of 100)",
+              "quantity": "2",
+              "unit_price": "18.15",
+              "amount": "36.30"
+            },
+            {
+              "description": "Medical gauze pack",
+              "quantity": "4",
+              "unit_price": "5.48",
+              "amount": "21.92"
+            },
+            {
+              "description": "Software license (annual)",
+              "quantity": "2",
+              "unit_price": "374.71",
+              "amount": "749.42"
+            },
+            {
+              "description": "Data backup service",
+              "quantity": "10",
+              "unit_price": "196.20",
+              "amount": "1962.00"
+            },
+            {
+              "description": "Network switch 24-port",
+              "quantity": "1",
+              "unit_price": "268.85",
+              "amount": "268.85"
+            },
+            {
+              "description": "Training workshop",
+              "quantity": "12",
+              "unit_price": "861.30",
+              "amount": "10335.60"
+            },
+            {
+              "description": "Office chair ergonomic",
+              "quantity": "2",
+              "unit_price": "218.61",
+              "amount": "437.22"
+            },
+            {
+              "description": "A4 copier paper (ream)",
+              "quantity": "5",
+              "unit_price": "5.48",
+              "amount": "27.40"
+            },
+            {
+              "description": "Packaging cartons large",
+              "quantity": "3",
+              "unit_price": "2.16",
+              "amount": "6.48"
+            },
+            {
+              "description": "Maintenance contract",
+              "quantity": "1",
+              "unit_price": "893.85",
+              "amount": "893.85"
+            },
+            {
+              "description": "Consulting services",
+              "quantity": "2",
+              "unit_price": "143.58",
+              "amount": "287.16"
+            },
+            {
+              "description": "Delivery and handling",
+              "quantity": "10",
+              "unit_price": "65.44",
+              "amount": "654.40"
+            },
+            {
+              "description": "Cloud hosting (monthly)",
+              "quantity": "3",
+              "unit_price": "289.38",
+              "amount": "868.14"
+            },
+            {
+              "description": "Cotton fabric roll",
+              "quantity": "25",
+              "unit_price": "68.14",
+              "amount": "1703.50"
+            },
+            {
+              "description": "LED panel light 60x60",
+              "quantity": "12",
+              "unit_price": "33.65",
+              "amount": "403.80"
+            },
+            {
+              "description": "Printer toner cartridge - batch 19",
+              "quantity": "2",
+              "unit_price": "107.79",
+              "amount": "215.58"
+            },
+            {
+              "description": "Network switch 24-port - batch 20",
+              "quantity": "7",
+              "unit_price": "346.07",
+              "amount": "2422.49"
+            },
+            {
+              "description": "Safety gloves (pair) - batch 21",
+              "quantity": "5",
+              "unit_price": "6.44",
+              "amount": "32.20"
+            },
+            {
+              "description": "Training workshop - batch 22",
+              "quantity": "7",
+              "unit_price": "346.07",
+              "amount": "2422.49"
+            },
+            {
+              "description": "Network switch 24-port - batch 23",
+              "quantity": "5",
+              "unit_price": "325.05",
+              "amount": "1625.25"
+            },
+            {
+              "description": "Safety gloves (pair) - batch 24",
+              "quantity": "9",
+              "unit_price": "6.58",
+              "amount": "59.22"
+            },
+            {
+              "description": "Delivery and handling - batch 25",
+              "quantity": "1",
+              "unit_price": "53.85",
+              "amount": "53.85"
+            },
+            {
+              "description": "Cotton fabric roll - batch 26",
+              "quantity": "5",
+              "unit_price": "147.32",
+              "amount": "736.60"
+            },
+            {
+              "description": "A4 copier paper (ream) - batch 27",
+              "quantity": "5",
+              "unit_price": "5.38",
+              "amount": "26.90"
+            },
+            {
+              "description": "Steel bolts M8 (box of 100) - batch 28",
+              "quantity": "5",
+              "unit_price": "9.48",
+              "amount": "47.40"
+            },
+            {
+              "description": "Cloud hosting (monthly) - batch 29",
+              "quantity": "3",
+              "unit_price": "325.71",
+              "amount": "977.13"
+            },
+            {
+              "description": "Packaging cartons large - batch 30",
+              "quantity": "4",
+              "unit_price": "2.69",
+              "amount": "10.76"
+            }
+          ]
+        },
+        {
+          "invoice_number": "MAR-2610",
+          "invoice_date": "2025-08-02",
+          "supplier_name": "Evergreen Facilities Management",
+          "customer_name": "Lakeside Manufacturing PLC",
+          "subtotal": "182.38",
+          "tax": "13.68",
+          "total": "196.06",
+          "currency": "BDT",
+          "line_items": [
+            {
+              "description": "Safety gloves (pair)",
+              "quantity": "25",
+              "unit_price": "6.18",
+              "amount": "154.50"
+            },
+            {
+              "description": "A4 copier paper (ream)",
+              "quantity": "4",
+              "unit_price": "6.97",
+              "amount": "27.88"
+            }
+          ]
+        },
+        {
+          "invoice_number": "MAR-2611",
+          "invoice_date": "2025-08-02",
+          "supplier_name": "Acme Industrial Supplies Ltd",
+          "customer_name": "Lakeside Manufacturing PLC",
+          "subtotal": "2302.35",
+          "tax": "483.49",
+          "total": "2785.84",
+          "currency": "EUR",
+          "line_items": [
+            {
+              "description": "Safety gloves (pair)",
+              "quantity": "25",
+              "unit_price": "4.60",
+              "amount": "115.00"
+            },
+            {
+              "description": "Maintenance contract",
+              "quantity": "5",
+              "unit_price": "306.44",
+              "amount": "1532.20"
+            },
+            {
+              "description": "Medical gauze pack",
+              "quantity": "5",
+              "unit_price": "6.29",
+              "amount": "31.45"
+            },
+            {
+              "description": "Printer toner cartridge",
+              "quantity": "10",
+              "unit_price": "62.37",
+              "amount": "623.70"
+            }
+          ]
+        },
+        {
+          "invoice_number": "MAR-2612",
+          "invoice_date": "2026-05-17",
+          "supplier_name": "Evergreen Facilities Management",
+          "customer_name": "Hillcrest School Trust",
+          "subtotal": "6536.85",
+          "tax": "457.58",
+          "total": "6994.43",
+          "currency": "USD",
+          "line_items": [
+            {
+              "description": "Cloud hosting (monthly)",
+              "quantity": "5",
+              "unit_price": "386.24",
+              "amount": "1931.20"
+            },
+            {
+              "description": "Network switch 24-port",
+              "quantity": "25",
+              "unit_price": "180.08",
+              "amount": "4502.00"
+            },
+            {
+              "description": "Medical gauze pack",
+              "quantity": "2",
+              "unit_price": "6.12",
+              "amount": "12.24"
+            },
+            {
+              "description": "LED panel light 60x60",
+              "quantity": "2",
+              "unit_price": "29.12",
+              "amount": "58.24"
+            },
+            {
+              "description": "Safety gloves (pair)",
+              "quantity": "4",
+              "unit_price": "6.84",
+              "amount": "27.36"
+            },
+            {
+              "description": "A4 copier paper (ream)",
+              "quantity": "1",
+              "unit_price": "5.81",
+              "amount": "5.81"
+            }
+          ]
+        },
+        {
+          "invoice_number": "MAR-2613",
+          "invoice_date": "2026-01-11",
+          "supplier_name": "Kestrel Data Labs",
+          "customer_name": "Oakwood Property Partners",
+          "subtotal": "9177.00",
+          "tax": "642.39",
+          "total": "9819.39",
+          "currency": "USD",
+          "line_items": [
+            {
+              "description": "Cloud hosting (monthly)",
+              "quantity": "20",
+              "unit_price": "425.37",
+              "amount": "8507.40"
+            },
+            {
+              "description": "On-site support visit",
+              "quantity": "2",
+              "unit_price": "234.36",
+              "amount": "468.72"
+            },
+            {
+              "description": "Steel bolts M8 (box of 100)",
+              "quantity": "20",
+              "unit_price": "8.34",
+              "amount": "166.80"
+            },
+            {
+              "description": "Packaging cartons large",
+              "quantity": "12",
+              "unit_price": "2.84",
+              "amount": "34.08"
+            }
+          ]
+        },
+        {
+          "invoice_number": "MAR-2614",
+          "invoice_date": "2025-10-05",
+          "supplier_name": "Silverline Printing Press",
+          "customer_name": "Cedar Logistics Hub",
+          "subtotal": "368.34",
+          "tax": "73.67",
+          "total": "442.01",
+          "currency": "GBP",
+          "line_items": [
+            {
+              "description": "Packaging cartons large",
+              "quantity": "2",
+              "unit_price": "3.37",
+              "amount": "6.74"
+            },
+            {
+              "description": "Delivery and handling",
+              "quantity": "20",
+              "unit_price": "18.08",
+              "amount": "361.60"
+            }
+          ]
+        },
+        {
+          "invoice_number": "MAR-2615",
+          "invoice_date": "2025-08-05",
+          "supplier_name": "Silverline Printing Press",
+          "customer_name": "Hillcrest School Trust",
+          "subtotal": "1078.46",
+          "tax": "204.91",
+          "total": "1283.37",
+          "currency": "EUR",
+          "line_items": [
+            {
+              "description": "A4 copier paper (ream)",
+              "quantity": "10",
+              "unit_price": "4.54",
+              "amount": "45.40"
+            },
+            {
+              "description": "Consulting services",
+              "quantity": "2",
+              "unit_price": "95.38",
+              "amount": "190.76"
+            },
+            {
+              "description": "Printer toner cartridge",
+              "quantity": "5",
+              "unit_price": "80.11",
+              "amount": "400.55"
+            },
+            {
+              "description": "On-site support visit",
+              "quantity": "3",
+              "unit_price": "147.25",
+              "amount": "441.75"
+            }
+          ]
+        },
+        {
+          "invoice_number": "MAR-2616",
+          "invoice_date": "2026-02-08",
+          "supplier_name": "Orion Software Systems",
+          "customer_name": "Riverside Home Care",
+          "subtotal": "2351.45",
+          "tax": "0.00",
+          "total": "2351.45",
+          "currency": "USD",
+          "line_items": [
+            {
+              "description": "Data backup service",
+              "quantity": "5",
+              "unit_price": "166.98",
+              "amount": "834.90"
+            },
+            {
+              "description": "Cotton fabric roll",
+              "quantity": "10",
+              "unit_price": "57.26",
+              "amount": "572.60"
+            },
+            {
+              "description": "Printer toner cartridge",
+              "quantity": "20",
+              "unit_price": "46.09",
+              "amount": "921.80"
+            },
+            {
+              "description": "A4 copier paper (ream)",
+              "quantity": "5",
+              "unit_price": "4.43",
+              "amount": "22.15"
+            }
+          ]
+        },
+        {
+          "invoice_number": "MAR-2617",
+          "invoice_date": "2025-09-10",
+          "supplier_name": "Delta Textiles Pvt Ltd",
+          "customer_name": "Hillcrest School Trust",
+          "subtotal": "12096.41",
+          "tax": "0.00",
+          "total": "12096.41",
+          "currency": "USD",
+          "line_items": [
+            {
+              "description": "Training workshop",
+              "quantity": "12",
+              "unit_price": "855.60",
+              "amount": "10267.20"
+            },
+            {
+              "description": "Cloud hosting (monthly)",
+              "quantity": "1",
+              "unit_price": "507.26",
+              "amount": "507.26"
+            },
+            {
+              "description": "Office chair ergonomic",
+              "quantity": "2",
+              "unit_price": "349.43",
+              "amount": "698.86"
+            },
+            {
+              "description": "Safety gloves (pair)",
+              "quantity": "3",
+              "unit_price": "2.11",
+              "amount": "6.33"
+            },
+            {
+              "description": "Packaging cartons large",
+              "quantity": "1",
+              "unit_price": "1.06",
+              "amount": "1.06"
+            },
+            {
+              "description": "Delivery and handling",
+              "quantity": "10",
+              "unit_price": "61.57",
+              "amount": "615.70"
+            }
+          ]
+        },
+        {
+          "invoice_number": "MAR-2618",
+          "invoice_date": "2025-11-08",
+          "supplier_name": "Meridian Medical Supplies",
+          "customer_name": "Unity Microfinance",
+          "subtotal": "4871.62",
+          "tax": "876.89",
+          "total": "5748.51",
+          "currency": "INR",
+          "line_items": [
+            {
+              "description": "Steel bolts M8 (box of 100)",
+              "quantity": "25",
+              "unit_price": "11.33",
+              "amount": "283.25"
+            },
+            {
+              "description": "Packaging cartons large",
+              "quantity": "12",
+              "unit_price": "2.38",
+              "amount": "28.56"
+            },
+            {
+              "description": "Training workshop",
+              "quantity": "2",
+              "unit_price": "1007.21",
+              "amount": "2014.42"
+            },
+            {
+              "description": "Network switch 24-port",
+              "quantity": "1",
+              "unit_price": "439.15",
+              "amount": "439.15"
+            },
+            {
+              "description": "A4 copier paper (ream)",
+              "quantity": "3",
+              "unit_price": "5.68",
+              "amount": "17.04"
+            },
+            {
+              "description": "Printer toner cartridge",
+              "quantity": "20",
+              "unit_price": "104.46",
+              "amount": "2089.20"
+            }
+          ]
+        },
+        {
+          "invoice_number": "MAR-2619",
+          "invoice_date": "2025-05-18",
+          "supplier_name": "Atlas Engineering Works",
+          "customer_name": "Unity Microfinance",
+          "subtotal": "19924.08",
+          "tax": "4184.06",
+          "total": "24108.14",
+          "currency": "EUR",
+          "line_items": [
+            {
+              "description": "Network switch 24-port",
+              "quantity": "25",
+              "unit_price": "259.33",
+              "amount": "6483.25"
+            },
+            {
+              "description": "Delivery and handling",
+              "quantity": "2",
+              "unit_price": "76.01",
+              "amount": "152.02"
+            },
+            {
+              "description": "Data backup service",
+              "quantity": "12",
+              "unit_price": "76.40",
+              "amount": "916.80"
+            },
+            {
+              "description": "Training workshop",
+              "quantity": "1",
+              "unit_price": "1071.46",
+              "amount": "1071.46"
+            },
+            {
+              "description": "Cloud hosting (monthly)",
+              "quantity": "25",
+              "unit_price": "450.27",
+              "amount": "11256.75"
+            },
+            {
+              "description": "Safety gloves (pair)",
+              "quantity": "10",
+              "unit_price": "4.38",
+              "amount": "43.80"
+            }
+          ]
+        }
+      ],
+      "expected_issues": [],
+      "tags": [
+        "multi_invoice",
+        "segmentation"
+      ],
+      "phase": "main"
+    },
+    {
+      "file": "crossverify/erp_export_march.xlsx",
+      "kind": "xlsx",
+      "expect": "ok",
+      "error_code": null,
+      "invoices": [
+        {
+          "invoice_number": "MAR-2600",
+          "invoice_date": "2026-05-18",
+          "supplier_name": "Crescent Foods Limited",
+          "customer_name": "Hillcrest School Trust",
+          "subtotal": "1462.26",
+          "tax": "102.36",
+          "total": "1564.62",
+          "currency": "USD",
+          "line_items": []
+        },
+        {
+          "invoice_number": "MAR-2601",
+          "invoice_date": "2026-01-19",
+          "supplier_name": "Silverline Printing Press",
+          "customer_name": "Lakeside Manufacturing PLC",
+          "subtotal": "18387.32",
+          "tax": "1287.11",
+          "total": "19674.43",
+          "currency": "USD",
+          "line_items": []
+        },
+        {
+          "invoice_number": "MAR-2602",
+          "invoice_date": "2025-05-23",
+          "supplier_name": "Silverline Printing Press",
+          "customer_name": "Hillcrest School Trust",
+          "subtotal": "31192.54",
+          "tax": "6238.51",
+          "total": "37481.05",
+          "currency": "GBP",
+          "line_items": []
+        },
+        {
+          "invoice_number": "MAR-2603",
+          "invoice_date": "2025-02-04",
+          "supplier_name": "Greenfield Office Solutions",
+          "customer_name": "Hillcrest School Trust",
+          "subtotal": "7613.21",
+          "tax": "1598.77",
+          "total": "9211.98",
+          "currency": "EUR",
+          "line_items": []
+        },
+        {
+          "invoice_number": "MAR-2604",
+          "invoice_date": "2025-04-24",
+          "supplier_name": "Bluewave Logistics LLC",
+          "customer_name": "Nova Pharmaceuticals",
+          "subtotal": "107.36",
+          "tax": "7.52",
+          "total": "114.88",
+          "currency": "USD",
+          "line_items": []
+        },
+        {
+          "invoice_number": "MAR-2605",
+          "invoice_date": "2026-08-09",
+          "supplier_name": "Pioneer Packaging Ltd",
+          "customer_name": "Oakwood Property Partners",
+          "subtotal": "2583.20",
+          "tax": "180.82",
+          "total": "2764.02",
+          "currency": "USD",
+          "line_items": []
+        },
+        {
+          "invoice_number": "MAR-2606",
+          "invoice_date": "2025-06-18",
+          "supplier_name": "Orion Software Systems",
+          "customer_name": "Cedar Logistics Hub",
+          "subtotal": "27506.00",
+          "tax": "4951.08",
+          "total": "32457.08",
+          "currency": "INR",
+          "line_items": []
+        },
+        {
+          "invoice_number": "MAR-2607",
+          "invoice_date": "2025-07-26",
+          "supplier_name": "Evergreen Facilities Management",
+          "customer_name": "Nova Pharmaceuticals",
+          "subtotal": "312.76",
+          "tax": "62.55",
+          "total": "375.31",
+          "currency": "EUR",
+          "line_items": []
+        },
+        {
+          "invoice_number": "MAR-2608",
+          "invoice_date": "2025-01-22",
+          "supplier_name": "Greenfield Office Solutions",
+          "customer_name": "Cedar Logistics Hub",
+          "subtotal": "7548.02",
+          "tax": "622.71",
+          "total": "8170.73",
+          "currency": "USD",
+          "line_items": []
+        },
+        {
+          "invoice_number": "MAR-2609",
+          "invoice_date": "2025-02-16",
+          "supplier_name": "Atlas Engineering Works",
+          "customer_name": "Bayview Dental Practice",
+          "subtotal": "29776.41",
+          "tax": "2456.55",
+          "total": "32232.96",
+          "currency": "USD",
+          "line_items": []
+        },
+        {
+          "invoice_number": "MAR-2610",
+          "invoice_date": "2025-08-02",
+          "supplier_name": "Evergreen Facilities Management",
+          "customer_name": "Lakeside Manufacturing PLC",
+          "subtotal": "182.38",
+          "tax": "26.18",
+          "total": "208.56",
+          "currency": "BDT",
+          "line_items": []
+        },
+        {
+          "invoice_number": "MAR-2611",
+          "invoice_date": "2025-08-02",
+          "supplier_name": "Acme Industrial Supplies Ltd",
+          "customer_name": "Lakeside Manufacturing PLC",
+          "subtotal": "2302.35",
+          "tax": "483.49",
+          "total": "2785.84",
+          "currency": "EUR",
+          "line_items": []
+        },
+        {
+          "invoice_number": "MAR-2612",
+          "invoice_date": "2026-05-17",
+          "supplier_name": "Evergreen Facilities Management",
+          "customer_name": "Hillcrest School Trust",
+          "subtotal": "6536.85",
+          "tax": "457.58",
+          "total": "6994.43",
+          "currency": "USD",
+          "line_items": []
+        },
+        {
+          "invoice_number": "MAR-2613",
+          "invoice_date": "2026-01-11",
+          "supplier_name": "Kestrel Data Labs",
+          "customer_name": "Oakwood Property Partners",
+          "subtotal": "9177.00",
+          "tax": "642.39",
+          "total": "9819.39",
+          "currency": "USD",
+          "line_items": []
+        },
+        {
+          "invoice_number": "MAR-2614",
+          "invoice_date": "2025-10-05",
+          "supplier_name": "Silverline Printing Press",
+          "customer_name": "Cedar Logistics Hub",
+          "subtotal": "368.34",
+          "tax": "73.67",
+          "total": "442.01",
+          "currency": "GBP",
+          "line_items": []
+        },
+        {
+          "invoice_number": "MAR-2615",
+          "invoice_date": "2025-08-05",
+          "supplier_name": "Silverline Printing Press",
+          "customer_name": "Hillcrest School Trust",
+          "subtotal": "1078.46",
+          "tax": "204.91",
+          "total": "1283.37",
+          "currency": "EUR",
+          "line_items": []
+        },
+        {
+          "invoice_number": "MAR-2616",
+          "invoice_date": "2026-02-08",
+          "supplier_name": "Orion Software Systems",
+          "customer_name": "Riverside Home Care",
+          "subtotal": "2351.45",
+          "tax": "0.00",
+          "total": "2351.45",
+          "currency": "USD",
+          "line_items": []
+        },
+        {
+          "invoice_number": "MAR-2617",
+          "invoice_date": "2025-09-10",
+          "supplier_name": "Delta Textiles Pvt Ltd",
+          "customer_name": "Hillcrest School Trust",
+          "subtotal": "12096.41",
+          "tax": "0.00",
+          "total": "12096.41",
+          "currency": "USD",
+          "line_items": []
+        },
+        {
+          "invoice_number": "MAR-2999",
+          "invoice_date": "2025-08-12",
+          "supplier_name": "Evergreen Facilities Management",
+          "customer_name": "Cedar Logistics Hub",
+          "subtotal": "10340.10",
+          "tax": "853.06",
+          "total": "11193.16",
+          "currency": "USD",
+          "line_items": []
+        }
+      ],
+      "expected_issues": [],
+      "tags": [
+        "crossverify"
+      ],
+      "phase": "crossverify"
+    },
+    {
+      "file": "scanned/scanned_classic_scan_01.pdf",
+      "kind": "pdf",
+      "expect": "ok",
+      "error_code": null,
+      "invoices": [
+        {
+          "invoice_number": "78644",
+          "invoice_date": "2026-04-27",
+          "supplier_name": "Brightstar Electronics GmbH",
+          "customer_name": "Nova Pharmaceuticals",
+          "subtotal": "1659.35",
+          "tax": "116.15",
+          "total": "1775.50",
+          "currency": "USD",
+          "line_items": [
+            {
+              "description": "A4 copier paper (ream)",
+              "quantity": "12",
+              "unit_price": "5.18",
+              "amount": "62.16"
+            },
+            {
+              "description": "Data backup service",
+              "quantity": "12",
+              "unit_price": "117.72",
+              "amount": "1412.64"
+            },
+            {
+              "description": "Delivery and handling",
+              "quantity": "5",
+              "unit_price": "36.91",
+              "amount": "184.55"
+            }
+          ]
+        }
+      ],
+      "expected_issues": [],
+      "tags": [
+        "scanned",
+        "scan",
+        "classic"
+      ],
+      "phase": "main"
+    },
+    {
+      "file": "scanned/scanned_modern_scan_02.pdf",
+      "kind": "pdf",
+      "expect": "ok",
+      "error_code": null,
+      "invoices": [
+        {
+          "invoice_number": "SI/2025/20813",
+          "invoice_date": "2026-04-01",
+          "supplier_name": "Pioneer Packaging Ltd",
+          "customer_name": "Bayview Dental Practice",
+          "subtotal": "383.94",
+          "tax": "0.00",
+          "total": "383.94",
+          "currency": "USD",
+          "line_items": [
+            {
+              "description": "Packaging cartons large",
+              "quantity": "1",
+              "unit_price": "3.30",
+              "amount": "3.30"
+            },
+            {
+              "description": "LED panel light 60x60",
+              "quantity": "12",
+              "unit_price": "31.72",
+              "amount": "380.64"
+            }
+          ]
+        }
+      ],
+      "expected_issues": [],
+      "tags": [
+        "scanned",
+        "scan",
+        "modern"
+      ],
+      "phase": "main"
+    },
+    {
+      "file": "scanned/scanned_statement_scan_03.pdf",
+      "kind": "pdf",
+      "expect": "ok",
+      "error_code": null,
+      "invoices": [
+        {
+          "invoice_number": "TX-22330",
+          "invoice_date": "2025-02-20",
+          "supplier_name": "Greenfield Office Solutions",
+          "customer_name": "Oakwood Property Partners",
+          "subtotal": "1128.44",
+          "tax": "225.69",
+          "total": "1354.13",
+          "currency": "GBP",
+          "line_items": [
+            {
+              "description": "Cloud hosting (monthly)",
+              "quantity": "1",
+              "unit_price": "122.48",
+              "amount": "122.48"
+            },
+            {
+              "description": "Network switch 24-port",
+              "quantity": "3",
+              "unit_price": "335.32",
+              "amount": "1005.96"
+            }
+          ]
+        }
+      ],
+      "expected_issues": [],
+      "tags": [
+        "scanned",
+        "scan",
+        "statement"
+      ],
+      "phase": "main"
+    },
+    {
+      "file": "scanned/scanned_european_noisy_04.pdf",
+      "kind": "pdf",
+      "expect": "ok",
+      "error_code": null,
+      "invoices": [
+        {
+          "invoice_number": "53020",
+          "invoice_date": "2025-08-28",
+          "supplier_name": "Silverline Printing Press",
+          "customer_name": "Cedar Logistics Hub",
+          "subtotal": "467.80",
+          "tax": "98.24",
+          "total": "566.04",
+          "currency": "EUR",
+          "line_items": [
+            {
+              "description": "Delivery and handling",
+              "quantity": "10",
+              "unit_price": "44.74",
+              "amount": "447.40"
+            },
+            {
+              "description": "Medical gauze pack",
+              "quantity": "5",
+              "unit_price": "4.08",
+              "amount": "20.40"
+            }
+          ]
+        }
+      ],
+      "expected_issues": [],
+      "tags": [
+        "scanned",
+        "noisy",
+        "european"
+      ],
+      "phase": "main"
+    },
+    {
+      "file": "scanned/scanned_classic_skewed_05.pdf",
+      "kind": "pdf",
+      "expect": "ok",
+      "error_code": null,
+      "invoices": [
+        {
+          "invoice_number": "BL-8084",
+          "invoice_date": "2026-08-17",
+          "supplier_name": "Greenfield Office Solutions",
+          "customer_name": "Granite Construction Co",
+          "subtotal": "242.74",
+          "tax": "20.03",
+          "total": "262.77",
+          "currency": "USD",
+          "line_items": [
+            {
+              "description": "A4 copier paper (ream)",
+              "quantity": "2",
+              "unit_price": "8.08",
+              "amount": "16.16"
+            },
+            {
+              "description": "Cotton fabric roll",
+              "quantity": "1",
+              "unit_price": "152.54",
+              "amount": "152.54"
+            },
+            {
+              "description": "Steel bolts M8 (box of 100)",
+              "quantity": "4",
+              "unit_price": "18.51",
+              "amount": "74.04"
+            }
+          ]
+        }
+      ],
+      "expected_issues": [],
+      "tags": [
+        "scanned",
+        "skewed",
+        "classic"
+      ],
+      "phase": "main"
+    },
+    {
+      "file": "scanned/scanned_classic_faded_06.pdf",
+      "kind": "pdf",
+      "expect": "ok",
+      "error_code": null,
+      "invoices": [
+        {
+          "invoice_number": "SI/2025/95393",
+          "invoice_date": "2026-01-11",
+          "supplier_name": "Pioneer Packaging Ltd",
+          "customer_name": "Nova Pharmaceuticals",
+          "subtotal": "3369.11",
+          "tax": "673.82",
+          "total": "4042.93",
+          "currency": "GBP",
+          "line_items": [
+            {
+              "description": "Printer toner cartridge",
+              "quantity": "1",
+              "unit_price": "46.95",
+              "amount": "46.95"
+            },
+            {
+              "description": "Maintenance contract",
+              "quantity": "12",
+              "unit_price": "273.09",
+              "amount": "3277.08"
+            },
+            {
+              "description": "LED panel light 60x60",
+              "quantity": "1",
+              "unit_price": "45.08",
+              "amount": "45.08"
+            }
+          ]
+        }
+      ],
+      "expected_issues": [],
+      "tags": [
+        "scanned",
+        "faded",
+        "classic"
+      ],
+      "phase": "main"
+    },
+    {
+      "file": "scanned/scanned_modern_scan_07.pdf",
+      "kind": "pdf",
+      "expect": "ok",
+      "error_code": null,
+      "invoices": [
+        {
+          "invoice_number": "TX-70180",
+          "invoice_date": "2025-12-09",
+          "supplier_name": "Delta Textiles Pvt Ltd",
+          "customer_name": "Granite Construction Co",
+          "subtotal": "57660.07",
+          "tax": "12108.61",
+          "total": "69768.68",
+          "currency": "EUR",
+          "line_items": [
+            {
+              "description": "A4 copier paper (ream)",
+              "quantity": "2",
+              "unit_price": "4.95",
+              "amount": "9.90"
+            },
+            {
+              "description": "On-site support visit",
+              "quantity": "12",
+              "unit_price": "163.52",
+              "amount": "1962.24"
+            },
+            {
+              "description": "Cloud hosting (monthly)",
+              "quantity": "12",
+              "unit_price": "207.84",
+              "amount": "2494.08"
+            },
+            {
+              "description": "Maintenance contract",
+              "quantity": "1",
+              "unit_price": "314.93",
+              "amount": "314.93"
+            },
+            {
+              "description": "Safety gloves (pair)",
+              "quantity": "4",
+              "unit_price": "3.78",
+              "amount": "15.12"
+            },
+            {
+              "description": "Network switch 24-port",
+              "quantity": "25",
+              "unit_price": "372.24",
+              "amount": "9306.00"
+            },
+            {
+              "description": "Cotton fabric roll",
+              "quantity": "12",
+              "unit_price": "95.37",
+              "amount": "1144.44"
+            },
+            {
+              "description": "Software license (annual)",
+              "quantity": "5",
+              "unit_price": "1356.26",
+              "amount": "6781.30"
+            },
+            {
+              "description": "Consulting services",
+              "quantity": "5",
+              "unit_price": "108.31",
+              "amount": "541.55"
+            },
+            {
+              "description": "LED panel light 60x60",
+              "quantity": "20",
+              "unit_price": "28.16",
+              "amount": "563.20"
+            },
+            {
+              "description": "Steel bolts M8 (box of 100)",
+              "quantity": "5",
+              "unit_price": "21.21",
+              "amount": "106.05"
+            },
+            {
+              "description": "Packaging cartons large",
+              "quantity": "3",
+              "unit_price": "3.93",
+              "amount": "11.79"
+            },
+            {
+              "description": "Printer toner cartridge",
+              "quantity": "25",
+              "unit_price": "100.70",
+              "amount": "2517.50"
+            },
+            {
+              "description": "Medical gauze pack",
+              "quantity": "1",
+              "unit_price": "3.42",
+              "amount": "3.42"
+            },
+            {
+              "description": "Training workshop",
+              "quantity": "10",
+              "unit_price": "419.64",
+              "amount": "4196.40"
+            },
+            {
+              "description": "Office chair ergonomic",
+              "quantity": "5",
+              "unit_price": "169.00",
+              "amount": "845.00"
+            },
+            {
+              "description": "Data backup service",
+              "quantity": "12",
+              "unit_price": "105.38",
+              "amount": "1264.56"
+            },
+            {
+              "description": "Delivery and handling",
+              "quantity": "1",
+              "unit_price": "71.07",
+              "amount": "71.07"
+            },
+            {
+              "description": "Safety gloves (pair) - batch 19",
+              "quantity": "5",
+              "unit_price": "6.90",
+              "amount": "34.50"
+            },
+            {
+              "description": "A4 copier paper (ream) - batch 20",
+              "quantity": "4",
+              "unit_price": "7.36",
+              "amount": "29.44"
+            },
+            {
+              "description": "On-site support visit - batch 21",
+              "quantity": "8",
+              "unit_price": "219.63",
+              "amount": "1757.04"
+            },
+            {
+              "description": "Steel bolts M8 (box of 100) - batch 22",
+              "quantity": "4",
+              "unit_price": "12.05",
+              "amount": "48.20"
+            },
+            {
+              "description": "Cloud hosting (monthly) - batch 23",
+              "quantity": "6",
+              "unit_price": "383.93",
+              "amount": "2303.58"
+            },
+            {
+              "description": "Training workshop - batch 24",
+              "quantity": "3",
+              "unit_price": "745.33",
+              "amount": "2235.99"
+            },
+            {
+              "description": "Packaging cartons large - batch 25",
+              "quantity": "1",
+              "unit_price": "2.42",
+              "amount": "2.42"
+            },
+            {
+              "description": "Steel bolts M8 (box of 100) - batch 26",
+              "quantity": "2",
+              "unit_price": "23.36",
+              "amount": "46.72"
+            },
+            {
+              "description": "Software license (annual) - batch 27",
+              "quantity": "7",
+              "unit_price": "954.92",
+              "amount": "6684.44"
+            },
+            {
+              "description": "Software license (annual) - batch 28",
+              "quantity": "8",
+              "unit_price": "1310.83",
+              "amount": "10486.64"
+            },
+            {
+              "description": "Network switch 24-port - batch 29",
+              "quantity": "9",
+              "unit_price": "205.67",
+              "amount": "1851.03"
+            },
+            {
+              "description": "Packaging cartons large - batch 30",
+              "quantity": "8",
+              "unit_price": "3.94",
+              "amount": "31.52"
+            }
+          ]
+        }
+      ],
+      "expected_issues": [],
+      "tags": [
+        "scanned",
+        "scan",
+        "modern"
+      ],
+      "phase": "main"
+    },
+    {
+      "file": "scanned/scanned_statement_lowres_08.pdf",
+      "kind": "pdf",
+      "expect": "ok",
+      "error_code": null,
+      "invoices": [
+        {
+          "invoice_number": "INV-68844",
+          "invoice_date": "2025-10-09",
+          "supplier_name": "Greenfield Office Solutions",
+          "customer_name": "Vertex Hospitality Ltd",
+          "subtotal": "7532.78",
+          "tax": "1129.92",
+          "total": "8662.70",
+          "currency": "BDT",
+          "line_items": [
+            {
+              "description": "Consulting services",
+              "quantity": "3",
+              "unit_price": "166.93",
+              "amount": "500.79"
+            },
+            {
+              "description": "Cloud hosting (monthly)",
+              "quantity": "12",
+              "unit_price": "523.00",
+              "amount": "6276.00"
+            },
+            {
+              "description": "Packaging cartons large",
+              "quantity": "1",
+              "unit_price": "3.13",
+              "amount": "3.13"
+            },
+            {
+              "description": "Medical gauze pack",
+              "quantity": "4",
+              "unit_price": "4.89",
+              "amount": "19.56"
+            },
+            {
+              "description": "Maintenance contract",
+              "quantity": "1",
+              "unit_price": "733.30",
+              "amount": "733.30"
+            }
+          ]
+        }
+      ],
+      "expected_issues": [],
+      "tags": [
+        "scanned",
+        "lowres",
+        "statement"
+      ],
+      "phase": "main"
+    },
+    {
+      "file": "scanned/scanned_european_noisy_09.pdf",
+      "kind": "pdf",
+      "expect": "ok",
+      "error_code": null,
+      "invoices": [
+        {
+          "invoice_number": "INV21384",
+          "invoice_date": "2025-04-15",
+          "supplier_name": "Brightstar Electronics GmbH",
+          "customer_name": "Bayview Dental Practice",
+          "subtotal": "9374.91",
+          "tax": "1874.98",
+          "total": "11249.89",
+          "currency": "EUR",
+          "line_items": [
+            {
+              "description": "Training workshop",
+              "quantity": "1",
+              "unit_price": "838.41",
+              "amount": "838.41"
+            },
+            {
+              "description": "Network switch 24-port",
+              "quantity": "25",
+              "unit_price": "341.46",
+              "amount": "8536.50"
+            }
+          ]
+        }
+      ],
+      "expected_issues": [],
+      "tags": [
+        "scanned",
+        "noisy",
+        "european"
+      ],
+      "phase": "main"
+    },
+    {
+      "file": "scanned/scanned_classic_scan_10.pdf",
+      "kind": "pdf",
+      "expect": "ok",
+      "error_code": null,
+      "invoices": [
+        {
+          "invoice_number": "SI/2025/6935",
+          "invoice_date": "2026-03-18",
+          "supplier_name": "Meridian Medical Supplies",
+          "customer_name": "Metro Health Clinic",
+          "subtotal": "8098.49",
+          "tax": "1619.70",
+          "total": "9718.19",
+          "currency": "GBP",
+          "line_items": [
+            {
+              "description": "Cloud hosting (monthly)",
+              "quantity": "10",
+              "unit_price": "449.72",
+              "amount": "4497.20"
+            },
+            {
+              "description": "Printer toner cartridge",
+              "quantity": "1",
+              "unit_price": "74.29",
+              "amount": "74.29"
+            },
+            {
+              "description": "Software license (annual)",
+              "quantity": "4",
+              "unit_price": "881.75",
+              "amount": "3527.00"
+            }
+          ]
+        }
+      ],
+      "expected_issues": [],
+      "tags": [
+        "scanned",
+        "scan",
+        "classic"
+      ],
+      "phase": "main"
+    },
+    {
+      "file": "images/receipt_clean_01.png",
+      "kind": "image",
+      "expect": "ok",
+      "error_code": null,
+      "invoices": [
+        {
+          "invoice_number": "INV21665",
+          "invoice_date": "2025-03-01",
+          "supplier_name": "Bluewave Logistics LLC",
+          "customer_name": null,
+          "subtotal": "5823.17",
+          "tax": "436.74",
+          "total": "6259.91",
+          "currency": "BDT",
+          "line_items": [
+            {
+              "description": "Delivery and handling",
+              "quantity": "1",
+              "unit_price": "25.83",
+              "amount": "25.83"
+            },
+            {
+              "description": "Training workshop",
+              "quantity": "10",
+              "unit_price": "358.23",
+              "amount": "3582.30"
+            },
+            {
+              "description": "Steel bolts M8 (box of 100)",
+              "quantity": "2",
+              "unit_price": "14.60",
+              "amount": "29.20"
+            },
+            {
+              "description": "Software license (annual)",
+              "quantity": "4",
+              "unit_price": "546.46",
+              "amount": "2185.84"
+            }
+          ]
+        }
+      ],
+      "expected_issues": [],
+      "tags": [
+        "image",
+        "png",
+        "clean",
+        "receipt"
+      ],
+      "phase": "main"
+    },
+    {
+      "file": "images/classic_scan_02.png",
+      "kind": "image",
+      "expect": "ok",
+      "error_code": null,
+      "invoices": [
+        {
+          "invoice_number": "BL-74261",
+          "invoice_date": "2026-07-10",
+          "supplier_name": "Greenfield Office Solutions",
+          "customer_name": "Oakwood Property Partners",
+          "subtotal": "7955.84",
+          "tax": "1591.17",
+          "total": "9547.01",
+          "currency": "GBP",
+          "line_items": [
+            {
+              "description": "On-site support visit",
+              "quantity": "12",
+              "unit_price": "129.62",
+              "amount": "1555.44"
+            },
+            {
+              "description": "Network switch 24-port",
+              "quantity": "20",
+              "unit_price": "320.02",
+              "amount": "6400.40"
+            }
+          ]
+        }
+      ],
+      "expected_issues": [],
+      "tags": [
+        "image",
+        "png",
+        "scan",
+        "classic"
+      ],
+      "phase": "main"
+    },
+    {
+      "file": "images/modern_scan_03.jpg",
+      "kind": "image",
+      "expect": "ok",
+      "error_code": null,
+      "invoices": [
+        {
+          "invoice_number": "INV-27312",
+          "invoice_date": "2025-06-27",
+          "supplier_name": "Bluewave Logistics LLC",
+          "customer_name": "Hillcrest School Trust",
+          "subtotal": "12743.86",
+          "tax": "2421.33",
+          "total": "15165.19",
+          "currency": "EUR",
+          "line_items": [
+            {
+              "description": "On-site support visit",
+              "quantity": "2",
+              "unit_price": "228.85",
+              "amount": "457.70"
+            },
+            {
+              "description": "Printer toner cartridge",
+              "quantity": "1",
+              "unit_price": "79.36",
+              "amount": "79.36"
+            },
+            {
+              "description": "Steel bolts M8 (box of 100)",
+              "quantity": "3",
+              "unit_price": "15.10",
+              "amount": "45.30"
+            },
+            {
+              "description": "Training workshop",
+              "quantity": "25",
+              "unit_price": "486.46",
+              "amount": "12161.50"
+            }
+          ]
+        }
+      ],
+      "expected_issues": [],
+      "tags": [
+        "image",
+        "jpg",
+        "scan",
+        "modern"
+      ],
+      "phase": "main"
+    },
+    {
+      "file": "images/statement_noisy_04.jpg",
+      "kind": "image",
+      "expect": "ok",
+      "error_code": null,
+      "invoices": [
+        {
+          "invoice_number": "INV76358",
+          "invoice_date": "2025-06-08",
+          "supplier_name": "Brightstar Electronics GmbH",
+          "customer_name": "Cedar Logistics Hub",
+          "subtotal": "1175.96",
+          "tax": "211.67",
+          "total": "1387.63",
+          "currency": "INR",
+          "line_items": [
+            {
+              "description": "A4 copier paper (ream)",
+              "quantity": "20",
+              "unit_price": "8.37",
+              "amount": "167.40"
+            },
+            {
+              "description": "On-site support visit",
+              "quantity": "4",
+              "unit_price": "252.14",
+              "amount": "1008.56"
+            }
+          ]
+        }
+      ],
+      "expected_issues": [],
+      "tags": [
+        "image",
+        "jpg",
+        "noisy",
+        "statement"
+      ],
+      "phase": "main"
+    },
+    {
+      "file": "images/receipt_lowres_05.jpg",
+      "kind": "image",
+      "expect": "ok",
+      "error_code": null,
+      "invoices": [
+        {
+          "invoice_number": "SI/2025/94118",
+          "invoice_date": "2026-04-24",
+          "supplier_name": "Brightstar Electronics GmbH",
+          "customer_name": null,
+          "subtotal": "20.97",
+          "tax": "3.77",
+          "total": "24.74",
+          "currency": "INR",
+          "line_items": [
+            {
+              "description": "Safety gloves (pair)",
+              "quantity": "3",
+              "unit_price": "6.99",
+              "amount": "20.97"
+            }
+          ]
+        }
+      ],
+      "expected_issues": [],
+      "tags": [
+        "image",
+        "jpg",
+        "lowres",
+        "receipt"
+      ],
+      "phase": "main"
+    },
+    {
+      "file": "images/classic_faded_06.png",
+      "kind": "image",
+      "expect": "ok",
+      "error_code": null,
+      "invoices": [
+        {
+          "invoice_number": "INV28337",
+          "invoice_date": "2025-01-15",
+          "supplier_name": "Harbor Freight Services Co.",
+          "customer_name": "Riverside Home Care",
+          "subtotal": "1702.60",
+          "tax": "340.52",
+          "total": "2043.12",
+          "currency": "GBP",
+          "line_items": [
+            {
+              "description": "On-site support visit",
+              "quantity": "12",
+              "unit_price": "133.20",
+              "amount": "1598.40"
+            },
+            {
+              "description": "Medical gauze pack",
+              "quantity": "10",
+              "unit_price": "10.42",
+              "amount": "104.20"
+            }
+          ]
+        }
+      ],
+      "expected_issues": [],
+      "tags": [
+        "image",
+        "png",
+        "faded",
+        "classic"
+      ],
+      "phase": "main"
+    },
+    {
+      "file": "images/modern_skewed_07.jpg",
+      "kind": "image",
+      "expect": "ok",
+      "error_code": null,
+      "invoices": [
+        {
+          "invoice_number": "SI/2025/47865",
+          "invoice_date": "2026-06-10",
+          "supplier_name": "Evergreen Facilities Management",
+          "customer_name": "Sunrise Retail Group",
+          "subtotal": "6954.80",
+          "tax": "1321.41",
+          "total": "8276.21",
+          "currency": "EUR",
+          "line_items": [
+            {
+              "description": "Cloud hosting (monthly)",
+              "quantity": "20",
+              "unit_price": "347.74",
+              "amount": "6954.80"
+            }
+          ]
+        }
+      ],
+      "expected_issues": [],
+      "tags": [
+        "image",
+        "jpg",
+        "skewed",
+        "modern"
+      ],
+      "phase": "main"
+    },
+    {
+      "file": "images/statement_rotated90_08.png",
+      "kind": "image",
+      "expect": "ok",
+      "error_code": null,
+      "invoices": [
+        {
+          "invoice_number": "TX-88622",
+          "invoice_date": "2026-01-13",
+          "supplier_name": "Delta Textiles Pvt Ltd",
+          "customer_name": "Metro Health Clinic",
+          "subtotal": "2513.81",
+          "tax": "377.07",
+          "total": "2890.88",
+          "currency": "BDT",
+          "line_items": [
+            {
+              "description": "Cloud hosting (monthly)",
+              "quantity": "4",
+              "unit_price": "531.63",
+              "amount": "2126.52"
+            },
+            {
+              "description": "Medical gauze pack",
+              "quantity": "20",
+              "unit_price": "3.84",
+              "amount": "76.80"
+            },
+            {
+              "description": "Consulting services",
+              "quantity": "4",
+              "unit_price": "76.10",
+              "amount": "304.40"
+            },
+            {
+              "description": "A4 copier paper (ream)",
+              "quantity": "1",
+              "unit_price": "6.09",
+              "amount": "6.09"
+            }
+          ]
+        }
+      ],
+      "expected_issues": [],
+      "tags": [
+        "image",
+        "png",
+        "rotated90",
+        "statement"
+      ],
+      "phase": "main"
+    },
+    {
+      "file": "images/receipt_scan_09.tiff",
+      "kind": "image",
+      "expect": "ok",
+      "error_code": null,
+      "invoices": [
+        {
+          "invoice_number": "SI/2025/67583",
+          "invoice_date": "2025-01-20",
+          "supplier_name": "Silverline Printing Press",
+          "customer_name": null,
+          "subtotal": "204.40",
+          "tax": "0.00",
+          "total": "204.40",
+          "currency": "USD",
+          "line_items": [
+            {
+              "description": "LED panel light 60x60",
+              "quantity": "5",
+              "unit_price": "40.88",
+              "amount": "204.40"
+            }
+          ]
+        }
+      ],
+      "expected_issues": [],
+      "tags": [
+        "image",
+        "tiff",
+        "scan",
+        "receipt"
+      ],
+      "phase": "main"
+    },
+    {
+      "file": "images/classic_clean_10.jpg",
+      "kind": "image",
+      "expect": "ok",
+      "error_code": null,
+      "invoices": [
+        {
+          "invoice_number": "SI/2025/18096",
+          "invoice_date": "2025-08-15",
+          "supplier_name": "Delta Textiles Pvt Ltd",
+          "customer_name": "Granite Construction Co",
+          "subtotal": "78.75",
+          "tax": "15.75",
+          "total": "94.50",
+          "currency": "GBP",
+          "line_items": [
+            {
+              "description": "Safety gloves (pair)",
+              "quantity": "25",
+              "unit_price": "3.15",
+              "amount": "78.75"
+            }
+          ]
+        }
+      ],
+      "expected_issues": [],
+      "tags": [
+        "image",
+        "jpg",
+        "clean",
+        "classic"
+      ],
+      "phase": "main"
+    },
+    {
+      "file": "images/modern_noisy_11.png",
+      "kind": "image",
+      "expect": "ok",
+      "error_code": null,
+      "invoices": [
+        {
+          "invoice_number": "BL-33962",
+          "invoice_date": "2025-07-11",
+          "supplier_name": "Bluewave Logistics LLC",
+          "customer_name": "Vertex Hospitality Ltd",
+          "subtotal": "193.42",
+          "tax": "40.62",
+          "total": "234.04",
+          "currency": "EUR",
+          "line_items": [
+            {
+              "description": "On-site support visit",
+              "quantity": "2",
+              "unit_price": "96.71",
+              "amount": "193.42"
+            }
+          ]
+        }
+      ],
+      "expected_issues": [],
+      "tags": [
+        "image",
+        "png",
+        "noisy",
+        "modern"
+      ],
+      "phase": "main"
+    },
+    {
+      "file": "images/statement_scan_12.jpg",
+      "kind": "image",
+      "expect": "ok",
+      "error_code": null,
+      "invoices": [
+        {
+          "invoice_number": "BL-50975",
+          "invoice_date": "2025-01-23",
+          "supplier_name": "Crescent Foods Limited",
+          "customer_name": "Cedar Logistics Hub",
+          "subtotal": "32.45",
+          "tax": "6.49",
+          "total": "38.94",
+          "currency": "GBP",
+          "line_items": [
+            {
+              "description": "Data backup service",
+              "quantity": "1",
+              "unit_price": "32.45",
+              "amount": "32.45"
+            }
+          ]
+        }
+      ],
+      "expected_issues": [],
+      "tags": [
+        "image",
+        "jpg",
+        "scan",
+        "statement"
+      ],
+      "phase": "main"
+    },
+    {
+      "file": "images/classic_multipage.tiff",
+      "kind": "image",
+      "expect": "ok",
+      "error_code": null,
+      "invoices": [
+        {
+          "invoice_number": "BL-50747",
+          "invoice_date": "2025-06-27",
+          "supplier_name": "Pioneer Packaging Ltd",
+          "customer_name": "Vertex Hospitality Ltd",
+          "subtotal": "50939.64",
+          "tax": "10187.93",
+          "total": "61127.57",
+          "currency": "GBP",
+          "line_items": [
+            {
+              "description": "Network switch 24-port",
+              "quantity": "12",
+              "unit_price": "313.98",
+              "amount": "3767.76"
+            },
+            {
+              "description": "A4 copier paper (ream)",
+              "quantity": "3",
+              "unit_price": "5.64",
+              "amount": "16.92"
+            },
+            {
+              "description": "Office chair ergonomic",
+              "quantity": "1",
+              "unit_price": "171.20",
+              "amount": "171.20"
+            },
+            {
+              "description": "Delivery and handling",
+              "quantity": "5",
+              "unit_price": "66.48",
+              "amount": "332.40"
+            },
+            {
+              "description": "On-site support visit",
+              "quantity": "20",
+              "unit_price": "96.41",
+              "amount": "1928.20"
+            },
+            {
+              "description": "Cotton fabric roll",
+              "quantity": "1",
+              "unit_price": "88.94",
+              "amount": "88.94"
+            },
+            {
+              "description": "Printer toner cartridge",
+              "quantity": "20",
+              "unit_price": "89.32",
+              "amount": "1786.40"
+            },
+            {
+              "description": "Training workshop",
+              "quantity": "1",
+              "unit_price": "1071.07",
+              "amount": "1071.07"
+            },
+            {
+              "description": "LED panel light 60x60",
+              "quantity": "2",
+              "unit_price": "45.45",
+              "amount": "90.90"
+            },
+            {
+              "description": "Safety gloves (pair)",
+              "quantity": "10",
+              "unit_price": "6.41",
+              "amount": "64.10"
+            },
+            {
+              "description": "Data backup service",
+              "quantity": "1",
+              "unit_price": "96.37",
+              "amount": "96.37"
+            },
+            {
+              "description": "Software license (annual)",
+              "quantity": "5",
+              "unit_price": "922.69",
+              "amount": "4613.45"
+            },
+            {
+              "description": "Medical gauze pack",
+              "quantity": "5",
+              "unit_price": "7.29",
+              "amount": "36.45"
+            },
+            {
+              "description": "Packaging cartons large",
+              "quantity": "1",
+              "unit_price": "1.24",
+              "amount": "1.24"
+            },
+            {
+              "description": "Maintenance contract",
+              "quantity": "25",
+              "unit_price": "734.81",
+              "amount": "18370.25"
+            },
+            {
+              "description": "Consulting services",
+              "quantity": "1",
+              "unit_price": "73.41",
+              "amount": "73.41"
+            },
+            {
+              "description": "Cloud hosting (monthly)",
+              "quantity": "3",
+              "unit_price": "118.71",
+              "amount": "356.13"
+            },
+            {
+              "description": "Steel bolts M8 (box of 100)",
+              "quantity": "25",
+              "unit_price": "15.29",
+              "amount": "382.25"
+            },
+            {
+              "description": "Software license (annual) - batch 19",
+              "quantity": "6",
+              "unit_price": "422.07",
+              "amount": "2532.42"
+            },
+            {
+              "description": "Delivery and handling - batch 20",
+              "quantity": "7",
+              "unit_price": "32.65",
+              "amount": "228.55"
+            },
+            {
+              "description": "Packaging cartons large - batch 21",
+              "quantity": "6",
+              "unit_price": "3.68",
+              "amount": "22.08"
+            },
+            {
+              "description": "Printer toner cartridge - batch 22",
+              "quantity": "8",
+              "unit_price": "40.42",
+              "amount": "323.36"
+            },
+            {
+              "description": "Steel bolts M8 (box of 100) - batch 23",
+              "quantity": "9",
+              "unit_price": "14.39",
+              "amount": "129.51"
+            },
+            {
+              "description": "LED panel light 60x60 - batch 24",
+              "quantity": "8",
+              "unit_price": "45.15",
+              "amount": "361.20"
+            },
+            {
+              "description": "Data backup service - batch 25",
+              "quantity": "8",
+              "unit_price": "40.42",
+              "amount": "323.36"
+            },
+            {
+              "description": "Training workshop - batch 26",
+              "quantity": "7",
+              "unit_price": "562.03",
+              "amount": "3934.21"
+            },
+            {
+              "description": "Cotton fabric roll - batch 27",
+              "quantity": "9",
+              "unit_price": "99.77",
+              "amount": "897.93"
+            },
+            {
+              "description": "Cotton fabric roll - batch 28",
+              "quantity": "2",
+              "unit_price": "143.68",
+              "amount": "287.36"
+            },
+            {
+              "description": "Software license (annual) - batch 29",
+              "quantity": "9",
+              "unit_price": "384.25",
+              "amount": "3458.25"
+            },
+            {
+              "description": "Consulting services - batch 30",
+              "quantity": "4",
+              "unit_price": "112.02",
+              "amount": "448.08"
+            },
+            {
+              "description": "Delivery and handling - batch 31",
+              "quantity": "1",
+              "unit_price": "74.69",
+              "amount": "74.69"
+            },
+            {
+              "description": "Software license (annual) - batch 32",
+              "quantity": "8",
+              "unit_price": "583.90",
+              "amount": "4671.20"
+            }
+          ]
+        }
+      ],
+      "expected_issues": [],
+      "tags": [
+        "image",
+        "tiff",
+        "multipage"
+      ],
+      "phase": "main"
+    },
+    {
+      "file": "spreadsheets/ap_register_2025_multisheet.xlsx",
+      "kind": "xlsx",
+      "expect": "ok",
+      "error_code": null,
+      "invoices": [
+        {
+          "invoice_number": "BL-1651",
+          "invoice_date": "2026-01-19",
+          "supplier_name": "Orion Software Systems",
+          "customer_name": "Metro Health Clinic",
+          "subtotal": "2034.49",
+          "tax": "305.17",
+          "total": "2339.66",
+          "currency": "BDT",
+          "line_items": []
+        },
+        {
+          "invoice_number": "INV79882",
+          "invoice_date": "2026-01-06",
+          "supplier_name": "Crescent Foods Limited",
+          "customer_name": "Unity Microfinance",
+          "subtotal": "1193.65",
+          "tax": "89.52",
+          "total": "1283.17",
+          "currency": "BDT",
+          "line_items": []
+        },
+        {
+          "invoice_number": "INV-99591",
+          "invoice_date": "2025-01-03",
+          "supplier_name": "Crescent Foods Limited",
+          "customer_name": "Lakeside Manufacturing PLC",
+          "subtotal": "6073.48",
+          "tax": "1093.23",
+          "total": "7166.71",
+          "currency": "INR",
+          "line_items": []
+        },
+        {
+          "invoice_number": "TX-57641",
+          "invoice_date": "2026-05-13",
+          "supplier_name": "Northwind Traders Inc",
+          "customer_name": "Riverside Home Care",
+          "subtotal": "367.61",
+          "tax": "73.52",
+          "total": "441.13",
+          "currency": "GBP",
+          "line_items": []
+        },
+        {
+          "invoice_number": "TX-5493",
+          "invoice_date": "2025-09-19",
+          "supplier_name": "Evergreen Facilities Management",
+          "customer_name": "Riverside Home Care",
+          "subtotal": "2666.92",
+          "tax": "480.05",
+          "total": "3146.97",
+          "currency": "INR",
+          "line_items": []
+        },
+        {
+          "invoice_number": "SI/2025/21058",
+          "invoice_date": "2025-02-19",
+          "supplier_name": "Greenfield Office Solutions",
+          "customer_name": "Riverside Home Care",
+          "subtotal": "5292.73",
+          "tax": "1005.62",
+          "total": "6298.35",
+          "currency": "EUR",
+          "line_items": []
+        },
+        {
+          "invoice_number": "INV-45654",
+          "invoice_date": "2025-02-15",
+          "supplier_name": "Brightstar Electronics GmbH",
+          "customer_name": "Metro Health Clinic",
+          "subtotal": "179.61",
+          "tax": "13.47",
+          "total": "193.08",
+          "currency": "BDT",
+          "line_items": []
+        },
+        {
+          "invoice_number": "TX-92774",
+          "invoice_date": "2025-04-21",
+          "supplier_name": "Bluewave Logistics LLC",
+          "customer_name": "Riverside Home Care",
+          "subtotal": "1803.63",
+          "tax": "324.65",
+          "total": "2128.28",
+          "currency": "INR",
+          "line_items": []
+        },
+        {
+          "invoice_number": "28940",
+          "invoice_date": "2025-03-08",
+          "supplier_name": "Silverline Printing Press",
+          "customer_name": "Nova Pharmaceuticals",
+          "subtotal": "317.61",
+          "tax": "23.82",
+          "total": "341.43",
+          "currency": "BDT",
+          "line_items": []
+        },
+        {
+          "invoice_number": "INV-82371",
+          "invoice_date": "2025-03-28",
+          "supplier_name": "Atlas Engineering Works",
+          "customer_name": "Unity Microfinance",
+          "subtotal": "519.59",
+          "tax": "62.35",
+          "total": "581.94",
+          "currency": "INR",
+          "line_items": []
+        },
+        {
+          "invoice_number": "INV75440",
+          "invoice_date": "2025-01-20",
+          "supplier_name": "Atlas Engineering Works",
+          "customer_name": "Metro Health Clinic",
+          "subtotal": "678.21",
+          "tax": "50.87",
+          "total": "729.08",
+          "currency": "BDT",
+          "line_items": []
+        },
+        {
+          "invoice_number": "SI/2025/48994",
+          "invoice_date": "2025-04-28",
+          "supplier_name": "Delta Textiles Pvt Ltd",
+          "customer_name": "Hillcrest School Trust",
+          "subtotal": "6343.00",
+          "tax": "1268.60",
+          "total": "7611.60",
+          "currency": "GBP",
+          "line_items": []
+        },
+        {
+          "invoice_number": "BL-93481",
+          "invoice_date": "2025-02-15",
+          "supplier_name": "Delta Textiles Pvt Ltd",
+          "customer_name": "Vertex Hospitality Ltd",
+          "subtotal": "126.40",
+          "tax": "9.48",
+          "total": "135.88",
+          "currency": "BDT",
+          "line_items": []
+        },
+        {
+          "invoice_number": "47331",
+          "invoice_date": "2025-04-12",
+          "supplier_name": "Crescent Foods Limited",
+          "customer_name": "Bayview Dental Practice",
+          "subtotal": "10228.10",
+          "tax": "843.82",
+          "total": "11071.92",
+          "currency": "USD",
+          "line_items": []
+        },
+        {
+          "invoice_number": "TX-35453",
+          "invoice_date": "2026-07-22",
+          "supplier_name": "Evergreen Facilities Management",
+          "customer_name": "Cedar Logistics Hub",
+          "subtotal": "9.00",
+          "tax": "1.08",
+          "total": "10.08",
+          "currency": "INR",
+          "line_items": []
+        },
+        {
+          "invoice_number": "71315",
+          "invoice_date": "2025-07-09",
+          "supplier_name": "Brightstar Electronics GmbH",
+          "customer_name": "Sunrise Retail Group",
+          "subtotal": "135.78",
+          "tax": "27.16",
+          "total": "162.94",
+          "currency": "GBP",
+          "line_items": []
+        },
+        {
+          "invoice_number": "BL-1950",
+          "invoice_date": "2025-02-18",
+          "supplier_name": "Harbor Freight Services Co.",
+          "customer_name": "Oakwood Property Partners",
+          "subtotal": "529.15",
+          "tax": "105.83",
+          "total": "634.98",
+          "currency": "GBP",
+          "line_items": []
+        },
+        {
+          "invoice_number": "TX-50103",
+          "invoice_date": "2025-11-05",
+          "supplier_name": "Kestrel Data Labs",
+          "customer_name": "Nova Pharmaceuticals",
+          "subtotal": "745.10",
+          "tax": "149.02",
+          "total": "894.12",
+          "currency": "GBP",
+          "line_items": []
+        },
+        {
+          "invoice_number": "BL-98626",
+          "invoice_date": "2025-11-06",
+          "supplier_name": "Evergreen Facilities Management",
+          "customer_name": "Metro Health Clinic",
+          "subtotal": "135.03",
+          "tax": "20.25",
+          "total": "155.28",
+          "currency": "BDT",
+          "line_items": []
+        },
+        {
+          "invoice_number": "BL-44162",
+          "invoice_date": "2026-01-08",
+          "supplier_name": "Silverline Printing Press",
+          "customer_name": "Lakeside Manufacturing PLC",
+          "subtotal": "209.00",
+          "tax": "25.08",
+          "total": "234.08",
+          "currency": "INR",
+          "line_items": []
+        },
+        {
+          "invoice_number": "INV-91174",
+          "invoice_date": "2025-05-16",
+          "supplier_name": "Atlas Engineering Works",
+          "customer_name": "Lakeside Manufacturing PLC",
+          "subtotal": "2778.36",
+          "tax": "583.46",
+          "total": "3361.82",
+          "currency": "EUR",
+          "line_items": []
+        },
+        {
+          "invoice_number": "SI/2025/42319",
+          "invoice_date": "2025-09-17",
+          "supplier_name": "Pioneer Packaging Ltd",
+          "customer_name": "Nova Pharmaceuticals",
+          "subtotal": "112.44",
+          "tax": "16.87",
+          "total": "129.31",
+          "currency": "BDT",
+          "line_items": []
+        }
+      ],
+      "expected_issues": [],
+      "tags": [
+        "xlsx",
+        "register",
+        "multisheet",
+        "title_rows"
+      ],
+      "phase": "main"
+    },
+    {
+      "file": "spreadsheets/invoice_lines_export.xlsx",
+      "kind": "xlsx",
+      "expect": "ok",
+      "error_code": null,
+      "invoices": [
+        {
+          "invoice_number": "INV-34713",
+          "invoice_date": "2026-03-14",
+          "supplier_name": "Delta Textiles Pvt Ltd",
+          "customer_name": "Granite Construction Co",
+          "subtotal": null,
+          "tax": null,
+          "total": "82.91",
+          "currency": "GBP",
+          "line_items": [
+            {
+              "description": "Steel bolts M8 (box of 100)",
+              "quantity": "2",
+              "unit_price": "24.52",
+              "amount": "49.04"
+            },
+            {
+              "description": "Medical gauze pack",
+              "quantity": "5",
+              "unit_price": "4.01",
+              "amount": "20.05"
+            }
+          ]
+        },
+        {
+          "invoice_number": "TX-5800",
+          "invoice_date": "2026-05-14",
+          "supplier_name": "Orion Software Systems",
+          "customer_name": "Riverside Home Care",
+          "subtotal": null,
+          "tax": null,
+          "total": "8456.16",
+          "currency": "INR",
+          "line_items": [
+            {
+              "description": "Delivery and handling",
+              "quantity": "4",
+              "unit_price": "65.09",
+              "amount": "260.36"
+            },
+            {
+              "description": "Maintenance contract",
+              "quantity": "20",
+              "unit_price": "193.92",
+              "amount": "3878.40"
+            },
+            {
+              "description": "Cotton fabric roll",
+              "quantity": "12",
+              "unit_price": "121.06",
+              "amount": "1452.72"
+            },
+            {
+              "description": "Printer toner cartridge",
+              "quantity": "20",
+              "unit_price": "78.46",
+              "amount": "1569.20"
+            },
+            {
+              "description": "Medical gauze pack",
+              "quantity": "1",
+              "unit_price": "5.56",
+              "amount": "5.56"
+            }
+          ]
+        },
+        {
+          "invoice_number": "BL-75539",
+          "invoice_date": "2026-08-10",
+          "supplier_name": "Orion Software Systems",
+          "customer_name": "Unity Microfinance",
+          "subtotal": null,
+          "tax": null,
+          "total": "232.16",
+          "currency": "EUR",
+          "line_items": [
+            {
+              "description": "Delivery and handling",
+              "quantity": "1",
+              "unit_price": "77.62",
+              "amount": "77.62"
+            },
+            {
+              "description": "Medical gauze pack",
+              "quantity": "25",
+              "unit_price": "4.57",
+              "amount": "114.25"
+            }
+          ]
+        },
+        {
+          "invoice_number": "INV89821",
+          "invoice_date": "2026-07-29",
+          "supplier_name": "Orion Software Systems",
+          "customer_name": "Metro Health Clinic",
+          "subtotal": null,
+          "tax": null,
+          "total": "291.71",
+          "currency": "BDT",
+          "line_items": [
+            {
+              "description": "Steel bolts M8 (box of 100)",
+              "quantity": "3",
+              "unit_price": "8.62",
+              "amount": "25.86"
+            },
+            {
+              "description": "A4 copier paper (ream)",
+              "quantity": "25",
+              "unit_price": "5.91",
+              "amount": "147.75"
+            },
+            {
+              "description": "Safety gloves (pair)",
+              "quantity": "25",
+              "unit_price": "3.91",
+              "amount": "97.75"
+            }
+          ]
+        },
+        {
+          "invoice_number": "TX-8799",
+          "invoice_date": "2025-03-07",
+          "supplier_name": "Silverline Printing Press",
+          "customer_name": "Sunrise Retail Group",
+          "subtotal": null,
+          "tax": null,
+          "total": "213.23",
+          "currency": "EUR",
+          "line_items": [
+            {
+              "description": "Printer toner cartridge",
+              "quantity": "3",
+              "unit_price": "57.08",
+              "amount": "171.24"
+            },
+            {
+              "description": "A4 copier paper (ream)",
+              "quantity": "1",
+              "unit_price": "4.98",
+              "amount": "4.98"
+            }
+          ]
+        },
+        {
+          "invoice_number": "BL-38848",
+          "invoice_date": "2025-11-15",
+          "supplier_name": "Crescent Foods Limited",
+          "customer_name": "Metro Health Clinic",
+          "subtotal": null,
+          "tax": null,
+          "total": "760.01",
+          "currency": "BDT",
+          "line_items": [
+            {
+              "description": "Cotton fabric roll",
+              "quantity": "4",
+              "unit_price": "132.10",
+              "amount": "528.40"
+            },
+            {
+              "description": "Medical gauze pack",
+              "quantity": "12",
+              "unit_price": "11.04",
+              "amount": "132.48"
+            }
+          ]
+        },
+        {
+          "invoice_number": "BL-28361",
+          "invoice_date": "2025-02-24",
+          "supplier_name": "Delta Textiles Pvt Ltd",
+          "customer_name": "Lakeside Manufacturing PLC",
+          "subtotal": null,
+          "tax": null,
+          "total": "2321.46",
+          "currency": "BDT",
+          "line_items": [
+            {
+              "description": "Consulting services",
+              "quantity": "4",
+              "unit_price": "111.01",
+              "amount": "444.04"
+            },
+            {
+              "description": "Office chair ergonomic",
+              "quantity": "2",
+              "unit_price": "270.66",
+              "amount": "541.32"
+            },
+            {
+              "description": "Printer toner cartridge",
+              "quantity": "2",
+              "unit_price": "40.95",
+              "amount": "81.90"
+            },
+            {
+              "description": "Medical gauze pack",
+              "quantity": "2",
+              "unit_price": "5.36",
+              "amount": "10.72"
+            },
+            {
+              "description": "Cloud hosting (monthly)",
+              "quantity": "4",
+              "unit_price": "235.17",
+              "amount": "940.68"
+            }
+          ]
+        },
+        {
+          "invoice_number": "BL-4964",
+          "invoice_date": "2025-04-09",
+          "supplier_name": "Northwind Traders Inc",
+          "customer_name": "Unity Microfinance",
+          "subtotal": null,
+          "tax": null,
+          "total": "2800.49",
+          "currency": "EUR",
+          "line_items": [
+            {
+              "description": "Consulting services",
+              "quantity": "1",
+              "unit_price": "72.70",
+              "amount": "72.70"
+            },
+            {
+              "description": "Data backup service",
+              "quantity": "2",
+              "unit_price": "79.98",
+              "amount": "159.96"
+            },
+            {
+              "description": "A4 copier paper (ream)",
+              "quantity": "1",
+              "unit_price": "6.12",
+              "amount": "6.12"
+            },
+            {
+              "description": "Maintenance contract",
+              "quantity": "10",
+              "unit_price": "168.22",
+              "amount": "1682.20"
+            },
+            {
+              "description": "Printer toner cartridge",
+              "quantity": "4",
+              "unit_price": "103.19",
+              "amount": "412.76"
+            }
+          ]
+        }
+      ],
+      "expected_issues": [],
+      "tags": [
+        "xlsx",
+        "line_items"
+      ],
+      "phase": "main"
+    },
+    {
+      "file": "spreadsheets/legacy_register.xls",
+      "kind": "xls",
+      "expect": "ok",
+      "error_code": null,
+      "invoices": [
+        {
+          "invoice_number": "1665",
+          "invoice_date": "2026-04-09",
+          "supplier_name": "Evergreen Facilities Management",
+          "customer_name": "Nova Pharmaceuticals",
+          "subtotal": "216.36",
+          "tax": "32.45",
+          "total": "248.81",
+          "currency": "BDT",
+          "line_items": []
+        },
+        {
+          "invoice_number": "BL-61634",
+          "invoice_date": "2025-03-29",
+          "supplier_name": "Summit Consulting Group",
+          "customer_name": "Lakeside Manufacturing PLC",
+          "subtotal": "2411.89",
+          "tax": "168.83",
+          "total": "2580.72",
+          "currency": "USD",
+          "line_items": []
+        },
+        {
+          "invoice_number": "INV19605",
+          "invoice_date": "2026-05-27",
+          "supplier_name": "Bluewave Logistics LLC",
+          "customer_name": "Lakeside Manufacturing PLC",
+          "subtotal": "868.99",
+          "tax": "104.28",
+          "total": "973.27",
+          "currency": "INR",
+          "line_items": []
+        },
+        {
+          "invoice_number": "INV42564",
+          "invoice_date": "2025-11-26",
+          "supplier_name": "Acme Industrial Supplies Ltd",
+          "customer_name": "Oakwood Property Partners",
+          "subtotal": "225.23",
+          "tax": "0.00",
+          "total": "225.23",
+          "currency": "USD",
+          "line_items": []
+        },
+        {
+          "invoice_number": "INV-25891",
+          "invoice_date": "2025-03-21",
+          "supplier_name": "Orion Software Systems",
+          "customer_name": "Lakeside Manufacturing PLC",
+          "subtotal": "17884.63",
+          "tax": "1251.92",
+          "total": "19136.55",
+          "currency": "USD",
+          "line_items": []
+        },
+        {
+          "invoice_number": "INV-82643",
+          "invoice_date": "2026-08-10",
+          "supplier_name": "Silverline Printing Press",
+          "customer_name": "Metro Health Clinic",
+          "subtotal": "138.96",
+          "tax": "9.73",
+          "total": "148.69",
+          "currency": "USD",
+          "line_items": []
+        },
+        {
+          "invoice_number": "SI/2025/53394",
+          "invoice_date": "2025-09-02",
+          "supplier_name": "Orion Software Systems",
+          "customer_name": "Nova Pharmaceuticals",
+          "subtotal": "102.00",
+          "tax": "7.65",
+          "total": "109.65",
+          "currency": "BDT",
+          "line_items": []
+        },
+        {
+          "invoice_number": "SI/2025/88490",
+          "invoice_date": "2026-05-29",
+          "supplier_name": "Orion Software Systems",
+          "customer_name": "Nova Pharmaceuticals",
+          "subtotal": "889.98",
+          "tax": "178.00",
+          "total": "1067.98",
+          "currency": "GBP",
+          "line_items": []
+        },
+        {
+          "invoice_number": "SI/2025/72272",
+          "invoice_date": "2026-04-01",
+          "supplier_name": "Acme Industrial Supplies Ltd",
+          "customer_name": "Vertex Hospitality Ltd",
+          "subtotal": "1367.54",
+          "tax": "0.00",
+          "total": "1367.54",
+          "currency": "USD",
+          "line_items": []
+        },
+        {
+          "invoice_number": "66664",
+          "invoice_date": "2026-07-04",
+          "supplier_name": "Pioneer Packaging Ltd",
+          "customer_name": "Granite Construction Co",
+          "subtotal": "11349.20",
+          "tax": "794.44",
+          "total": "12143.64",
+          "currency": "USD",
+          "line_items": []
+        }
+      ],
+      "expected_issues": [],
+      "tags": [
+        "xls",
+        "register"
+      ],
+      "phase": "main"
+    },
+    {
+      "file": "spreadsheets/eu_invoices_semicolon_latin1.csv",
+      "kind": "csv",
+      "expect": "ok",
+      "error_code": null,
+      "invoices": [
+        {
+          "invoice_number": "BL-76232",
+          "invoice_date": "2026-08-15",
+          "supplier_name": "Müller Bürobedarf GmbH",
+          "customer_name": "Metro Health Clinic",
+          "subtotal": "4877.90",
+          "tax": "926.80",
+          "total": "5804.70",
+          "currency": "EUR",
+          "line_items": []
+        },
+        {
+          "invoice_number": "TX-63249",
+          "invoice_date": "2025-04-08",
+          "supplier_name": "Meridian Medical Supplies",
+          "customer_name": "Hillcrest School Trust",
+          "subtotal": "48.05",
+          "tax": "10.09",
+          "total": "58.14",
+          "currency": "EUR",
+          "line_items": []
+        },
+        {
+          "invoice_number": "54999",
+          "invoice_date": "2026-02-01",
+          "supplier_name": "Bluewave Logistics LLC",
+          "customer_name": "Cedar Logistics Hub",
+          "subtotal": "523.35",
+          "tax": "104.67",
+          "total": "628.02",
+          "currency": "EUR",
+          "line_items": []
+        },
+        {
+          "invoice_number": "29719",
+          "invoice_date": "2025-02-16",
+          "supplier_name": "Société Générale d'Équipement SA",
+          "customer_name": "Lakeside Manufacturing PLC",
+          "subtotal": "1526.91",
+          "tax": "290.11",
+          "total": "1817.02",
+          "currency": "EUR",
+          "line_items": []
+        },
+        {
+          "invoice_number": "99464",
+          "invoice_date": "2025-09-06",
+          "supplier_name": "Atlas Engineering Works",
+          "customer_name": "Nova Pharmaceuticals",
+          "subtotal": "333.96",
+          "tax": "70.13",
+          "total": "404.09",
+          "currency": "EUR",
+          "line_items": []
+        },
+        {
+          "invoice_number": "SI/2025/93485",
+          "invoice_date": "2026-01-28",
+          "supplier_name": "Brightstar Electronics GmbH",
+          "customer_name": "Lakeside Manufacturing PLC",
+          "subtotal": "41.80",
+          "tax": "8.78",
+          "total": "50.58",
+          "currency": "EUR",
+          "line_items": []
+        },
+        {
+          "invoice_number": "BL-21379",
+          "invoice_date": "2025-10-21",
+          "supplier_name": "Brightstar Electronics GmbH",
+          "customer_name": "Sunrise Retail Group",
+          "subtotal": "2639.38",
+          "tax": "527.88",
+          "total": "3167.26",
+          "currency": "EUR",
+          "line_items": []
+        },
+        {
+          "invoice_number": "BL-90590",
+          "invoice_date": "2025-06-02",
+          "supplier_name": "Atlas Engineering Works",
+          "customer_name": "Bayview Dental Practice",
+          "subtotal": "27715.30",
+          "tax": "5543.06",
+          "total": "33258.36",
+          "currency": "EUR",
+          "line_items": []
+        }
+      ],
+      "expected_issues": [],
+      "tags": [
+        "csv",
+        "semicolon",
+        "latin1",
+        "decimal_comma"
+      ],
+      "phase": "main"
+    },
+    {
+      "file": "spreadsheets/us_invoices_utf8.csv",
+      "kind": "csv",
+      "expect": "ok",
+      "error_code": null,
+      "invoices": [
+        {
+          "invoice_number": "INV-83560",
+          "invoice_date": "2025-05-06",
+          "supplier_name": "Delta Textiles Pvt Ltd",
+          "customer_name": "Sunrise Retail Group",
+          "subtotal": "44.42",
+          "tax": "0.00",
+          "total": "44.42",
+          "currency": "USD",
+          "line_items": []
+        },
+        {
+          "invoice_number": "INV-92232",
+          "invoice_date": "2026-05-21",
+          "supplier_name": "Brightstar Electronics GmbH",
+          "customer_name": "Granite Construction Co",
+          "subtotal": "51.90",
+          "tax": "3.63",
+          "total": "55.53",
+          "currency": "USD",
+          "line_items": []
+        },
+        {
+          "invoice_number": "TX-34994",
+          "invoice_date": "2025-11-19",
+          "supplier_name": "Orion Software Systems",
+          "customer_name": "Lakeside Manufacturing PLC",
+          "subtotal": "20754.00",
+          "tax": "1712.21",
+          "total": "22466.21",
+          "currency": "USD",
+          "line_items": []
+        },
+        {
+          "invoice_number": "INV8251",
+          "invoice_date": "2025-07-13",
+          "supplier_name": "Northwind Traders Inc",
+          "customer_name": "Bayview Dental Practice",
+          "subtotal": "66.20",
+          "tax": "4.63",
+          "total": "70.83",
+          "currency": "USD",
+          "line_items": []
+        },
+        {
+          "invoice_number": "INV-16524",
+          "invoice_date": "2025-04-02",
+          "supplier_name": "Bluewave Logistics LLC",
+          "customer_name": "Unity Microfinance",
+          "subtotal": "566.52",
+          "tax": "0.00",
+          "total": "566.52",
+          "currency": "USD",
+          "line_items": []
+        },
+        {
+          "invoice_number": "74802",
+          "invoice_date": "2025-11-19",
+          "supplier_name": "Brightstar Electronics GmbH",
+          "customer_name": "Nova Pharmaceuticals",
+          "subtotal": "1042.32",
+          "tax": "72.96",
+          "total": "1115.28",
+          "currency": "USD",
+          "line_items": []
+        },
+        {
+          "invoice_number": "BL-48639",
+          "invoice_date": "2026-03-14",
+          "supplier_name": "Delta Textiles Pvt Ltd",
+          "customer_name": "Lakeside Manufacturing PLC",
+          "subtotal": "4342.14",
+          "tax": "303.95",
+          "total": "4646.09",
+          "currency": "USD",
+          "line_items": []
+        },
+        {
+          "invoice_number": "SI/2025/55366",
+          "invoice_date": "2025-12-07",
+          "supplier_name": "Pioneer Packaging Ltd",
+          "customer_name": "Lakeside Manufacturing PLC",
+          "subtotal": "4763.45",
+          "tax": "333.44",
+          "total": "5096.89",
+          "currency": "USD",
+          "line_items": []
+        },
+        {
+          "invoice_number": "INV-80525",
+          "invoice_date": "2026-02-22",
+          "supplier_name": "Greenfield Office Solutions",
+          "customer_name": "Nova Pharmaceuticals",
+          "subtotal": "736.24",
+          "tax": "51.54",
+          "total": "787.78",
+          "currency": "USD",
+          "line_items": []
+        },
+        {
+          "invoice_number": "43315",
+          "invoice_date": "2025-01-08",
+          "supplier_name": "Brightstar Electronics GmbH",
+          "customer_name": "Sunrise Retail Group",
+          "subtotal": "3494.04",
+          "tax": "288.26",
+          "total": "3782.30",
+          "currency": "USD",
+          "line_items": []
+        }
+      ],
+      "expected_issues": [],
+      "tags": [
+        "csv",
+        "utf8_bom",
+        "malformed_row"
+      ],
+      "phase": "main"
+    },
+    {
+      "file": "validation/total_mismatch.pdf",
+      "kind": "pdf",
+      "expect": "ok",
+      "error_code": null,
+      "invoices": [
+        {
+          "invoice_number": "TX-55895",
+          "invoice_date": "2025-02-02",
+          "supplier_name": "Bluewave Logistics LLC",
+          "customer_name": "Granite Construction Co",
+          "subtotal": "984.21",
+          "tax": "81.20",
+          "total": "1165.41",
+          "currency": "USD",
+          "line_items": [
+            {
+              "description": "Cotton fabric roll",
+              "quantity": "3",
+              "unit_price": "158.71",
+              "amount": "476.13"
+            },
+            {
+              "description": "A4 copier paper (ream)",
+              "quantity": "1",
+              "unit_price": "5.08",
+              "amount": "5.08"
+            },
+            {
+              "description": "On-site support visit",
+              "quantity": "4",
+              "unit_price": "125.75",
+              "amount": "503.00"
+            }
+          ]
+        }
+      ],
+      "expected_issues": [
+        "TOTAL_MISMATCH"
+      ],
+      "tags": [
+        "validation"
+      ],
+      "phase": "main"
+    },
+    {
+      "file": "validation/line_items_mismatch.pdf",
+      "kind": "pdf",
+      "expect": "ok",
+      "error_code": null,
+      "invoices": [
+        {
+          "invoice_number": "BL-70603",
+          "invoice_date": "2026-03-10",
+          "supplier_name": "Crescent Foods Limited",
+          "customer_name": "Sunrise Retail Group",
+          "subtotal": "9280.21",
+          "tax": "1856.04",
+          "total": "11136.25",
+          "currency": "GBP",
+          "line_items": [
+            {
+              "description": "Data backup service",
+              "quantity": "3",
+              "unit_price": "100.58",
+              "amount": "301.74"
+            },
+            {
+              "description": "Cotton fabric roll",
+              "quantity": "25",
+              "unit_price": "133.26",
+              "amount": "3371.50"
+            },
+            {
+              "description": "Safety gloves (pair)",
+              "quantity": "1",
+              "unit_price": "3.37",
+              "amount": "3.37"
+            },
+            {
+              "description": "Office chair ergonomic",
+              "quantity": "20",
+              "unit_price": "282.18",
+              "amount": "5643.60"
+            }
+          ]
+        }
+      ],
+      "expected_issues": [
+        "LINE_ITEMS_MISMATCH",
+        "LINE_ITEM_MATH"
+      ],
+      "tags": [
+        "validation"
+      ],
+      "phase": "main"
+    },
+    {
+      "file": "validation/missing_invoice_number.pdf",
+      "kind": "pdf",
+      "expect": "ok",
+      "error_code": null,
+      "invoices": [
+        {
+          "invoice_number": null,
+          "invoice_date": "2026-05-16",
+          "supplier_name": "Acme Industrial Supplies Ltd",
+          "customer_name": "Hillcrest School Trust",
+          "subtotal": "475.73",
+          "tax": "33.30",
+          "total": "509.03",
+          "currency": "USD",
+          "line_items": [
+            {
+              "description": "Network switch 24-port",
+              "quantity": "1",
+              "unit_price": "216.73",
+              "amount": "216.73"
+            },
+            {
+              "description": "Medical gauze pack",
+              "quantity": "25",
+              "unit_price": "10.36",
+              "amount": "259.00"
+            }
+          ]
+        }
+      ],
+      "expected_issues": [
+        "MISSING_FIELD"
+      ],
+      "tags": [
+        "validation",
+        "missing_number"
+      ],
+      "phase": "main"
+    },
+    {
+      "file": "validation/duplicate_a.pdf",
+      "kind": "pdf",
+      "expect": "ok",
+      "error_code": null,
+      "invoices": [
+        {
+          "invoice_number": "DUP-55120",
+          "invoice_date": "2026-08-11",
+          "supplier_name": "Brightstar Electronics GmbH",
+          "customer_name": "Metro Health Clinic",
+          "subtotal": "2105.26",
+          "tax": "400.00",
+          "total": "2505.26",
+          "currency": "EUR",
+          "line_items": [
+            {
+              "description": "Packaging cartons large",
+              "quantity": "4",
+              "unit_price": "3.06",
+              "amount": "12.24"
+            },
+            {
+              "description": "Safety gloves (pair)",
+              "quantity": "1",
+              "unit_price": "2.42",
+              "amount": "2.42"
+            },
+            {
+              "description": "Data backup service",
+              "quantity": "10",
+              "unit_price": "209.06",
+              "amount": "2090.60"
+            }
+          ]
+        }
+      ],
+      "expected_issues": [
+        "DUPLICATE_INVOICE?"
+      ],
+      "tags": [
+        "validation",
+        "duplicate_pair"
+      ],
+      "phase": "main"
+    },
+    {
+      "file": "validation/duplicate_b_rescan.png",
+      "kind": "image",
+      "expect": "ok",
+      "error_code": null,
+      "invoices": [
+        {
+          "invoice_number": "DUP-55120",
+          "invoice_date": "2026-08-11",
+          "supplier_name": "Brightstar Electronics GmbH",
+          "customer_name": "Metro Health Clinic",
+          "subtotal": "2105.26",
+          "tax": "400.00",
+          "total": "2505.26",
+          "currency": "EUR",
+          "line_items": [
+            {
+              "description": "Packaging cartons large",
+              "quantity": "4",
+              "unit_price": "3.06",
+              "amount": "12.24"
+            },
+            {
+              "description": "Safety gloves (pair)",
+              "quantity": "1",
+              "unit_price": "2.42",
+              "amount": "2.42"
+            },
+            {
+              "description": "Data backup service",
+              "quantity": "10",
+              "unit_price": "209.06",
+              "amount": "2090.60"
+            }
+          ]
+        }
+      ],
+      "expected_issues": [
+        "DUPLICATE_INVOICE?"
+      ],
+      "tags": [
+        "validation",
+        "duplicate_pair"
+      ],
+      "phase": "main"
+    },
+    {
+      "file": "corrupted/truncated.pdf",
+      "kind": "pdf",
+      "expect": "fail_or_degraded",
+      "error_code": "CORRUPTED_FILE",
+      "invoices": [],
+      "expected_issues": [],
+      "tags": [
+        "corrupted"
+      ],
+      "phase": "main"
+    },
+    {
+      "file": "corrupted/random_bytes.pdf",
+      "kind": "pdf",
+      "expect": "fail",
+      "error_code": "CORRUPTED_FILE",
+      "invoices": [],
+      "expected_issues": [],
+      "tags": [
+        "corrupted"
+      ],
+      "phase": "main"
+    },
+    {
+      "file": "corrupted/not_a_workbook.xlsx",
+      "kind": "xlsx",
+      "expect": "fail",
+      "error_code": "CORRUPTED_FILE",
+      "invoices": [],
+      "expected_issues": [],
+      "tags": [
+        "corrupted"
+      ],
+      "phase": "main"
+    },
+    {
+      "file": "corrupted/empty.png",
+      "kind": "image",
+      "expect": "reject",
+      "error_code": "EMPTY_DOCUMENT",
+      "invoices": [],
+      "expected_issues": [],
+      "tags": [
+        "corrupted"
+      ],
+      "phase": "main"
+    },
+    {
+      "file": "corrupted/notes.txt",
+      "kind": "other",
+      "expect": "reject",
+      "error_code": "UNSUPPORTED_FILE_TYPE",
+      "invoices": [],
+      "expected_issues": [],
+      "tags": [
+        "unsupported"
+      ],
+      "phase": "main"
+    },
+    {
+      "file": "corrupted/truncated_photo.jpg",
+      "kind": "image",
+      "expect": "fail_or_degraded",
+      "error_code": null,
+      "invoices": [],
+      "expected_issues": [],
+      "tags": [
+        "corrupted"
+      ],
+      "phase": "main"
+    },
+    {
+      "file": "corrupted/password_protected.pdf",
+      "kind": "pdf",
+      "expect": "fail",
+      "error_code": "ENCRYPTED_FILE",
+      "invoices": [],
+      "expected_issues": [],
+      "tags": [
+        "encrypted"
+      ],
+      "phase": "main"
+    }
+  ],
+  "reconciliation": {
+    "left": "pdf/batch_march_20_invoices.pdf",
+    "right": "crossverify/erp_export_march.xlsx",
+    "matched": 15,
+    "mismatch": 3,
+    "missing_in_right": 2,
+    "missing_in_left": 1,
+    "mismatched_invoices": {
+      "MAR-2602": [
+        "total"
+      ],
+      "MAR-2606": [
+        "invoice_date"
+      ],
+      "MAR-2610": [
+        "tax",
+        "total"
+      ]
+    }
+  }
+}

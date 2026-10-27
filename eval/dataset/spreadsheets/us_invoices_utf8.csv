@@ -1,0 +1,12 @@
+﻿invoice_number,invoice_date,vendor,customer,subtotal,tax,total,currency
+INV-83560,2025-05-06,Delta Textiles Pvt Ltd,Sunrise Retail Group,44.42,0.00,44.42,USD
+INV-92232,2026-05-21,Brightstar Electronics GmbH,Granite Construction Co,51.90,3.63,55.53,USD
+TX-34994,2025-11-19,Orion Software Systems,Lakeside Manufacturing PLC,20754.00,1712.21,22466.21,USD
+INV8251,2025-07-13,Northwind Traders Inc,Bayview Dental Practice,66.20,4.63,70.83,USD
+INV-16524,2025-04-02,Bluewave Logistics LLC,Unity Microfinance,566.52,0.00,566.52,USD
+74802,2025-11-19,Brightstar Electronics GmbH,Nova Pharmaceuticals,1042.32,72.96,1115.28,USD
+BL-48639,2026-03-14,Delta Textiles Pvt Ltd,Lakeside Manufacturing PLC,4342.14,303.95,4646.09,USD
+SI/2025/55366,2025-12-07,Pioneer Packaging Ltd,Lakeside Manufacturing PLC,4763.45,333.44,5096.89,USD
+INV-80525,2026-02-22,Greenfield Office Solutions,Nova Pharmaceuticals,736.24,51.54,787.78,USD
+43315,2025-01-08,Brightstar Electronics GmbH,Sunrise Retail Group,3494.04,288.26,3782.30,USD
+broken,row,with,too,many,columns,x,y,z,extra
