@@ -16,7 +16,7 @@ People then review flagged records, correct values with a full audit trail, and 
 
 ## Live demo and walkthrough
 
-* **Live demo:** _link added after deployment_ — free hosting, so the first visit after ~15 idle minutes takes about a minute to wake up. Sample documents are pre-loaded.
+* **Live demo: https://docintel-9qdz.onrender.com** (no login, sample documents pre-loaded, API docs at [/api/docs](https://docintel-9qdz.onrender.com/api/docs)). Free hosting: after ~15 idle minutes the first visit shows a loading page for about a minute while the server wakes up.
 * **Video walkthrough (captioned, 2 min):** [docs/walkthrough/walkthrough.webm](docs/walkthrough/walkthrough.webm)
 * **Run the full system locally in one command:** see [Quick start](#quick-start).
 
