@@ -75,6 +75,7 @@ COPY --from=src /deploy/huggingface/start.sh /deploy/huggingface/supervisord.con
 
 # Spaces run the container as uid 1000.
 RUN useradd --uid 1000 --create-home user \
+    && id user >/dev/null \
     && chmod +x /opt/docintel/start.sh \
     && chown -R user:user /app /web /models /opt/docintel
 USER user
