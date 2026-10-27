@@ -7,3 +7,5 @@
 *.xls binary
 *.webm binary
 *.gif binary
+eval/dataset/** -text
+*.csv -text
