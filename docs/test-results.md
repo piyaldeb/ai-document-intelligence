@@ -1,23 +1,25 @@
 # Test results
 
-The backend test-suite runs with pytest inside the backend Docker image (Python 3.12, Tesseract 5.3) against a dedicated `docintel_test` PostgreSQL + pgvector database. Reproduce with:
+The backend test suite runs with pytest inside the backend Docker image (Python 3.12, Tesseract 5.3) against a dedicated `docintel_test` PostgreSQL + pgvector database. To reproduce:
 
 ```bash
 ./scripts/run-tests.sh
 ```
 
-**Result: 98 passed in 123.08s (0:02:03) · line coverage 91%**
+**Result: 104 passed in 52.92s · line coverage 90%**
 
-The API tests run the background job synchronously: the queue's `enqueue` is patched to call the pipeline directly. So each API test exercises upload → detection → text extraction/OCR → segmentation → extraction → validation → embedding/indexing → database → API response, with no mocks in between. Only the Anthropic API is mocked, in the extraction tests, because no API key is available in CI.
+The API tests run background jobs synchronously: the queue's `enqueue` is patched to call the pipeline directly. So each API test exercises upload → detection → text extraction/OCR → segmentation → extraction → validation → indexing → database → API response, with no mocks in between. Only the Anthropic API is mocked, in the extraction tests, because no API key is available in CI.
+
+The frontend is checked with `npm run typecheck` (TypeScript strict) and `npm run lint` (ESLint, including jsx-a11y); both pass. It was also exercised end to end by the recorded [walkthrough](walkthrough/walkthrough.webm) and a 512 MB / 0.1 CPU replica of the free hosting tier.
 
 ## Suites
 
 | File | Tests | Covers |
 |---|---|---|
-| `tests/test_api.py` | 16 (16 passed) | REST API end-to-end through the real pipeline: auth, multi-upload + rejection, status/history/pages/file, extracted JSON, corrections + audit + re-validation, approval rules, duplicate invoices & files, filters, keyword/semantic/hybrid search, PDF↔Excel cross-verification, failed-job reprocessing, retry-all, contained internal errors, stats |
-| `tests/test_extraction.py` | 11 (11 passed) | AI extraction: rules extractor on 4 layouts, Claude extractor with mocked API (schema mapping, grounding/hallucination rejection, rules cross-check, fallback on API failure, prompt-injection fencing, refusal/truncation handling) |
-| `tests/test_normalize_detect_layout.py` | 42 (42 passed) | Amount/date/currency parsing, identifier normalisation, content-based file-type detection, layout reconstruction |
-| `tests/test_processing.py` | 19 (19 passed) | Document processing: PDF text layer, OCR on scans and poor-quality images (noise, low-res, 90° rotation, multi-page TIFF, truncated JPEG), spreadsheet parsing (multi-sheet XLSX, XLS, CSV encodings/delimiters/malformed rows), corrupted & encrypted files, multi-invoice segmentation |
+| `tests/test_api.py` | 18 (18 passed) | REST API end to end through the real pipeline: auth, multi-file upload and rejection, status/history/pages/file, extracted JSON, corrections with audit and re-validation, approval rules, duplicate invoices and files, filters, keyword/semantic/hybrid search, PDF↔Excel cross-verification, failed-job reprocessing, retry-all, contained internal errors, stats, the public-demo upload cap, and serverless mode (inline processing, file bytes in Postgres, secret-protected demo reset) |
+| `tests/test_extraction.py` | 14 (14 passed) | AI extraction: rules extractor on several layouts (incl. a quotation with a price range and a caption printed under its amount), Claude extractor with a mocked API (schema mapping, grounding and hallucination rejection, rules cross-check, fallback on API failure, prompt-injection fencing, refusal and truncation handling) |
+| `tests/test_normalize_detect_layout.py` | 42 (42 passed) | Amount/date/currency parsing, identifier normalization, content-based file-type detection, layout reconstruction |
+| `tests/test_processing.py` | 20 (20 passed) | Document processing: PDF text layer, OCR on scans and poor-quality images (noise, low resolution, 90° rotation, multi-page TIFF, truncated JPEG, OCR page cap), spreadsheet parsing (multi-sheet XLSX, XLS, CSV encodings, delimiters and malformed rows), corrupted and encrypted files, multi-invoice segmentation |
 | `tests/test_validation.py` | 10 (10 passed) | Validation rules: missing fields, arithmetic consistency, line items, numeric sanity, dates, duplicates, confidence and OCR-quality flags |
 
 ## Test cases
@@ -40,6 +42,8 @@ The API tests run the background job synchronously: the queue's `enqueue` is pat
 - ✅ `test_retry_all_failed_and_delete`
 - ✅ `test_unexpected_errors_are_contained`
 - ✅ `test_stats`
+- ✅ `test_public_demo_caps_stored_documents`
+- ✅ `test_serverless_mode_db_storage_inline_and_demo_reset`
 
 ### `tests/test_extraction.py`
 
@@ -47,6 +51,9 @@ The API tests run the background job synchronously: the queue's `enqueue` is pat
 - ✅ `test_rules_side_by_side_parties_and_indexed_table`
 - ✅ `test_rules_european_number_format`
 - ✅ `test_rules_missing_values_stay_null`
+- ✅ `test_rules_quotation_with_price_range_is_not_forced_into_an_invoice`
+- ✅ `test_rules_amount_printed_above_its_label_and_rand_symbol`
+- ✅ `test_validation_flags_quotation_and_range`
 - ✅ `test_llm_result_mapping_and_grounding_rejects_hallucinations`
 - ✅ `test_service_merges_llm_with_rules_cross_check`
 - ✅ `test_service_lowers_confidence_on_disagreement`
@@ -109,6 +116,7 @@ The API tests run the background job synchronously: the queue's `enqueue` is pat
 - ✅ `test_ocr_images_including_poor_quality[small.png-lowres]`
 - ✅ `test_ocr_images_including_poor_quality[rot.tiff-rotated90]`
 - ✅ `test_multipage_tiff`
+- ✅ `test_ocr_page_cap_for_small_deployments`
 - ✅ `test_truncated_jpeg_is_recovered_with_warning`
 - ✅ `test_corrupted_files_raise_typed_errors[pdf_truncated-exc0]`
 - ✅ `test_corrupted_files_raise_typed_errors[pdf_garbage-exc1]`
@@ -139,47 +147,50 @@ The API tests run the background job synchronously: the queue's `enqueue` is pat
 
 ```
 Name                                   Stmts   Miss  Cover   Missing
-app/api/documents.py                     138     14    90%   46, 60-62, 107, 109, 111-114, 124, 169, 182, 194
+app/api/admin.py                          18      4    78%   25, 31-33
+app/api/documents.py                     116     11    91%   39, 74, 76, 78-81, 91, 136, 149, 161
 app/api/invoices.py                      103      9    91%   80, 98-100, 118, 120, 123, 130, 149
 app/api/reconciliation.py                 47      5    89%   46, 48, 56-57, 65
 app/api/search.py                         22      1    95%   39
-app/config.py                             55      1    98%   75
+app/config.py                             72      2    97%   86, 101
 app/db.py                                 26      8    69%   38-46
+app/demo.py                               54     15    72%   37-45, 60-61, 74-79
 app/extraction/columns.py                 19      1    95%   59
 app/extraction/grounding.py               56     13    77%   46, 49, 61-68, 90-91, 93
-app/extraction/llm.py                    122     28    77%   61-67, 88-93, 101, 109-113, 117, 119, 121, 123, 125, 132, 145-147, 153-154, 162, 175
-app/extraction/normalize.py              210     25    88%   40, 43-44, 59, 63-64, 80, 95, 103-106, 111-112, 171, 190-191, 201, 205, 213, 236, 255, 259-260, 274, 281
-app/extraction/rules.py                  346     34    90%   131, 161, 176, 179, 181, 199-201, 204, 212-219, 226, 228, 230, 285, 291, 310, 314, 341, 343-344, 368, 395, 412, 438, 467-470
-app/extraction/service.py                 46      2    96%   18, 32
+app/extraction/llm.py                    123     29    76%   61-67, 88-93, 101, 109-113, 117, 119, 121, 123, 125, 132-133, 146-148, 154-155, 163, 176
+app/extraction/normalize.py              231     25    89%   42, 45-46, 61, 65-66, 82, 97, 105-108, 113-114, 193, 212-213, 223, 227, 235, 258, 282, 286-287, 301, 308
+app/extraction/rules.py                  386     32    92%   146, 192, 195, 197, 215-217, 220, 228-235, 247, 249, 251, 306, 312, 331, 386, 388-389, 413, 440, 483, 512-515, 578
+app/extraction/service.py                 49      3    94%   18, 32, 62
 app/extraction/spreadsheet_mapper.py     127     14    89%   37, 47, 49, 54, 59, 81, 101-104, 126-127, 137-138
+app/jobs.py                               18      7    61%   22-24, 28-35
+app/main.py                               40      2    95%   28-29
 app/pipeline/detect.py                    66      4    94%   52, 55, 76, 96
 app/pipeline/errors.py                    23      2    91%   14, 16
-app/pipeline/images.py                    43      3    93%   27, 40-41
+app/pipeline/images.py                    47      3    94%   27, 40-41
 app/pipeline/ocr.py                      122      9    93%   44, 57-58, 91, 100, 114-115, 149, 172
-app/pipeline/pdf.py                       92     17    82%   52, 61, 76-78, 81, 89-92, 101-104, 108-109, 118
-app/pipeline/processor.py                216     12    94%   142, 156-157, 176, 213, 225-226, 228, 257, 300, 302-303
+app/pipeline/pdf.py                       98     20    80%   52, 61, 77-79, 82, 90-93, 102-105, 109-112, 116-117, 126
+app/pipeline/processor.py                230     14    94%   147, 161-162, 181, 218, 228-229, 231, 259, 292-294, 308, 333-334
 app/pipeline/segment.py                   44      3    93%   47, 49, 51
 app/pipeline/spreadsheet.py              157     25    84%   31, 35, 48, 50, 64, 77, 83-85, 104-107, 117-123, 149-150, 180, 192, 205
-app/search/embeddings.py                  40      1    98%   33
+app/search/embeddings.py                  40     13    68%   33, 49-61
 app/search/service.py                    139      7    95%   50, 58, 66, 82, 101, 197, 215
 app/security.py                           44     15    66%   21-23, 29, 41-51
+app/services/ingest.py                    41      2    95%   36-37
 app/services/reconcile.py                 93     19    80%   25, 28-30, 35, 37, 53, 60, 83-84, 98-108
-app/storage.py                            42      6    86%   42, 47-49, 57-58
-app/validation/rules.py                  123      5    96%   101, 103, 137-138, 187
-TOTAL                                   3175    283    91%
+app/storage.py                            52      6    88%   42, 47-49, 72-73
+app/validation/rules.py                  129      5    96%   102, 104, 148-149, 198
+TOTAL                                   3426    328    90%
 ```
 
 ## Slowest tests
 
 ```
-9.77s call     tests/test_api.py::test_upload_multiple_and_reject_unsupported
-8.68s call     tests/test_api.py::test_duplicate_invoice_across_documents
-8.27s setup    tests/test_api.py::test_auth_required
-6.73s call     tests/test_processing.py::test_ocr_images_including_poor_quality[rot.tiff-rotated90]
-4.49s call     tests/test_processing.py::test_scanned_pdf_falls_back_to_ocr
-3.48s call     tests/test_api.py::test_validation_errors_correction_audit_and_approval
-3.34s call     tests/test_api.py::test_retry_all_failed_and_delete
-2.76s call     tests/test_processing.py::test_ocr_images_including_poor_quality[noisy.jpg-noisy]
+3.09s call     tests/test_api.py::test_upload_multiple_and_reject_unsupported
+3.09s call     tests/test_processing.py::test_ocr_images_including_poor_quality[rot.tiff-rotated90]
+2.97s call     tests/test_api.py::test_duplicate_invoice_across_documents
+2.94s call     tests/test_processing.py::test_scanned_pdf_falls_back_to_ocr
+2.70s setup    tests/test_api.py::test_auth_required
+1.82s call     tests/test_processing.py::test_ocr_images_including_poor_quality[noisy.jpg-noisy]
+1.57s call     tests/test_api.py::test_retry_all_failed_and_delete
+1.10s call     tests/test_api.py::test_invoice_filters
 ```
-
-The frontend is verified with `npm run build` (TypeScript strict type-check plus ESLint) and the end-to-end walkthrough in [walkthrough/](walkthrough/).

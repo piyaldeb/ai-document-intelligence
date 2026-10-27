@@ -34,6 +34,10 @@ The assignment explicitly asks for this disclosure. Full details, including the 
 * `.env.example` contains **development defaults** (e.g. database password `docintel`). Change every secret before exposing the stack beyond localhost. Real secrets belong in `.env` (git-ignored) or a secret manager.
 * Authentication is a single service-level API key held server-side by the web proxy. A real deployment needs per-user authentication (SSO/OIDC), roles and TLS.
 
+## Public demo
+
+* The hosted demo runs on a free plan (512 MB RAM, 0.1 CPU) with sample data that refreshes daily. Uploads are visible to other visitors, so **do not upload confidential documents**. It is slower than the full Docker deployment, and semantic search falls back to keyword search there.
+
 ## Third parties
 
 * The product name "DocIntel" is a placeholder; this project is not affiliated with or endorsed by any company named in it, its documentation or its dependencies.

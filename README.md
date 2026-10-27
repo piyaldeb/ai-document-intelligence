@@ -14,6 +14,33 @@ It accepts **PDF, JPG, PNG, TIFF, XLSX, XLS and CSV** files (one at a time or hu
 
 People then review flagged records, correct values with a full audit trail, and cross-verify one document against another (PDF ↔ PDF, PDF ↔ Excel).
 
+## Live demo and walkthrough
+
+* **Live demo:** _link added after deployment_ — free hosting, so the first visit after ~15 idle minutes takes about a minute to wake up. Sample documents are pre-loaded.
+* **Video walkthrough (captioned, 2 min):** [docs/walkthrough/walkthrough.webm](docs/walkthrough/walkthrough.webm)
+* **Run the full system locally in one command:** see [Quick start](#quick-start).
+
+| Dashboard | Review & correct |
+|---|---|
+| ![Dashboard](docs/screenshots/dashboard.png) | ![Invoice review](docs/screenshots/invoice-review.png) |
+| **Cross-verify PDF vs Excel** | **Search** |
+| ![Cross-verification](docs/screenshots/cross-verify.png) | ![Search](docs/screenshots/search.png) |
+
+## Measured results
+
+From [docs/evaluation-report.md](docs/evaluation-report.md): a real end-to-end run through the API on a labeled dataset of 70 documents and 136 invoices (synthetic; rules extractor).
+
+| Metric | Result |
+|---|---|
+| Field-level extraction accuracy (8 fields) | **99.3%** (digital PDF & spreadsheets 100%, images 98.2%, scans 92.5%) |
+| Hallucinated values | **0** |
+| Document success rate / failure rate | **100% / 0%** (64 valid files); 7/7 corrupted or unsupported files handled |
+| Invoice detection, including splitting a 20-invoice batch PDF | 100% (136/136), 0 spurious |
+| Planted validation errors detected | 100% (incl. duplicate across a PDF and a rescanned PNG) |
+| PDF ↔ Excel cross-verification | matches the planted 15 / 3 / 2 / 1 exactly |
+| 1000-page digital PDF | results in **67 s** (15 pages/s); search index built asynchronously |
+| Tests | 104 passed, 90% line coverage ([docs/test-results.md](docs/test-results.md)) |
+
 | | |
 |---|---|
 | **How to use (step by step)** | [docs/USER_GUIDE.md](docs/USER_GUIDE.md) |
@@ -67,7 +94,7 @@ The full walkthrough with screenshots-level detail and API examples is in [docs/
 ## Running the tests and the evaluation
 
 ```bash
-./scripts/run-tests.sh          # pytest (98 tests) in the backend image, against a separate test database
+./scripts/run-tests.sh          # pytest (104 tests) in the backend image, against a separate test database
 ./scripts/run-eval.sh           # regenerate the labeled dataset, process it end to end, write docs/evaluation-report.md
 ./scripts/run-eval.sh --stress  # also time a 1000-page digital PDF and a 100-page scanned PDF
 ```
@@ -121,6 +148,23 @@ All settings are environment variables (see `.env.example` and `backend/app/conf
 | `RATE_LIMIT_PER_MINUTE` | 600 | Per API key / IP |
 
 Scale horizontally with `docker compose up -d --scale worker=4`.
+
+## Deployment options
+
+| | Full system (`docker-compose.yml`) | Single container (`deploy/container/`, `render.yaml`) |
+|---|---|---|
+| Use | Production-like: local machine, VM, Kubernetes | Free/small hosts, e.g. the public demo on Render |
+| Processing | Background Celery workers + Redis, horizontally scalable | Inside the upload request, one document at a time |
+| Search index | Async task on its own queue | Inline (semantic search off below ~1 GB RAM; falls back to keyword) |
+| Files | Shared volume | Stored in Postgres (stateless instances) |
+| Database | Bundled Postgres + pgvector | External Postgres + pgvector (Render, Neon, ...) |
+
+**Public demo on Render (free, no credit card):** sign in to Render with GitHub, then open
+`https://render.com/deploy?repo=https://github.com/piyaldeb/ai-document-intelligence` and click **Deploy Blueprint**. On
+first start the container migrates the database and loads the sample documents; it refreshes them when they are older
+than a day. Free-plan limits: 512 MB RAM / 0.1 CPU, sleeps after 15 idle minutes, the free database expires after 30 days.
+Measured on a 512 MB / 0.1 CPU replica: digital PDFs 2 s, a CSV with 10 invoices 3 s, a photo 36 s, a 2-page scan 69 s,
+no out-of-memory events.
 
 ## Known limitations and next steps
 

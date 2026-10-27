@@ -73,5 +73,7 @@ followed during the session by:
 > "i want to see it on localhost"
 > "i want to understand the use case" (answered with a plain-language explanation of the business scenario)
 > "ok do github think and proper disclaimer" (led to the public repository and [DISCLAIMER.md](../DISCLAIMER.md))
+> "i want recuriter just open a link and do all no need to setup" … "as [my other] website is so important to me, it shouldnt stop from this" … "i dont have card" (led, after ruling out paid or card-gated hosts and hosts that share quota with the candidate's other sites, to the free single-container Render deployment)
+> "[a real quotation PDF] but system says didnt found any amount" (led to the quotation, price-range and captioned-amount handling in the rules extractor)
 
 Summary of the frontend sub-agent brief: *"Build the Next.js 16 + Tailwind 4 frontend for the existing FastAPI backend (read `backend/app/schemas.py` and the routers as the contract). Keep the API key server-side via a `/api/[...path]` proxy route. Pages: dashboard with multi-file upload and live progress, document detail (extracted text, processing history, original file), invoice list with filters, invoice review/correction screen with confidence badges, evidence and validation issues, review queue, keyword/semantic/hybrid search, and PDF-vs-Excel cross-verification. Navy/amber/cream palette, Poppins + Fira Sans, accessible and responsive. The `npm run build` and Docker build must pass."*

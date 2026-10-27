@@ -105,3 +105,24 @@ flowchart LR
 | Python OCR tools | **Tesseract 5 + OpenCV preprocessing** | Runs on CPU with no GPU or external service, and is robust after preprocessing. The OCR step is isolated (`pipeline/ocr.py`), so a hosted OCR (e.g. Datalab) or a VLM can be added for handwriting. |
 | LLM API | **Claude (`claude-opus-5-5`) via the official SDK** | Schema-constrained output, evidence snippets, server-side refusal fallback; the model and effort are configurable. |
 | React/Next.js | **Next.js 16 (App Router) + Tailwind 4** | A server-side proxy keeps the API key off the client, and standalone output gives a small container. |
+
+## Deployment topologies
+
+The same code runs in two shapes, selected by configuration only (`PROCESSING_MODE`, `STORAGE_BACKEND`, `EMBEDDINGS_ENABLED`):
+
+```mermaid
+flowchart LR
+    subgraph Full["docker-compose.yml (production-like)"]
+        W1[web] --> A1[api] --> R1[(Redis)] --> K1[workers: documents + indexing queues]
+        A1 --> P1[(Postgres + pgvector)]
+        K1 --> P1
+        A1 --- V1[(uploads volume)]
+        K1 --- V1
+    end
+    subgraph Small["deploy/container + render.yaml (free tier demo)"]
+        C2["one container: web proxy + API<br/>(inline processing, 1 doc at a time)"] --> P2[(external Postgres<br/>files stored as bytea)]
+    end
+```
+
+* **Full:** uploads return immediately; workers process in parallel and scale horizontally; semantic indexing runs on its own queue so results are available before the index is built.
+* **Single container:** stateless, so it fits serverless/free hosts with no worker, Redis or disk. Processing happens inside the upload request. Heavy libraries are loaded lazily, and a per-instance processing slot plus `MALLOC_ARENA_MAX` keep peak memory under 512 MB (measured: API 374 MB, web 90 MB). OCR is capped per document (`MAX_OCR_PAGES`), and a secret-protected endpoint refreshes the demo data.
