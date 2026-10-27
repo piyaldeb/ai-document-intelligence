@@ -63,10 +63,11 @@ def client(clean_db, monkeypatch):
     from fastapi.testclient import TestClient
 
     import app.api.documents as documents_api
+    import app.pipeline.processor as processor
     from app.main import app
-    from app.pipeline.processor import run
 
-    monkeypatch.setattr(documents_api, "enqueue", lambda doc_id: run(doc_id))
+    monkeypatch.setattr(documents_api, "enqueue", lambda doc_id: processor.run(doc_id))
+    monkeypatch.setattr(processor, "schedule_indexing", processor.index_document)
     with TestClient(app, headers={"X-API-Key": "test-key"}) as c:
         yield c
 

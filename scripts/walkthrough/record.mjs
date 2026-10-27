@@ -10,22 +10,18 @@ const here = path.dirname(fileURLToPath(import.meta.url));
 const root = path.resolve(here, "../..");
 const dataset = path.join(root, "eval/dataset");
 const outDir = path.join(root, "docs/walkthrough");
-const BASE = process.env.WEB_URL ?? "http://localhost:3000";
-const API = process.env.API_URL ?? "http://localhost:8000";
+const BASE = process.env.WEB_URL ?? "http://localhost:7860";
+// Read-only helper calls go through the web app's proxy (it adds the API key server-side).
+const API = process.env.API_URL ?? BASE;
 const KEY = process.env.API_KEY ?? "";
 
+// The demo is pre-seeded (see deploy/huggingface/seed_demo.py); upload a few new files on top.
 const UPLOADS = [
+  "pdf/modern_04.pdf",
+  "images/classic_scan_02.png",
+  "scanned/scanned_modern_scan_07.pdf",
+  "spreadsheets/us_invoices_utf8.csv",
   "pdf/classic_01.pdf",
-  "pdf/batch_march_20_invoices.pdf",
-  "scanned/scanned_modern_scan_02.pdf",
-  "images/modern_noisy_11.png",
-  "images/statement_rotated90_08.png",
-  "spreadsheets/ap_register_2025_multisheet.xlsx",
-  "spreadsheets/eu_invoices_semicolon_latin1.csv",
-  "spreadsheets/legacy_register.xls",
-  "crossverify/erp_export_march.xlsx",
-  "validation/total_mismatch.pdf",
-  "corrupted/random_bytes.pdf",
 ].map((f) => path.join(dataset, f));
 
 const pause = (ms) => new Promise((r) => setTimeout(r, ms));
@@ -86,13 +82,13 @@ async function main() {
   await step(page, "DocIntel: AI document intelligence. Dashboard with live processing statistics", 3500);
 
   await page.locator('input[type="file"]').setInputFiles(UPLOADS);
-  await step(page, "1 · Upload many files at once: digital & scanned PDFs, photos, XLSX/XLS/CSV, even a corrupted file", 3500);
+  await step(page, "1 · Upload several files at once: digital PDF, scanned PDF, photo, CSV, and one we already have (duplicate)", 3500);
   await page.getByRole("button", { name: /^upload/i }).first().click();
   await step(page, "Files stream to the API; each one is queued for background processing (Celery + Redis)", 4000);
   await step(page, "2 · Live progress: detect → text/OCR → split invoices → AI extraction → validation → indexing", 6000);
   await waitForProcessing();
   await page.reload({ waitUntil: "networkidle" });
-  await step(page, "All done: valid files completed or flagged for review; the corrupted PDF failed safely with CORRUPTED_FILE", 5000);
+  await step(page, "Done: completed or flagged for review. Earlier, a corrupted PDF failed safely with CORRUPTED_FILE (see Failed)", 5000);
 
   // Document detail: batch PDF
   await page.getByRole("link", { name: /batch_march_20_invoices/i }).first().click();

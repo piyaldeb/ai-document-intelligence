@@ -36,3 +36,6 @@ anthropic>=0.60
 
 # --- semantic search ---
 fastembed>=0.4
+
+# --- HTTP client (demo seeding, evaluation) ---
+httpx>=0.27

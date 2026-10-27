@@ -19,7 +19,7 @@ People then review flagged records, correct values with a full audit trail, and 
 | **How to use (step by step)** | [docs/USER_GUIDE.md](docs/USER_GUIDE.md) |
 | Architecture & design decisions | [docs/architecture.md](docs/architecture.md) |
 | Database schema (ER diagram + DDL) | [docs/database-schema.md](docs/database-schema.md), [docs/schema.sql](docs/schema.sql) |
-| API reference | [docs/api.md](docs/api.md) · live OpenAPI at `http://localhost:8000/docs` |
+| API reference | [docs/api.md](docs/api.md) · live OpenAPI at `http://localhost:8000/api/docs` |
 | Evaluation report (measured) | [docs/evaluation-report.md](docs/evaluation-report.md) |
 | Test results | [docs/test-results.md](docs/test-results.md) |
 | Walkthrough recording | [docs/walkthrough/](docs/walkthrough/) |
@@ -39,7 +39,7 @@ docker compose up -d --build
 | Service | URL |
 |---|---|
 | Web app | http://localhost:3000 |
-| REST API + Swagger UI | http://localhost:8000/docs (click *Authorize*, paste `API_KEY`) |
+| REST API + Swagger UI | http://localhost:8000/api/docs (click *Authorize*, paste `API_KEY`), or http://localhost:3000/api/docs through the web proxy (no key needed) |
 
 The first build takes a few minutes (Tesseract, Python wheels, and the embedding model is baked into the image). Database migrations run automatically when the API starts.
 

@@ -16,6 +16,9 @@ celery_app.conf.update(
     task_reject_on_worker_lost=True,
     worker_prefetch_multiplier=1,  # long OCR jobs: don't hoard tasks on one worker
     task_default_queue="documents",
+    # Semantic indexing runs on its own queue so it never delays extraction results and can
+    # be scaled separately (e.g. a dedicated worker with -Q indexing).
+    task_routes={"index_document": {"queue": "indexing"}},
     task_time_limit=60 * 60 * 3,
     task_soft_time_limit=60 * 60 * 3 - 60,
     result_expires=3600,
@@ -52,5 +55,16 @@ def process_document(self, document_id: str) -> str:
         raise
 
 
+@celery_app.task(name="index_document", max_retries=2)
+def index_document(document_id: str) -> int:
+    from app.pipeline.processor import index_document as run_index
+
+    return run_index(uuid.UUID(document_id))
+
+
 def enqueue(document_id: uuid.UUID) -> None:
     process_document.delay(str(document_id))
+
+
+def enqueue_index(document_id: uuid.UUID) -> None:
+    index_document.delay(str(document_id))

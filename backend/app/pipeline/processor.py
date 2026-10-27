@@ -52,8 +52,7 @@ STAGE_RANGES = {
     "extract_text": (3, 60),
     "segment": (60, 62),
     "ai_extraction": (62, 85),
-    "validate": (85, 90),
-    "index": (90, 99),
+    "validate": (85, 99),
 }
 INVOICE_COMMIT_BATCH = 200
 MAX_INDEXED_CHUNKS = 5000
@@ -213,14 +212,12 @@ def run(document_id: uuid.UUID) -> str:
                 job.event("ai_extraction", "info", "LLM unavailable for some candidates; rules extractor used")
 
         with job.stage("validate"):
-            invoice_ids: list[tuple[uuid.UUID, _Unit]] = []
             with SessionLocal() as db:
                 doc = db.get(Document, document_id)
                 for i, u in enumerate(units, start=1):
                     assert u.data is not None
-                    inv = create_invoice(db, doc, u.data, sequence=i, source_ref=u.source_ref,
-                                         source_text=u.text, min_ocr_confidence=u.ocr_conf)
-                    invoice_ids.append((inv.id, u))
+                    create_invoice(db, doc, u.data, sequence=i, source_ref=u.source_ref,
+                                   source_text=u.text, min_ocr_confidence=u.ocr_conf)
                     if i % INVOICE_COMMIT_BATCH == 0:
                         db.commit()  # releases advisory locks in long batches
                         job.progress("validate", i / len(units))
@@ -232,10 +229,6 @@ def run(document_id: uuid.UUID) -> str:
                                            message="An identical file was uploaded before",
                                            details={"document_id": str(doc.duplicate_of_id)}))
                 db.commit()
-
-        with job.stage("index"):
-            if s.embeddings_enabled:
-                _index(document_id, extraction_result, invoice_ids, job)
 
         with SessionLocal() as db:
             doc = db.get(Document, document_id)
@@ -249,6 +242,9 @@ def run(document_id: uuid.UUID) -> str:
             final = doc.status
             db.commit()
         job.event("finalize", "completed", f"status={final}", int((time.perf_counter() - t_start) * 1000))
+        # Results are final and visible now; the semantic index is built off the critical path.
+        if s.embeddings_enabled:
+            schedule_indexing(document_id)
         return final
 
     except ProcessingError as exc:
@@ -273,33 +269,62 @@ def _fail(document_id: uuid.UUID, code: str, message: str, t_start: float) -> No
         db.commit()
 
 
-def _invoice_summary_text(data: InvoiceData) -> str:
+def _invoice_summary_text(inv: Invoice) -> str:
     parts = [
-        f"Invoice {data.invoice_number or 'unknown number'}",
-        f"dated {data.invoice_date.isoformat()}" if data.invoice_date else "",
-        f"from {data.supplier_name}" if data.supplier_name else "",
-        f"to {data.customer_name}" if data.customer_name else "",
-        f"total {data.total} {data.currency or ''}".strip() if data.total is not None else "",
+        f"Invoice {inv.invoice_number or 'unknown number'}",
+        f"dated {inv.invoice_date.isoformat()}" if inv.invoice_date else "",
+        f"from {inv.supplier_name}" if inv.supplier_name else "",
+        f"to {inv.customer_name}" if inv.customer_name else "",
+        f"total {inv.total} {inv.currency or ''}".strip() if inv.total is not None else "",
     ]
-    items = "; ".join(li.description for li in data.line_items[:15] if li.description)
+    items = "; ".join(li.description for li in inv.line_items[:15] if li.description)
     return " ".join(p for p in parts if p) + (f". Items: {items}" if items else "")
 
 
-def _index(document_id: uuid.UUID, extraction_result: TextExtraction, invoices: list, job: Job) -> None:
+def schedule_indexing(document_id: uuid.UUID) -> None:
+    """Queue semantic indexing as its own task (separate queue, scalable independently)."""
+    from app.worker.celery_app import enqueue_index
+
+    enqueue_index(document_id)
+
+
+def index_document(document_id: uuid.UUID) -> int:
+    """Embed invoice summaries + page text chunks of a processed document. Idempotent."""
+    from sqlalchemy import select
+    from sqlalchemy.orm import selectinload
+
     from app.search.embeddings import chunk_text, embed_passages
 
     s = get_settings()
-    rows: list[dict] = []
-    for inv_id, unit in invoices[:2000]:
-        rows.append({"invoice_id": inv_id, "page_number": (unit.source_ref.get("pages") or [None])[0],
-                     "kind": "invoice", "content": _invoice_summary_text(unit.data)})
-    for page in extraction_result.pages:
-        for chunk in chunk_text(page.text, s.chunk_chars, s.chunk_overlap):
-            rows.append({"invoice_id": None, "page_number": page.page_number, "kind": "page", "content": chunk})
-            if len(rows) >= MAX_INDEXED_CHUNKS:
-                break
+    with SessionLocal() as db:
+        doc = db.get(Document, document_id)
+        if doc is None or doc.status not in (DocumentStatus.COMPLETED, DocumentStatus.NEEDS_REVIEW):
+            return 0
+        attempt = doc.attempts
+        invoices = db.scalars(
+            select(Invoice).where(Invoice.document_id == document_id).options(selectinload(Invoice.line_items))
+            .order_by(Invoice.sequence).limit(2000)
+        ).all()
+        rows: list[dict] = [
+            {"invoice_id": inv.id, "page_number": inv.page_start, "kind": "invoice", "content": _invoice_summary_text(inv)}
+            for inv in invoices
+        ]
+        pages = db.execute(
+            select(DocumentPage.page_number, DocumentPage.text).where(DocumentPage.document_id == document_id)
+            .order_by(DocumentPage.page_number)
+        ).all()
+        db.execute(delete(Chunk).where(Chunk.document_id == document_id))
+        db.commit()
+
+    job = Job(document_id, attempt)
+    job.event("index", "started")
+    t0 = time.perf_counter()
+    capped = False
+    for page_number, text in pages:
+        for chunk in chunk_text(text, s.chunk_chars, s.chunk_overlap):
+            rows.append({"invoice_id": None, "page_number": page_number, "kind": "page", "content": chunk})
         if len(rows) >= MAX_INDEXED_CHUNKS:
-            job.event("index", "info", f"index capped at {MAX_INDEXED_CHUNKS} chunks")
+            rows, capped = rows[:MAX_INDEXED_CHUNKS], True
             break
     batch = 256
     for start in range(0, len(rows), batch):
@@ -308,4 +333,7 @@ def _index(document_id: uuid.UUID, extraction_result: TextExtraction, invoices: 
         with SessionLocal() as db:
             db.add_all(Chunk(document_id=document_id, embedding=v, **r) for r, v in zip(part, vectors))
             db.commit()
-        job.progress("index", (start + len(part)) / max(1, len(rows)))
+    ms = int((time.perf_counter() - t0) * 1000)
+    job.event("index", "completed", f"{len(rows)} chunks indexed" + (" (capped)" if capped else ""), ms,
+              details={"chunks": len(rows)})
+    return len(rows)

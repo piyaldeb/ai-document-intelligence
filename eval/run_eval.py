@@ -350,11 +350,19 @@ def main() -> None:
             doc_id = r["results"][0]["document_id"]
             wait_for(api, [doc_id], timeout_s=7200)
             elapsed = time.time() - t
+            # Semantic indexing runs asynchronously after results are available; time it too.
             doc = api.get(f"/api/documents/{doc_id}")
+            while not any(e["stage"] == "index" and e["status"] == "completed" for e in doc["events"]):
+                if time.time() - t > 7200:
+                    break
+                time.sleep(3)
+                doc = api.get(f"/api/documents/{doc_id}")
+            indexed = time.time() - t
             stage_ms = {e["stage"]: e["duration_ms"] for e in doc["events"] if e["status"] == "completed" and e["duration_ms"]}
             stress_res[name] = {
                 "status": doc["status"], "pages": doc["page_count"], "invoices_found": doc["invoice_count"],
                 "ocr_pages": doc["meta"].get("ocr_pages"), "end_to_end_s": round(elapsed, 1),
+                "search_indexed_after_s": round(indexed, 1),
                 "processing_s": round(doc["processing_ms"] / 1000, 1),
                 "pages_per_s": round(doc["page_count"] / (doc["processing_ms"] / 1000), 2),
                 "stage_seconds": {k: round(v / 1000, 1) for k, v in stage_ms.items()},

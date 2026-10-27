@@ -1,6 +1,6 @@
 # REST API
 
-Base URL `http://localhost:8000`. Every endpoint except `/api/health` requires the header `X-API-Key: <API_KEY>`. The interactive OpenAPI docs are at `/docs` and the machine-readable spec at `/openapi.json`. Errors use FastAPI's shape `{"detail": ...}`.
+Base URL `http://localhost:8000`. Every endpoint except `/api/health` requires the header `X-API-Key: <API_KEY>`. The interactive OpenAPI docs are at `/api/docs` and the machine-readable spec at `/api/openapi.json`. Errors use FastAPI's shape `{"detail": ...}`.
 
 | Method | Path | Purpose |
 |---|---|---|

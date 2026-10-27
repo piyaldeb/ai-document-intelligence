@@ -65,7 +65,7 @@ services:
     image: docintel-backend:latest
     environment: *backend-env
     command: >
-      celery -A app.worker.celery_app worker -Q documents
+      celery -A app.worker.celery_app worker -Q documents,indexing
       --concurrency=${WORKER_CONCURRENCY:-2} --max-tasks-per-child=100 --loglevel=INFO
     volumes:
       - uploads:/data/uploads

@@ -18,6 +18,10 @@ settings = get_settings()
 app = FastAPI(
     title="Document Intelligence API",
     version="1.0.0",
+    # Served under /api so the web app's same-origin proxy also exposes the interactive docs.
+    docs_url="/api/docs",
+    openapi_url="/api/openapi.json",
+    redoc_url=None,
     description="Upload invoices, receipts, scanned PDFs, images and spreadsheets; extract, validate, "
     "search and cross-verify financial data.",
 )
@@ -40,4 +44,10 @@ app.include_router(documents.jobs_router, dependencies=protected)
 def health() -> dict:
     with engine.connect() as conn:
         conn.execute(text("SELECT 1"))
-    return {"status": "ok", "extraction_provider": settings.effective_provider}
+    return {
+        "status": "ok",
+        "extraction_provider": settings.effective_provider,
+        "demo_mode": settings.demo_mode,
+        "demo_reset_hours": settings.demo_reset_hours,
+        "max_upload_mb": settings.max_upload_mb,
+    }

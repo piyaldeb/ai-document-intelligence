@@ -1,0 +1,8 @@
+**/node_modules
+**/.next
+.git
+eval/results
+eval/dataset/stress
+docs/walkthrough
+**/__pycache__
+.env

@@ -55,7 +55,7 @@ Try it with `pdf/batch_march_20_invoices.pdf` vs `crossverify/erp_export_march.x
 
 ## 3. Using the API instead of the UI
 
-Everything in the UI is also a REST call (see [api.md](api.md); interactive docs at http://localhost:8000/docs, click *Authorize* and paste your `API_KEY`).
+Everything in the UI is also a REST call (see [api.md](api.md); interactive docs at http://localhost:3000/api/docs (via the web app, no key needed) or http://localhost:8000/api/docs (click *Authorize* and paste your `API_KEY`)).
 
 ```bash
 KEY=<your API_KEY>

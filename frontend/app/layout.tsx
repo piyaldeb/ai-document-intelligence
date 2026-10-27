@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Fira_Sans, Poppins } from "next/font/google";
+import { DemoBanner } from "@/components/demo-banner";
 import { SiteHeader } from "@/components/site-header";
 import { ToastProvider } from "@/components/toast";
 import "./globals.css";
@@ -43,11 +44,15 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         </a>
         <ToastProvider>
           <SiteHeader />
+          <DemoBanner />
           <main id="main" className="mx-auto w-full max-w-7xl px-4 py-6 sm:px-6 sm:py-8">
             {children}
           </main>
           <footer className="mx-auto max-w-7xl px-4 pb-8 text-xs text-muted sm:px-6">
-            DocIntel · AI document intelligence for invoices, receipts and statements
+            DocIntel · AI document intelligence for invoices, receipts and statements ·{" "}
+            <a className="underline underline-offset-2 hover:text-ink" href="/api/docs" target="_blank" rel="noreferrer">
+              API docs
+            </a>
           </footer>
         </ToastProvider>
       </body>

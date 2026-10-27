@@ -776,17 +776,17 @@ def main() -> None:
         if big.page_count > 1000:
             big.delete_pages(1000, big.page_count - 1)
         big.save(stress / "stress_1000_pages_digital.pdf")
-        imgs = []
-        for i in range(25):
+        imgs: list = []
+        n_scanned_invoices = 0
+        while len(imgs) < 100:
             inv = make_invoice(R.choice([3, 30]), "USD")
             render("classic", tmp, inv)
             imgs.extend(degrade(p, "scan", R) for p in pdf_to_images(tmp, 150))
-            if len(imgs) >= 100:
-                break
+            n_scanned_invoices += 1
         images_to_pdf(imgs[:100], stress / "stress_100_pages_scanned.pdf", 150)
         tmp.unlink(missing_ok=True)
         (stress / "stress_meta.json").write_text(json.dumps({"digital_pages": 1000, "digital_invoices_approx": len(stress_invs),
-                                                               "scanned_pages": min(100, len(imgs))}, indent=2))
+                                                               "scanned_pages": 100, "scanned_invoices_approx": n_scanned_invoices}, indent=2))
 
     (out / "labels.json").write_text(json.dumps({
         "generated": "2026-10-27", "seed": 20261027, "documents": labels, "reconciliation": expected_recon,

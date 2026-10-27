@@ -52,8 +52,12 @@ class Settings(BaseSettings):
     embedding_dim: int = 384
     embedding_cache_dir: str = "/models"
     embeddings_enabled: bool = True
-    chunk_chars: int = 900
-    chunk_overlap: int = 150
+    chunk_chars: int = 1500  # ~350 tokens, within bge-small's 512-token window
+    chunk_overlap: int = 200
+
+    # --- public demo ---
+    demo_mode: bool = False  # shows a "public demo" banner in the UI
+    demo_reset_hours: int = 24
 
     # --- validation ---
     amount_tolerance_abs: float = 0.02

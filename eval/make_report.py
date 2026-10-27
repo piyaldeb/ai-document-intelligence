@@ -96,17 +96,20 @@ def main() -> None:
         w("")
         w("### Stress test: large documents")
         w("")
-        w("| File | Status | Pages | OCR pages | Invoices found | Processing (s) | Pages/s | Stage breakdown (s) |")
-        w("|---|---|---|---|---|---|---|---|")
+        w("| File | Status | Pages | OCR pages | Invoices found | Results ready (s) | Pages/s | Search-indexed after (s) | Stage breakdown (s) |")
+        w("|---|---|---|---|---|---|---|---|---|")
         for name, s in m["stress"].items():
             if name.startswith("_"):
                 continue
             stages = ", ".join(f"{k} {x}" for k, x in s["stage_seconds"].items())
-            w(f"| {name} | {s['status']} | {s['pages']} | {s['ocr_pages']} | {s['invoices_found']} | {s['processing_s']} | {s['pages_per_s']} | {stages} |")
+            w(f"| {name} | {s['status']} | {s['pages']} | {s['ocr_pages']} | {s['invoices_found']} | {s['processing_s']} | {s['pages_per_s']} | {s.get('search_indexed_after_s', 'n/a')} | {stages} |")
         meta = m["stress"].get("_meta")
         if meta:
             w("")
-            w(f"The 1000-page digital PDF contains about {meta.get('digital_invoices_approx')} invoices (the last one is cut at page 1000).")
+            w(f"The 1000-page digital PDF contains {meta.get('digital_invoices_approx')} generated invoices and the 100-page scanned PDF "
+              f"about {meta.get('scanned_invoices_approx', 'n/a')} (the last one may be cut at the page limit). *Results ready* is when "
+              "extraction and validation are finished and visible in the UI/API; the semantic search index is then built "
+              "asynchronously on its own queue (*search-indexed after*, measured from upload).")
     w("")
     w("## Validation")
     w("")
