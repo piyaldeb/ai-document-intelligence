@@ -1,0 +1,38 @@
+# --- API / web ---
+fastapi>=0.115,<1
+uvicorn[standard]>=0.30
+python-multipart>=0.0.9
+
+# --- persistence ---
+sqlalchemy>=2.0.30,<2.1
+psycopg[binary]>=3.2
+alembic>=1.13
+pgvector>=0.3
+
+# --- background jobs ---
+celery[redis]>=5.4,<6
+redis>=5
+
+# --- config / models ---
+pydantic>=2.7,<3
+pydantic-settings>=2.3
+
+# --- document processing ---
+pymupdf>=1.24
+pytesseract>=0.3.13
+pillow>=10.4
+opencv-python-headless>=4.10
+numpy>=1.26,<3
+pandas>=2.2
+openpyxl>=3.1
+xlrd>=2.0.1
+charset-normalizer>=3.3
+defusedxml>=0.7
+
+# --- extraction ---
+python-dateutil>=2.9
+rapidfuzz>=3.9
+anthropic>=0.60
+
+# --- semantic search ---
+fastembed>=0.4

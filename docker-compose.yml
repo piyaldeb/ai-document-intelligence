@@ -1,0 +1,90 @@
+name: docintel
+
+x-backend-env: &backend-env
+  DATABASE_URL: postgresql+psycopg://${POSTGRES_USER:-docintel}:${POSTGRES_PASSWORD:-docintel}@db:5432/${POSTGRES_DB:-docintel}
+  REDIS_URL: redis://redis:6379/0
+  API_KEYS: ${API_KEY:-}
+  CORS_ORIGINS: ${CORS_ORIGINS:-http://localhost:3000}
+  ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY:-}
+  EXTRACTION_PROVIDER: ${EXTRACTION_PROVIDER:-auto}
+  LLM_MODEL: ${LLM_MODEL:-claude-opus-5-5}
+  LLM_EFFORT: ${LLM_EFFORT:-medium}
+  OCR_WORKERS: ${OCR_WORKERS:-3}
+  MAX_UPLOAD_MB: ${MAX_UPLOAD_MB:-100}
+
+services:
+  db:
+    image: pgvector/pgvector:pg16
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-docintel}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-docintel}
+      POSTGRES_DB: ${POSTGRES_DB:-docintel}
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./backend/scripts/init-test-db.sql:/docker-entrypoint-initdb.d/10-test-db.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-docintel} -d ${POSTGRES_DB:-docintel}"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+    restart: unless-stopped
+
+  redis:
+    image: redis:7-alpine
+    command: ["redis-server", "--appendonly", "yes", "--save", ""]
+    volumes:
+      - redisdata:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+    restart: unless-stopped
+
+  api:
+    build: ./backend
+    image: docintel-backend:latest
+    environment: *backend-env
+    command: sh -c "alembic upgrade head && exec uvicorn app.main:app --host 0.0.0.0 --port 8000 --workers 2 --proxy-headers"
+    volumes:
+      - uploads:/data/uploads
+    ports:
+      - "${API_PORT:-8000}:8000"
+    depends_on:
+      db: { condition: service_healthy }
+      redis: { condition: service_healthy }
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/api/health', timeout=3)"]
+      interval: 10s
+      timeout: 5s
+      retries: 30
+    restart: unless-stopped
+
+  worker:
+    build: ./backend
+    image: docintel-backend:latest
+    environment: *backend-env
+    command: >
+      celery -A app.worker.celery_app worker -Q documents
+      --concurrency=${WORKER_CONCURRENCY:-2} --max-tasks-per-child=100 --loglevel=INFO
+    volumes:
+      - uploads:/data/uploads
+    depends_on:
+      api: { condition: service_healthy }
+    restart: unless-stopped
+
+  web:
+    build: ./frontend
+    environment:
+      BACKEND_URL: http://api:8000
+      BACKEND_API_KEY: ${API_KEY:-}
+    ports:
+      - "${WEB_PORT:-3000}:3000"
+    depends_on:
+      api: { condition: service_healthy }
+    restart: unless-stopped
+
+volumes:
+  pgdata:
+  redisdata:
+  uploads:
