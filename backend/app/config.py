@@ -6,7 +6,7 @@ import os
 from functools import lru_cache
 from pathlib import Path
 
-from pydantic import Field
+from pydantic import Field, field_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
@@ -55,14 +55,35 @@ class Settings(BaseSettings):
     chunk_chars: int = 1500  # ~350 tokens, within bge-small's 512-token window
     chunk_overlap: int = 200
 
+    # --- deployment shape ---
+    # queue: Celery workers process documents in the background (docker-compose, Kubernetes, ...)
+    # inline: process inside the upload request (serverless, e.g. Vercel Functions; no worker/Redis)
+    processing_mode: str = "queue"
+    # local: shared volume (STORAGE_DIR) | db: file bytes in Postgres (stateless serverless instances)
+    storage_backend: str = "local"
+    cron_secret: str = ""  # Vercel Cron sends "Authorization: Bearer <CRON_SECRET>"
+    demo_samples_dir: Path = Path("/app/demo_samples")
+
     # --- public demo ---
     demo_mode: bool = False  # shows a "public demo" banner in the UI
     demo_reset_hours: int = 24
+    demo_max_documents: int = 250  # public demo: cap stored documents (disk protection)
+    demo_seed_budget_s: float = 900.0
+    demo_seed_set: str = "full"  # full | light (skips the slowest OCR samples on tiny CPUs)
 
     # --- validation ---
     amount_tolerance_abs: float = 0.02
     amount_tolerance_rel: float = 0.001
     low_field_confidence: float = 0.6
+
+    @field_validator("database_url")
+    @classmethod
+    def _sqlalchemy_url(cls, v: str) -> str:
+        # Managed Postgres providers (Neon, Supabase, Heroku) hand out postgres:// URLs.
+        for prefix in ("postgres://", "postgresql://"):
+            if v.startswith(prefix):
+                return "postgresql+psycopg://" + v[len(prefix):]
+        return v
 
     @property
     def api_key_set(self) -> set[str]:

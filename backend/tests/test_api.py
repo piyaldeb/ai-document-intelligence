@@ -226,3 +226,48 @@ def test_stats(client, samples):
     assert s["documents"]["total"] == 2 and s["documents"]["failed"] == 1
     assert s["invoices"]["total"] == 1 and s["extraction_provider"] == "rules"
     assert s["total_amount_by_currency"]["GBP"] == 2821.2
+
+
+def test_public_demo_caps_stored_documents(client, samples, monkeypatch):
+    from app.config import get_settings
+
+    s = get_settings()
+    monkeypatch.setattr(s, "demo_mode", True)
+    monkeypatch.setattr(s, "demo_max_documents", 1)
+    upload(client, samples.digital_pdf())
+    r = client.post("/api/documents", files=[("files", ("x.pdf", samples.digital_pdf("x.pdf").read_bytes()))])
+    assert r.status_code == 429 and "resets" in r.json()["detail"]
+    assert client.get("/api/health").json()["demo_mode"] is True
+
+
+def test_serverless_mode_db_storage_inline_and_demo_reset(client, samples, monkeypatch, tmp_path):
+    import shutil
+
+    from app.config import get_settings
+    from app.db import SessionLocal
+    from app.models import Document
+
+    s = get_settings()
+    monkeypatch.setattr(s, "storage_backend", "db")
+    monkeypatch.setattr(s, "processing_mode", "inline")
+    doc_id = upload(client, samples.digital_pdf())["results"][0]["document_id"]
+    # Another serverless instance has no local copy: the original must come from Postgres.
+    with SessionLocal() as db:
+        Path(db.get(Document, doc_id).storage_path).unlink()
+    r = client.get(f"/api/documents/{doc_id}/file")
+    assert r.status_code == 200 and r.content.startswith(b"%PDF")
+    r = client.post(f"/api/documents/{doc_id}/reprocess")  # processing also re-materializes the file
+    assert client.get(f"/api/documents/{doc_id}").json()["status"] in ("completed", "needs_review")
+
+    demo_dir = tmp_path / "demo"
+    (demo_dir / "pdf").mkdir(parents=True)
+    shutil.copy(samples.digital_pdf("seed.pdf"), demo_dir / "pdf" / "classic_01.pdf")
+    monkeypatch.setattr(s, "demo_samples_dir", demo_dir)
+    monkeypatch.setattr(s, "demo_mode", True)
+    monkeypatch.setattr(s, "cron_secret", "s3cret")
+    assert client.post("/api/admin/demo-reset").status_code == 401
+    assert client.post("/api/admin/demo-reset", headers={"Authorization": "Bearer wrong"}).status_code == 401
+    r = client.post("/api/admin/demo-reset", headers={"Authorization": "Bearer s3cret"})
+    assert r.status_code == 200 and r.json()["documents"] == 1
+    docs = client.get("/api/documents").json()
+    assert docs["meta"]["total"] == 1 and docs["items"][0]["original_filename"] == "classic_01.pdf"

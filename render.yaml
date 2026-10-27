@@ -1,0 +1,32 @@
+# Render Blueprint: public demo on the free plan (no credit card required).
+# Deploy: https://render.com/deploy?repo=https://github.com/piyaldeb/ai-document-intelligence
+#
+# One web service (web + API in a single container, see deploy/container/Dockerfile) and one
+# free PostgreSQL database. Free-plan limits: 512 MB RAM / 0.1 CPU, sleeps after 15 min idle
+# (~1 min wake-up), free database expires after 30 days. Semantic search needs more memory than
+# the free plan offers, so it falls back to keyword search there.
+services:
+  - type: web
+    name: docintel
+    runtime: docker
+    plan: free
+    region: singapore
+    dockerfilePath: ./deploy/container/Dockerfile
+    dockerContext: .
+    healthCheckPath: /api/health
+    autoDeploy: true
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: docintel-db
+          property: connectionString
+      - key: CRON_SECRET
+        generateValue: true
+
+databases:
+  - name: docintel-db
+    plan: free
+    region: singapore
+    databaseName: docintel
+    user: docintel
+    postgresMajorVersion: "16"

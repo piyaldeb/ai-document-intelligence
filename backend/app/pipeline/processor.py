@@ -38,12 +38,10 @@ from app.models import (
 )
 from app.pipeline.detect import detect_file
 from app.pipeline.errors import ProcessingError
-from app.pipeline.images import extract_image
-from app.pipeline.pdf import extract_pdf
 from app.pipeline.segment import segment_pages
-from app.pipeline.spreadsheet import extract_spreadsheet
 from app.pipeline.types import TextExtraction
 from app.services.invoices import create_invoice, refresh_document_rollup
+from app.storage import materialize
 
 log = logging.getLogger(__name__)
 
@@ -106,10 +104,18 @@ def _extract_text(path: Path, kind: str, job: Job) -> TextExtraction:
     def on_progress(done: int, total: int) -> None:
         job.progress("extract_text", done / max(1, total))
 
+    # Imported on demand: PyMuPDF/OpenCV/pandas are only loaded for the formats that need them,
+    # which keeps the resident memory of small single-container deployments low.
     if kind == "pdf":
+        from app.pipeline.pdf import extract_pdf
+
         return extract_pdf(path, on_progress)
     if kind == "image":
+        from app.pipeline.images import extract_image
+
         return extract_image(path, on_progress)
+    from app.pipeline.spreadsheet import extract_spreadsheet
+
     return extract_spreadsheet(path, kind, on_progress)
 
 
@@ -162,7 +168,7 @@ def run(document_id: uuid.UUID) -> str:
         doc.processing_started_at = datetime.now(UTC)
         doc.processing_finished_at = None
         attempt = doc.attempts
-        path, filename = Path(doc.storage_path), doc.original_filename
+        path, filename = materialize(db, doc), doc.original_filename
         db.commit()
 
     job = Job(document_id, attempt)
@@ -283,7 +289,7 @@ def _invoice_summary_text(inv: Invoice) -> str:
 
 def schedule_indexing(document_id: uuid.UUID) -> None:
     """Queue semantic indexing as its own task (separate queue, scalable independently)."""
-    from app.worker.celery_app import enqueue_index
+    from app.jobs import enqueue_index
 
     enqueue_index(document_id)
 

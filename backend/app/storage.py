@@ -51,6 +51,21 @@ def save_stream(stream: BinaryIO, max_bytes: int, suffix: str) -> tuple[Path, in
     return path, size, digest.hexdigest(), head
 
 
+def materialize(db, document) -> Path:
+    """Local path to a document's original file. With STORAGE_BACKEND=db the bytes live in
+    Postgres and are written to this instance's scratch space on first use."""
+    path = Path(document.storage_path)
+    if path.exists() or get_settings().storage_backend != "db":
+        return path
+    from app.models import DocumentFile
+
+    row = db.get(DocumentFile, document.id)
+    if row is not None:
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_bytes(row.data)
+    return path
+
+
 def delete_file(path: str | Path) -> None:
     try:
         Path(path).unlink(missing_ok=True)

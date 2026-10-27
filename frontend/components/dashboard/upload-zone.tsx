@@ -11,9 +11,12 @@ import { useToast } from "@/components/toast";
 import { Alert, Button, Card, CardHeader, ProgressBar, cn } from "@/components/ui";
 import { FileTypeIcon } from "@/components/badges";
 
-/** Files per request (the API accepts up to 50; smaller batches keep progress honest). */
-const BATCH_FILES = 20;
-const BATCH_BYTES = 200 * 1024 * 1024;
+/**
+ * One file per request: stays within serverless request-size limits (e.g. Cloud Run 32 MiB) and,
+ * when the backend processes inline, each file finishes and reports independently.
+ */
+const BATCH_FILES = 1;
+const BATCH_BYTES = 30 * 1024 * 1024;
 
 interface Staged {
   key: string;

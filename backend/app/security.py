@@ -36,8 +36,8 @@ def require_api_key(request: Request, key: str | None = Depends(api_key_header))
 def rate_limit(request: Request, key: str = Depends(require_api_key)) -> None:
     """Fixed-window limit per API key / client IP, shared across API replicas via Redis."""
     limit = get_settings().rate_limit_per_minute
-    if limit <= 0:
-        return
+    if limit <= 0 or not get_settings().redis_url:
+        return  # disabled, or no Redis (serverless: use the platform firewall instead)
     client = key if key != "anonymous" else (request.client.host if request.client else "unknown")
     bucket = f"rl:{client[-12:]}:{int(time.time() // 60)}"
     try:

@@ -2,7 +2,6 @@ from __future__ import annotations
 
 import logging
 import uuid
-from pathlib import Path
 
 from fastapi import APIRouter, Depends, File, HTTPException, Query, UploadFile, status
 from fastapi.responses import FileResponse
@@ -11,9 +10,8 @@ from sqlalchemy.orm import Session, selectinload
 
 from app.config import get_settings
 from app.db import get_db
+from app.jobs import enqueue
 from app.models import Document, DocumentStatus
-from app.pipeline.detect import ALLOWED_EXTENSIONS, detect_bytes
-from app.pipeline.errors import ProcessingError
 from app.schemas import (
     DocumentDetail,
     DocumentList,
@@ -25,17 +23,12 @@ from app.schemas import (
     UploadResponse,
     UploadResult,
 )
-from app.storage import UploadTooLarge, delete_file, save_stream
-from app.worker.celery_app import enqueue
+from app.services.ingest import ingest
+from app.storage import delete_file, materialize
 
 log = logging.getLogger(__name__)
 router = APIRouter(prefix="/api/documents", tags=["documents"])
 jobs_router = APIRouter(prefix="/api/jobs", tags=["jobs"])
-
-
-def _safe_name(name: str | None) -> str:
-    base = Path(name or "upload").name.replace("\x00", "")
-    return base[:255] or "upload"
 
 
 @router.post("", response_model=UploadResponse, status_code=status.HTTP_202_ACCEPTED)
@@ -45,44 +38,18 @@ def upload_documents(files: list[UploadFile] = File(...), db: Session = Depends(
     if len(files) > s.max_files_per_request:
         raise HTTPException(status.HTTP_413_REQUEST_ENTITY_TOO_LARGE,
                             f"At most {s.max_files_per_request} files per request")
+    if s.demo_mode:
+        stored = db.scalar(select(func.count(Document.id))) or 0
+        if stored + len(files) > s.demo_max_documents:
+            raise HTTPException(status.HTTP_429_TOO_MANY_REQUESTS,
+                                "The public demo is full for today; it resets automatically. Please try again later.")
     results: list[UploadResult] = []
     to_enqueue: list[uuid.UUID] = []
     for upload in files:
-        name = _safe_name(upload.filename)
-        ext = Path(name).suffix.lower()
-        if ext not in ALLOWED_EXTENSIONS:
-            results.append(UploadResult(filename=name, accepted=False,
-                                        error=f"Unsupported file type '{ext or 'none'}'. Allowed: "
-                                              + ", ".join(sorted(ALLOWED_EXTENSIONS))))
-            continue
-        try:
-            path, size, sha256, head = save_stream(upload.file, s.max_upload_mb * 1024 * 1024, ext)
-        except UploadTooLarge as exc:
-            results.append(UploadResult(filename=name, accepted=False, error=str(exc)))
-            continue
-        # Fast content check at the door: reject unsupported/empty files immediately. Files with a
-        # valid extension but damaged content are accepted and fail visibly in the pipeline
-        # (with CORRUPTED_FILE) so the user can see and reprocess them.
-        try:
-            detected = detect_bytes(head, name)
-            kind, mime = detected.kind, detected.mime
-        except ProcessingError as exc:
-            if exc.code in ("UNSUPPORTED_FILE_TYPE", "EMPTY_DOCUMENT"):
-                delete_file(path)
-                results.append(UploadResult(filename=name, accepted=False, error=str(exc)))
-                continue
-            kind, mime = ("image" if ext in (".jpg", ".jpeg", ".png", ".tif", ".tiff") else ext.lstrip(".")), "application/octet-stream"
-        duplicate_of = db.scalar(
-            select(Document.id).where(Document.sha256 == sha256).order_by(Document.created_at).limit(1)
-        )
-        doc = Document(
-            original_filename=name, file_type=kind, mime_type=mime, size_bytes=size, sha256=sha256,
-            storage_path=str(path), status=DocumentStatus.QUEUED, stage="queued", duplicate_of_id=duplicate_of,
-        )
-        db.add(doc)
-        db.flush()
-        to_enqueue.append(doc.id)
-        results.append(UploadResult(filename=name, accepted=True, document_id=doc.id, duplicate_of=duplicate_of))
+        result, doc_id = ingest(db, upload.filename, upload.file)
+        results.append(result)
+        if doc_id:
+            to_enqueue.append(doc_id)
     db.commit()
     for doc_id in to_enqueue:
         enqueue(doc_id)
@@ -164,7 +131,7 @@ def get_pages(
 @router.get("/{document_id}/file")
 def download_file(document_id: uuid.UUID, db: Session = Depends(get_db)) -> FileResponse:
     doc = _get_doc(db, document_id)
-    path = Path(doc.storage_path)
+    path = materialize(db, doc)
     if not path.exists():
         raise HTTPException(status.HTTP_404_NOT_FOUND, "Stored file is missing")
     inline = doc.file_type in ("pdf", "image") and doc.mime_type != "application/octet-stream"

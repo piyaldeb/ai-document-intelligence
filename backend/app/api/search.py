@@ -6,7 +6,7 @@ from datetime import date
 from decimal import Decimal
 from typing import Literal
 
-from fastapi import APIRouter, Depends, HTTPException, Query
+from fastapi import APIRouter, Depends, Query
 from sqlalchemy.orm import Session
 
 from app.config import get_settings
@@ -36,7 +36,7 @@ def search(
     """Search processed documents: `keyword` (full-text + fuzzy fields), `semantic`
     (vector similarity over embedded chunks) or `hybrid` (reciprocal rank fusion)."""
     if mode != "keyword" and not get_settings().embeddings_enabled:
-        raise HTTPException(400, "Semantic search is disabled on this deployment")
+        mode = "keyword"  # small deployments without the embedding model: degrade gracefully
     f = SearchFilters(supplier=supplier, currency=currency, date_from=date_from, date_to=date_to,
                       min_total=min_total, max_total=max_total, review_status=review_status,
                       file_type=file_type, document_id=document_id)

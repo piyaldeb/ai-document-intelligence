@@ -10,7 +10,7 @@ const here = path.dirname(fileURLToPath(import.meta.url));
 const root = path.resolve(here, "../..");
 const dataset = path.join(root, "eval/dataset");
 const outDir = path.join(root, "docs/walkthrough");
-const BASE = process.env.WEB_URL ?? "http://localhost:7860";
+const BASE = process.env.WEB_URL ?? "http://localhost:3000";
 // Read-only helper calls go through the web app's proxy (it adds the API key server-side).
 const API = process.env.API_URL ?? BASE;
 const KEY = process.env.API_KEY ?? "";

@@ -9,7 +9,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.middleware.gzip import GZipMiddleware
 from sqlalchemy import text
 
-from app.api import documents, invoices, reconciliation, search, stats
+from app.api import admin, documents, invoices, reconciliation, search, stats
 from app.config import get_settings
 from app.db import engine
 from app.security import SecurityHeadersMiddleware, rate_limit
@@ -61,6 +61,7 @@ protected = [Depends(rate_limit)]
 for module in (documents, invoices, search, reconciliation, stats):
     app.include_router(module.router, dependencies=protected)
 app.include_router(documents.jobs_router, dependencies=protected)
+app.include_router(admin.router)  # own auth (cron secret)
 
 
 @app.get("/api/health", tags=["health"])

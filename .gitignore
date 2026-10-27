@@ -18,3 +18,4 @@ scripts/walkthrough/node_modules/
 docs/walkthrough/_raw/
 *.tsbuildinfo
 frontend/.env.local
+.vercel

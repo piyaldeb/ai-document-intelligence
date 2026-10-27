@@ -5,7 +5,7 @@ from __future__ import annotations
 import logging
 
 from app.config import get_settings
-from app.extraction import llm, rules
+from app.extraction import rules
 from app.extraction.grounding import ground
 from app.extraction.normalize import normalize_company, normalize_invoice_number
 from app.extraction.schema import SCALAR_FIELDS, InvoiceData
@@ -48,6 +48,8 @@ def extract_text(text: str, provider: str | None = None, context: str = "") -> I
     rules_result = rules.extract(text)
     if provider != "anthropic":
         return rules_result
+    from app.extraction import llm  # the Anthropic SDK is only loaded when Claude is enabled
+
     dayfirst = rules_result.currency != "USD"
     try:
         result = llm.extract(text, context=context, dayfirst=dayfirst)

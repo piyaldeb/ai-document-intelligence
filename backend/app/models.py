@@ -18,6 +18,7 @@ from sqlalchemy import (
     ForeignKey,
     Index,
     Integer,
+    LargeBinary,
     Numeric,
     String,
     Text,
@@ -99,6 +100,17 @@ class Document(Base):
     issues: Mapped[list[ValidationIssue]] = relationship(
         back_populates="document", cascade="all, delete-orphan", order_by="ValidationIssue.id"
     )
+
+
+class DocumentFile(Base):
+    """Original file bytes, used when STORAGE_BACKEND=db (stateless serverless deployments)."""
+
+    __tablename__ = "document_files"
+
+    document_id: Mapped[uuid.UUID] = mapped_column(
+        UUID(as_uuid=True), ForeignKey("documents.id", ondelete="CASCADE"), primary_key=True
+    )
+    data: Mapped[bytes] = mapped_column(LargeBinary)
 
 
 class DocumentPage(Base):

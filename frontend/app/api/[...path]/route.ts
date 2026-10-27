@@ -53,6 +53,9 @@ async function proxy(req: NextRequest, ctx: RouteContext): Promise<Response> {
   if (apiKey) headers.set("x-api-key", apiKey);
   const forwardedFor = req.headers.get("x-forwarded-for");
   if (forwardedFor) headers.set("x-forwarded-for", forwardedFor);
+  // The scheduled demo reset authenticates with its own bearer secret (checked by the API).
+  const authorization = req.headers.get("authorization");
+  if (authorization && path.join("/") === "admin/demo-reset") headers.set("authorization", authorization);
 
   const hasBody = req.method !== "GET" && req.method !== "HEAD" && req.body !== null;
   const init: RequestInit & { duplex?: "half" } = {
